@@ -76,20 +76,31 @@
       <div class="row">
         <div class="col-md-6">
 
-          <form action="">
+          <!-- FORMULARIO CONFIGURADO -->
+          <form action="https://formsubmit.co/eze0791@hotmail.com" method="POST">
+
+            <!-- Desactivar CAPTCHA -->
+            <input type="hidden" name="_captcha" value="false">
+
+            <!-- Página después de enviar (puedes cambiarla) -->
+            <input type="hidden" name="_next" value="https://tusitio.com/gracias.html">
+
+            <!-- Anti bots -->
+            <input type="text" name="_honey" style="display:none">
+
             <div class="contact_form-container">
               <div>
                 <div>
-                  <input type="text" placeholder="Name">
+                  <input type="text" name="name" placeholder="Name" required>
                 </div>
                 <div>
-                  <input type="text" placeholder="Phone Number">
+                  <input type="text" name="phone" placeholder="Phone Number" required>
                 </div>
                 <div>
-                  <input type="email" placeholder="Email">
+                  <input type="email" name="email" placeholder="Email" required>
                 </div>
                 <div class="mt-5">
-                  <input type="text" placeholder="Message">
+                  <input type="text" name="message" placeholder="Message" required>
                 </div>
                 <div class="mt-5">
                   <button type="submit">
@@ -101,6 +112,8 @@
             </div>
 
           </form>
+          <!-- FIN DEL FORMULARIO -->
+
         </div>
         <div class="col-md-6">
           <div class="contact_img-box">
