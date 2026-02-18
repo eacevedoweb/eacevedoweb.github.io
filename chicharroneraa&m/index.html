@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicharronera A&M - Inicio</title>
+    <style>
+        :root { --oscuro: #1a1a1a; --amarillo: #fbc02d; }
+        @keyframes flashIn {
+            0% { opacity: 0; filter: brightness(3); transform: scale(0.9); }
+            100% { opacity: 1; filter: brightness(1); transform: scale(1); }
+        }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; text-align: center; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background: var(--oscuro); padding: 40px 10px; border-bottom: 5px solid var(--amarillo); }
+        .logo { max-width: 200px; border-radius: 50%; border: 3px solid var(--amarillo); animation: flashIn 1s ease-out forwards; }
+        .seccion { padding: 20px 10px; }
+        h3 { text-transform: uppercase; font-size: 0.9em; color: #666; margin: 20px 0; letter-spacing: 1px; }
+        .contenedor-iconos { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-bottom: 30px; }
+        .icono { width: 65px; height: 65px; transition: 0.3s; border-radius: 15px; animation: flashIn 1.2s ease-out forwards; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .icono:hover { transform: scale(1.1) rotate(3deg); }
+        .img-menu { width: 280px; max-width: 85%; border-radius: 20px; cursor: pointer; transition: 0.4s; box-shadow: 0 10px 20px rgba(0,0,0,0.2); animation: flashIn 1.4s ease-out forwards; }
+        .img-menu:hover { transform: scale(1.05); filter: contrast(1.1); }
+        footer { margin-top: auto; background: var(--oscuro); color: white; padding: 20px; font-size: 0.8em; }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="images/logo.jpg" alt="Logo A&M" class="logo">
+</header>
+
+<div class="seccion">
+    <h3>Síguenos</h3>
+    <div class="contenedor-iconos">
+        <a href="https://www.facebook.com/profile.php?id=61561841108895" target="_blank">
+            <img src="images/facebook.jpg" alt="Facebook" class="icono">
+        </a>
+        <a href="https://www.instagram.com/chicharronera_aym?igsh=MWp6c25vbjVuZm9ybg==" target="_blank">
+            <img src="images/instagram.jpg" alt="Instagram" class="icono">
+        </a>
+    </div>
+
+    <h3>Explora nuestro sabor</h3>
+    <a href="menu.html">
+        <img src="images/menu.jpg" alt="Botón Menú" class="img-menu">
+    </a>
+
+    <h3>Contacto y Ubicación</h3>
+    <div class="contenedor-iconos">
+        <a href="https://wa.link/3lx9hf" target="_blank">
+            <img src="images/whatsapp.jpg" alt="WhatsApp" class="icono">
+        </a>
+        <a href="https://waze.com/ul/hd1u0xsk18" target="_blank">
+            <img src="images/waze.jpg" alt="Waze" class="icono">
+        </a>
+    </div>
+</div>
+
+<footer>
+    <p><strong>CHICHARRONERA A&M</strong> | El Alto de Guadalupe [cite: 83]</p>
+</footer>
+
+</body>
+</html>

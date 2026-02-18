@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Completo - Chicharronera A&M</title>
+    <style>
+        :root { --rojo: #bc0000; --amarillo: #fbc02d; --oscuro: #1a1a1a; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #333; text-align: center; }
+        .nav-volver { background: var(--oscuro); padding: 15px; border-bottom: 4px solid var(--amarillo); position: sticky; top: 0; z-index: 100; }
+        .link-volver { color: white; text-decoration: none; font-weight: bold; border: 1px solid white; padding: 6px 15px; border-radius: 20px; font-size: 14px; }
+        
+        section { padding: 15px; max-width: 650px; margin: auto; }
+        h2 { background: var(--rojo); color: white; padding: 12px; border-radius: 8px; text-transform: uppercase; margin-top: 35px; font-size: 1.1em; }
+        .item { display: flex; justify-content: space-between; padding: 14px 8px; border-bottom: 1px solid #eee; text-align: left; }
+        .precio { color: var(--rojo); font-weight: bold; margin-left: 10px; }
+        
+        .promo-box { background: #fff0f0; border-left: 5px solid var(--rojo); padding: 12px; margin: 10px 0; display: flex; justify-content: space-between; border-radius: 0 8px 8px 0; font-size: 15px; }
+        .combo { background: #fff9e6; border: 1px solid var(--amarillo); padding: 18px; margin: 15px 0; text-align: left; border-radius: 12px; }
+        .combo strong { color: var(--rojo); display: block; margin-bottom: 5px; font-size: 1.1em; }
+        .combo p { margin: 0; font-size: 14px; color: #455; }
+    </style>
+</head>
+<body>
+
+<div class="nav-volver">
+    <a href="index.html" class="link-volver">← VOLVER AL INICIO</a>
+</div>
+
+<section>
+    <h2>🥩 Chicharrones</h2>
+    <div class="item"><span>Chicharrón de Carne</span><span class="precio">₡11,000</span></div>
+    <div class="item"><span>Chicharrón de Panzada</span><span class="precio">₡12,000</span></div>
+    <div class="item"><span>Costilla en Salsa BBQ</span><span class="precio">₡15,000</span></div>
+    <div class="item"><span>Chicharrón de Concha (100 grs)</span><span class="precio">₡1,600</span></div>
+
+    <h2>🍽️ Platos</h2>
+    <div class="item"><span>Chifrijo Grande / Mediano</span><span class="precio">₡5,000 / ₡3,500</span></div>
+    <div class="item"><span>Vigorón Grande / Mediano</span><span class="precio">₡5,000 / ₡3,500</span></div>
+    <div class="item"><span>Nachos A&M</span><span class="precio">₡3,500</span></div>
+    <div class="item"><span>Ceviche de Chicharrón</span><span class="precio">₡4,000</span></div>
+    <div class="item"><span>Tacos de Chicharrón (4 Unid)</span><span class="precio">₡3,500</span></div>
+
+    <h2>📅 Promociones Diarias</h2>
+    <div class="promo-box"><span>Martes de Vigorón</span><strong>₡3,000</strong></div>
+    <div class="promo-box"><span>Miércoles de Chifrijo</span><strong>₡3,000</strong></div>
+    <div class="promo-box"><span>Jueves de Nachos</span><strong>₡3,000</strong></div>
+    <div class="promo-box"><span>Viernes de Tacos (4 unidades)</span><strong>₡3,500</strong></div>
+    <div class="promo-box"><span>Fin de Semana de Ceviche</span><strong>₡4,000</strong></div>
+
+    <h2>👨‍👩‍👧‍👦 Combos Familiares</h2>
+    <div class="combo">
+        <strong>COMBO PARA DOS - ₡12,000</strong>
+        <p>500g Chicharrón, 2 refrescos 600ml, papas mini, yuca, 2 paq tortillas y chimichurri.</p>
+    </div>
+    <div class="combo">
+        <strong>COMBO FAMILIAR 3 - ₡17,500</strong>
+        <p>750g Chicharrón, 1.5L refresco, 750g acompañamientos, tortillas y ceviche de banano.</p>
+    </div>
+    <div class="combo">
+        <strong>COMBO FAMILIAR 5 - ₡30,000</strong>
+        <p>1.5kg Chicharrón, 2.5L refresco, 1.5kg acompañamientos, tortillas y ceviche de banano.</p>
+    </div>
+
+    <h2>🥤 Acompañamientos y Más</h2>
+    <div class="item"><span>Papa mini o Yuca (200 grs)</span><span class="precio">₡1,000</span></div>
+    <div class="item"><span>Refresco 2.5 Litros</span><span class="precio">₡2,000</span></div>
+    <div class="item"><span>Refresco 1.5 Litros</span><span class="precio">₡1,750</span></div>
+    <div class="item"><span>Agua de Pipa</span><span class="precio">₡1,300</span></div>
+</section>
+
+</body>
+</html>
