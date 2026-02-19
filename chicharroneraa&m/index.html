@@ -5,24 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chicharronera A&M - Inicio</title>
     <style>
-        /* Animación inicial */
+        /* Animaciones */
         @keyframes flashIn {
             0% { opacity: 0; filter: brightness(3); transform: scale(0.9); }
             100% { opacity: 1; filter: brightness(1); transform: scale(1); }
         }
 
-        /* Animación de temblor */
-        @keyframes shake {
-            0%, 90% { transform: rotate(0deg); }
-            92% { transform: rotate(3deg); }
-            94% { transform: rotate(-3deg); }
-            96% { transform: rotate(3deg); }
-            98% { transform: rotate(-3deg); }
-            100% { transform: rotate(0deg); }
+        @keyframes pulseMenu {
+            0% { transform: scale(1); text-shadow: 0 0 10px rgba(188, 0, 0, 0.2); }
+            50% { transform: scale(1.1); text-shadow: 0 0 25px rgba(188, 0, 0, 0.6); }
+            100% { transform: scale(1); text-shadow: 0 0 10px rgba(188, 0, 0, 0.2); }
         }
 
         body { 
-            font-family: 'Segoe UI', sans-serif; 
+            font-family: 'Arial Black', sans-serif; 
             margin: 0; 
             background: url('images/fondo.jpg') no-repeat center center fixed; 
             background-size: cover;
@@ -42,7 +38,7 @@
             align-items: center;
             justify-content: flex-start; 
             z-index: 1;
-            padding-top: 50px; 
+            padding-top: 30px; /* Reduje un poco el padding para acomodar el logo más grande */
         }
 
         .contenido {
@@ -53,62 +49,66 @@
             max-width: 500px;
         }
 
+        /* LOGO 40% MÁS GRANDE (De 160px a 224px) */
         .logo { 
-            width: 100%;
-            max-width: 150px;
-            height: auto;
+            width: 224px;
+            height: 224px;
+            object-fit: cover;
             border-radius: 50%; 
-            border: 2px solid rgba(255, 255, 255, 0.3); 
+            border: 4px solid rgba(255, 255, 255, 0.5); 
             animation: flashIn 1s ease-out forwards; 
-            margin-bottom: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+        }
+
+        .btn-texto-menu {
+            display: inline-block;
+            text-decoration: none;
+            color: #bc0000; 
+            font-size: 75px; 
+            font-weight: 900;
+            letter-spacing: 5px;
+            margin: 10px 0 25px 0; 
+            cursor: pointer;
+            animation: flashIn 1.4s ease-out forwards, pulseMenu 2s infinite ease-in-out;
+            transition: 0.3s;
+            -webkit-text-stroke: 1.5px white;
         }
 
         h3 { 
             text-transform: uppercase; 
             font-size: 0.75em; 
             color: white; 
-            margin: 15px 0; 
+            margin: 10px 0; 
             letter-spacing: 2px;
+            font-family: 'Segoe UI', sans-serif;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
         .contenedor-iconos { 
             display: flex; 
             justify-content: center; 
+            align-items: center; 
             gap: 20px;
-            margin-bottom: 20px; 
+            margin-bottom: 25px; 
             flex-wrap: wrap;
         }
         
-        /* TAMAÑO UNIFICADO PARA TODOS LOS ICONOS */
         .icono { 
             width: 55px; 
             height: 55px; 
-            object-fit: cover; /* Asegura que la imagen no se estire */
-            transition: 0.3s; 
-            border-radius: 12px; 
-            animation: flashIn 1.2s ease-out forwards;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .icono:hover { transform: scale(1.15); }
-
-        /* Botón de Menú */
-        .img-menu { 
-            width: 270px; 
-            height: 270px; 
             object-fit: cover; 
             border-radius: 50%; 
-            cursor: pointer; 
-            transition: 0.4s; 
-            animation: flashIn 1.4s ease-out forwards, shake 2s infinite;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            margin: 10px 0;
+            transition: 0.3s; 
+            animation: flashIn 1.2s ease-out forwards;
+            background: rgba(255, 255, 255, 0.2); 
+            padding: 2px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .img-menu:hover { 
-            transform: scale(1.05); 
-            animation-play-state: paused;
+        .icono:hover { 
+            transform: scale(1.15); 
+            background: rgba(255, 255, 255, 0.4);
         }
 
     </style>
@@ -118,8 +118,10 @@
     <div class="overlay">
         <div class="contenido">
             <header>
-                <img src="images/logo.jpg" alt="Logo A&M" class="logo">
+                <img src="images/logo.gif" alt="Logo Animado A&M" class="logo">
             </header>
+
+            <a href="menu.html" class="btn-texto-menu">MENÚ</a>
 
             <h3>Síguenos</h3>
             <div class="contenedor-iconos">
@@ -130,10 +132,6 @@
                     <img src="images/instagram.jpg" alt="Instagram" class="icono">
                 </a>
             </div>
-
-            <a href="menu.html">
-                <img src="images/menu.jpg" alt="Botón Menú" class="img-menu">
-            </a>
 
             <h3>Contacto y Ubicación</h3>
             <div class="contenedor-iconos">
