@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chicharronera A&M - Inicio</title>
     <style>
-        /* Estilos Base */
+        /* Animaciones */
         @keyframes flashIn {
             0% { opacity: 0; filter: brightness(3); transform: scale(0.9); }
             100% { opacity: 1; filter: brightness(1); transform: scale(1); }
@@ -17,10 +17,9 @@
             background: url('images/fondo.jpg') no-repeat center center fixed; 
             background-size: cover;
             height: 100vh;
-            overflow: hidden; /* Evita scrolls innecesarios en el inicio */
+            overflow-x: hidden; /* Evita que la pantalla se mueva de lado */
         }
 
-        /* Overlay UNIFICADO y más claro (0.4 es menos oscuro que 0.6) */
         .overlay {
             background: rgba(0, 0, 0, 0.4); 
             width: 100%;
@@ -35,31 +34,33 @@
             z-index: 1;
         }
 
-        /* Contenido transparente sin franjas oscuras */
         .contenido {
             position: relative;
             z-index: 2;
             text-align: center;
-            width: 100%;
+            width: 90%; /* Ajustamos el ancho del contenido para dejar margen en el celular */
+            max-width: 500px;
+            margin: auto;
         }
 
-        /* Quitamos el fondo oscuro y la línea amarilla del header */
         header { 
             background: transparent; 
-            padding: 20px 0; 
+            padding: 10px 0; 
         }
 
+        /* AJUSTE RESPONSIVO DEL LOGO */
         .logo { 
-            max-width: 180px; 
+            width: 100%; /* El logo intentará usar el ancho disponible */
+            max-width: 180px; /* Pero nunca medirá más de 180px */
+            height: auto; /* Mantiene la proporción para que no se vea aplastado */
             border-radius: 50%; 
-            /* Mantenemos un borde sutil para que el logo no se pierda en el fondo */
-            border: 2px solid rgba(255, 255, 255, 0.5); 
+            border: 2px solid rgba(255, 255, 255, 0.3); 
             animation: flashIn 1s ease-out forwards; 
         }
 
         h3 { 
             text-transform: uppercase; 
-            font-size: 0.85em; 
+            font-size: 0.8em; 
             color: white; 
             margin: 15px 0; 
             letter-spacing: 2px;
@@ -69,13 +70,14 @@
         .contenedor-iconos { 
             display: flex; 
             justify-content: center; 
-            gap: 20px; 
-            margin-bottom: 25px; 
+            gap: 15px; /* Reducimos un poco el espacio para pantallas pequeñas */
+            margin-bottom: 20px; 
+            flex-wrap: wrap; /* Si no caben, se ponen uno abajo del otro */
         }
         
         .icono { 
-            width: 60px; 
-            height: 60px; 
+            width: 55px; /* Un pelín más pequeños para que quepan bien */
+            height: 55px; 
             transition: 0.3s; 
             border-radius: 12px; 
             animation: flashIn 1.2s ease-out forwards;
@@ -84,23 +86,18 @@
         .icono:hover { transform: scale(1.1); }
 
         .img-menu { 
-            width: 250px; 
+            width: 100%;
+            max-width: 240px; 
+            height: auto;
             border-radius: 15px; 
             cursor: pointer; 
             transition: 0.4s; 
-            animation: flashIn 1.4s ease-out forwards; 
+            animation: flashIn 1.4s ease-out forwards;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
         }
 
         .img-menu:hover { transform: scale(1.05); }
 
-        footer { 
-            position: absolute;
-            bottom: 20px;
-            color: white; 
-            font-size: 0.8em; 
-            width: 100%;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
     </style>
 </head>
 <body>
@@ -135,10 +132,6 @@
                     <img src="images/waze.jpg" alt="Waze" class="icono">
                 </a>
             </div>
-
-            <footer>
-                <p><strong>CHICHARRONERA A&M</strong> | El Alto de Guadalupe</p>
-            </footer>
         </div>
     </div>
 
