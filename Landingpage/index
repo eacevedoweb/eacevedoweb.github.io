@@ -1,1 +1,105 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Página Web Profesional por $97</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script><style>
+        body, html {width: 1280px; margin: 0;
+            padding: 0;
+            height: 100%;}
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #121212 0%, #1e1e1e 50%, #121212 100%);
+        }
+        .title-text {
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .subtitle-text {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .web-icon {
+            position: absolute;
+            opacity: 0.05;
+            transform: rotate(-15deg);
+        }
+        .price-highlight {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: none;
+        }
+        .accent-line {
+            background: linear-gradient(90deg, #50C878, #3CB371);
+        }
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    
+body {
+    width: 1280px;
+    height: 720px;
+    
+    
+}</style>
+</head>
+<body>
+<div class="slide gradient-bg flex flex-col items-center justify-center text-white p-16 relative">
+<!-- Background decorative elements -->
+<div class="web-icon text-[400px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+<i class="fas fa-globe"></i>
+</div>
+<!-- Top right decorative element -->
+<div class="absolute top-10 right-10 floating-element">
+<i class="fas fa-code text-5xl text-gray-400 opacity-30"></i>
+</div>
+<!-- Bottom left decorative element -->
+<div class="absolute bottom-10 left-10 floating-element" style="animation-delay: 2s;">
+<i class="fas fa-server text-5xl text-gray-400 opacity-30"></i>
+</div>
+<!-- Content container -->
+<div class="z-10 text-center max-w-4xl">
+<!-- Main title -->
+<h1 class="title-text text-6xl font-bold mb-4">
+                Página Web Profesional
+                <span class="price-highlight block mt-2">por $97</span>
+</h1>
+<!-- Accent line -->
+<div class="accent-line h-1 w-32 mx-auto my-8 rounded-full"></div>
+<!-- Subtitle -->
+<p class="subtitle-text text-2xl font-light mb-10 text-gray-200">
+                Todo incluido: Hosting, Dominio y Soporte Express
+            </p>
+<!-- Features row -->
+<div class="flex justify-center space-x-12 mt-12">
+<div class="text-center">
+<i class="fas fa-check-circle text-green-400 text-3xl mb-3"></i>
+<p class="text-lg">Hosting Premium</p>
+</div>
+<div class="text-center">
+<i class="fas fa-check-circle text-green-400 text-3xl mb-3"></i>
+<p class="text-lg">Dominio por 1 Año</p>
+</div>
+<div class="text-center">
+<i class="fas fa-check-circle text-green-400 text-3xl mb-3"></i>
+<p class="text-lg">Soporte de 1 Mes</p>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="absolute bottom-8 right-8 text-sm text-gray-400">
+<p>Oferta válida por tiempo limitado</p>
+</div>
+</div>
 
+</body></html>
