@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turquesa Real Estate | Tu Hogar Ideal</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap');
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden; 
+            background-image: url('Imagenes/casa.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .text-turquesa { color: #40E0D0; }
+        .bg-turquesa { background-color: #40E0D0; }
+        .border-turquesa { border-color: #40E0D0; }
+        .text-shadow { text-shadow: 2px 2px 15px rgba(0,0,0,0.9); }
+
+        .glass-form {
+            background: rgba(255, 255, 255, 0.30);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-section {
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            margin: 20px;
+            padding: 40px;
+            position: relative;
+        }
+
+        /* ANIMACIONES */
+        @keyframes sweepRight {
+            0% { transform: scaleX(0); transform-origin: left; }
+            100% { transform: scaleX(1); transform-origin: left; }
+        }
+        @keyframes logoFadeInPop {
+            0% { opacity: 0; transform: scale(0.5) translateY(-50%); }
+            100% { opacity: 1; transform: scale(1) translateY(-50%); }
+        }
+        @keyframes textToWhite {
+            0% { color: #111827; }
+            100% { color: #ffffff; }
+        }
+        @keyframes navButtonFade {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .navbar-sweep {
+            position: absolute;
+            inset: 0;
+            background-color: #40E0D0;
+            z-index: 10;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: sweepRight 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+
+        .nav-link-animate {
+            animation: textToWhite 0.5s ease-out forwards;
+            animation-delay: 0.6s;
+            position: relative;
+            z-index: 20;
+        }
+
+        .nav-button-animate {
+            opacity: 0;
+            animation: navButtonFade 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-delay: 0.9s;
+            z-index: 20;
+        }
+
+        .logo-floating {
+            position: absolute;
+            left: 2.5rem; 
+            top: 100%; 
+            transform: translateY(-50%);
+            opacity: 0;
+            animation: logoFadeInPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-delay: 0.8s;
+            z-index: 100; 
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translate3d(0, 100px, 0); }
+            to { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+
+        .animate-text-entry { 
+            animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
+            animation-delay: 1.2s; 
+            opacity: 0; 
+        }
+
+        .reveal-bar {
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            overflow: hidden;
+            color: #40E0D0;
+            font-weight: 900;
+        }
+        .reveal-bar::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #40E0D0;
+            transform: scaleX(0); transform-origin: left;
+            z-index: -1;
+            animation: sweepRight 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+            animation-delay: 0.5s;
+        }
+        .reveal-text-white {
+            animation: textToWhite 0.3s forwards;
+            animation-delay: 0.9s;
+        }
+
+        .category-card:hover img { transform: scale(1.1); }
+        .location-card:hover img { transform: scale(1.1); }
+
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 3s infinite ease-in-out;
+        }
+
+        /* Estilo para los botones de retorno */
+        .btn-return {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            z-index: 30;
+        }
+        .btn-return:hover {
+            background: #40E0D0;
+            color: black;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body id="inicio">
+<button id="mobile-menu-button" class="md:hidden text-slate-800 text-2xl focus:outline-none">
+    <i class="fa-solid fa-bars"></i>
+</button>
+    <nav class="relative z-50 h-24 md:h-32 bg-white flex items-center shadow-lg transition-all duration-300">
+        <div class="navbar-sweep"></div>
+        <div class="container mx-auto px-4 md:px-6 flex justify-end items-center relative h-full">
+            <a href="index.html" class="logo-floating">
+                <img src="Imagenes/logo.jpg" alt="Logo" class="h-32 w-32 md:h-52 md:w-52 rounded-full object-cover border-[10px] border-white shadow-2xl transition duration-300 hover:scale-105">
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 font-bold">
+                <a href="index.html" class="nav-link-animate text-lg hover:opacity-80 transition">Inicio</a>
+                <a href="#nosotros" class="nav-link-animate text-lg hover:opacity-80 transition">Nosotros</a>
+                <a href="#categorias" class="nav-link-animate text-lg hover:opacity-80 transition">Categorías</a>
+                <a href="#ubicaciones" class="nav-link-animate text-lg hover:opacity-80 transition">Ubicaciones</a>
+                <a href="propiedades.html" class="nav-link-animate text-lg hover:opacity-80 transition">Propiedades</a>
+                <a href="#footer-contacto" class="nav-button-animate bg-white text-gray-900 px-8 py-3 rounded-full uppercase text-sm font-black shadow-xl hover:bg-gray-100 transition">Contacto</a>
+            </div>
+           <button id="mobile-menu-button" class="lg:hidden relative z-20 text-white text-3xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 px-6 py-8 space-y-4 shadow-xl absolute top-24 md:top-32 left-0 w-full z-50">
+            <a href="#inicio" class="block text-slate-800 font-bold hover:text-turquesa transition">Inicio</a>
+            <a href="#nosotros" class="block text-slate-800 font-bold hover:text-turquesa transition">Nosotros</a>
+            <a href="#categorias" class="block text-slate-800 font-bold hover:text-turquesa transition">Categorías</a>
+            <a href="#presencia" class="block text-slate-800 font-bold hover:text-turquesa transition">Ubicaciones</a>
+            <a href="propiedades.html" class="block text-slate-800 font-bold hover:text-turquesa transition">Propiedades</a>
+            <a href="#footer-contacto" class="block bg-turquesa text-white text-center py-3 rounded-xl font-black">CONTACTO</a>
+        </div>
+    </nav>
+
+    <header class="relative min-h-screen flex items-center overflow-hidden">
+        <div class="container mx-auto relative z-10 px-6 pt-12 pb-20 flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+            <div class="animate-text-entry w-full lg:w-[55%] mt-16 md:mt-24 lg:mt-0">
+                <h1 class="text-4xl md:text-[56px] font-black leading-[1.15] text-white text-shadow tracking-tighter uppercase mb-8">
+                    Soluciones inmobiliarias que cuidan el <span class="text-turquesa">futuro de su familia</span> y la <span class="text-turquesa">rentabilidad de su empresa.</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white font-bold text-shadow italic opacity-90 mb-12 lg:mb-0">
+                    Bienvenidos a Turquesa Real Estate. Seguridad y confianza en cada paso.
+                </p>
+            </div>
+
+            <div class="animate-text-entry w-full lg:w-[45%]" style="animation-delay: 1.5s;">
+               <!-- INICIO DE LA GLASS FORM -->
+<div class="glass-form p-8 md:p-10 rounded-[75px] shadow-2xl">
+    
+    <!-- TITULO TURQUESA -->
+    <div class="w-full bg-turquesa text-white font-black py-4 rounded-2xl shadow-[0_10px_25px_rgba(0,0,0,0.3)] uppercase border-2 border-white/20 flex items-center justify-center mb-6">
+        <div class="flex flex-col items-center justify-center text-center">
+            <span class="text-lg md:text-xl tracking-tight drop-shadow-md leading-tight">¿Buscas asesoría para</span>
+            <span class="text-lg md:text-xl tracking-tight drop-shadow-md leading-tight">vender o alquilar?</span>
+            <span class="text-lg md:text-xl tracking-tight drop-shadow-md leading-tight">¡Contáctanos!</span>
+        </div>
+    </div>
+
+    <!-- EL FORMULARIO AHORA ESTÁ DENTRO -->
+    <form action="https://formspree.io/f/mzdklrev" method="POST" class="space-y-4">
+        <input type="hidden" name="_next" value="gracias.html">
+        <input type="text" name="_gotcha" style="display:none">
+
+        <div id="extra-fields" class="space-y-4">
+            <div class="relative">
+                <i class="fa-solid fa-user absolute left-5 top-1/2 -translate-y-1/2 text-turquesa"></i>
+                <input type="text" name="Nombre_Cliente" placeholder="Nombre completo" required class="w-full bg-[#40E0D0]/20 border border-white/40 rounded-2xl py-4 pl-14 pr-6 text-white placeholder:text-white placeholder:opacity-90 focus:outline-none focus:border-turquesa transition font-semibold">
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div class="relative">
+                    <i class="fa-solid fa-phone absolute left-5 top-1/2 -translate-y-1/2 text-turquesa"></i>
+                    <input type="tel" name="Telefono" placeholder="Teléfono" required class="w-full bg-[#40E0D0]/20 border border-white/40 rounded-2xl py-4 pl-14 pr-6 text-white placeholder:text-white placeholder:opacity-90 focus:outline-none focus:border-turquesa transition font-semibold">
+                </div>
+                <div class="relative">
+                    <i class="fa-solid fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-turquesa"></i>
+                    <input type="email" name="Email" placeholder="Correo" required class="w-full bg-[#40E0D0]/20 border border-white/40 rounded-2xl py-4 pl-14 pr-6 text-white placeholder:text-white placeholder:opacity-90 focus:outline-none focus:border-turquesa transition font-semibold">
+                </div>
+            </div>
+
+            <div class="relative">
+                <i class="fa-solid fa-handshake absolute left-5 top-1/2 -translate-y-1/2 text-turquesa text-lg"></i>
+                <select name="Intencion_Operacion" class="w-full bg-[#40E0D0]/20 border border-white/40 rounded-2xl py-4 pl-14 pr-4 text-white appearance-none focus:outline-none focus:border-turquesa cursor-pointer font-semibold">
+                    <option class="text-gray-900" value="" disabled selected>Mi intención es...</option>
+                    <option class="text-gray-900" value="vender">Solo Vender</option>
+                    <option class="text-gray-900" value="alquilar">Solo Alquilar</option>
+                    <option class="text-gray-900" value="ambos">Venta o Alquiler</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="relative">
+            <i class="fa-solid fa-location-dot absolute left-5 top-1/2 -translate-y-1/2 text-turquesa text-xl"></i>
+            <input type="text" name="Ubicacion" id="input-location" placeholder="¿Dónde se ubica su propiedad?" 
+                class="w-full bg-[#40E0D0]/20 border border-white/40 rounded-2xl py-5 pl-14 pr-6 text-white placeholder:text-white placeholder:opacity-90 focus:outline-none focus:border-turquesa transition font-semibold">
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+            <div class="relative">
+                <i class="fa-solid fa-house absolute left-5 top-1/2 -translate-y-1/2 text-turquesa text-lg"></i>
+                <select name="Tipo_Inmueble" class="w-full bg-[#40E0D0]/20 border border-white/40 rounded-2xl py-5 pl-14 pr-4 text-white appearance-none focus:outline-none focus:border-turquesa cursor-pointer font-semibold">
+                    <option class="text-gray-900">Inmueble</option>
+                    <option class="text-gray-900">Casa</option>
+                    <option class="text-gray-900">Apartamento</option>
+                    <option class="text-gray-900">Oficina</option>
+                    <option class="text-gray-900">Lote</option>
+                    <option class="text-gray-900">Bodega</option>
+                </select>
+            </div>
+            
+            <div class="relative" id="price-box">
+    <!-- SELECTOR DE MONEDA (Reemplaza al icono estático) -->
+    <div class="absolute left-2 top-1/2 -translate-y-1/2 z-10">
+        <select name="Moneda" id="currency-select" class="bg-turquesa/20 text-turquesa font-bold py-1 px-2 rounded-lg cursor-pointer focus:outline-none border border-turquesa/30 appearance-none text-center hover:bg-turquesa hover:text-white transition-colors">
+            <option value="USD" class="text-gray-900">$</option>
+            <option value="CRC" class="text-gray-900">₡</option>
+        </select>
+    </div>
+         
+    <!-- INPUT DE PRECIO -->
+    <input type="number" name="Precio_Propietario" id="input-price" placeholder="Precio Ideal" 
+        class="w-full bg-[#40E0D0]/20 border border-white/40 rounded-2xl py-5 pl-16 pr-6 text-white placeholder:text-white placeholder:opacity-90 focus:outline-none focus:border-turquesa transition font-semibold">
+</div>
+        </div>
+
+        <button type="submit" id="main-submit" class="w-full bg-turquesa hover:bg-[#30cfc0] text-white font-black py-5 rounded-2xl shadow-xl transition-all transform hover:scale-[1.02] uppercase tracking-[3px] text-lg">
+            <i class="fa-solid fa-paper-plane mr-2"></i> Enviar Solicitud
+        </button>
+    </form>
+
+</div> <!-- AQUÍ CERRAMOS LA GLASS FORM (Línea 313) -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="nosotros" class="py-24 bg-transparent overflow-visible">
+        <div class="container mx-auto glass-section">
+            <a href="#inicio" class="btn-return"><i class="fa-solid fa-arrow-up mr-2"></i>Inicio</a>
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2 space-y-8">
+                    <div class="reveal-bar rounded-lg">
+                        <span class="reveal-text-white text-lg md:text-xl uppercase tracking-[4px]">Sobre Nosotros</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 leading-tight">
+                        Expertos en transformar <br><span class="text-turquesa italic text-5xl md:text-6xl">Visiones en Realidad.</span>
+                    </h2>
+                    <p class="text-lg text-gray-800 leading-relaxed font-semibold text-justify">
+                        Somos una firma inmobiliaria dedicada a brindar una <span class="text-turquesa font-bold">asesoría personalizada</span> en la compra, venta e inversión de inmuebles, bajo un enfoque que equilibra lo estratégico con lo humano y eficiente. Nos especializamos en diseñar experiencias basadas en la <span class="text-turquesa font-bold">inmediatez, la claridad y un servicio excepcional</span>, ofreciendo soluciones de mercadeo y ventas para proyectos tanto individuales como corporativos. Nuestra razón de ser es el acompañamiento total: estamos presentes desde el primer acercamiento hasta el cierre definitivo, con el firme objetivo de <span class="text-turquesa font-bold">construir relaciones de confianza y resultados</span> sólidos que garanticen el éxito de cada transacción.
+                    </p>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="relative group">
+                        <div class="absolute -inset-4 bg-turquesa/20 rounded-[50px] blur-2xl"></div>
+                        <img src="Imagenes/grupo turquesa.jpg" alt="Equipo" class="relative w-full h-[500px] object-cover rounded-[40px] shadow-2xl border-8 border-white transition duration-500 hover:scale-[1.02]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="categorias" class="py-24 bg-transparent overflow-visible">
+       <div class="glass-form p-8 md:p-16 rounded-[60px] border border-white/40 shadow-2xl relative mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black text-slate-800 mb-4 tracking-tighter uppercase italic">Categorías de Propiedades</h2>
+                <div class="w-24 h-2 bg-turquesa mx-auto rounded-full"></div>
+            </div>
+
+            <div class="scroll-container-cat relative group px-4">
+                <button id="btn-cat-left" class="absolute -left-4 top-1/2 -translate-y-1/2 z-30 bg-turquesa text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+                    <i class="fa-solid fa-chevron-left text-xl"></i>
+                </button>
+
+                <button id="btn-cat-right" class="absolute -right-4 top-1/2 -translate-y-1/2 z-30 animate-bounce-slow bg-turquesa text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-opacity duration-300">
+                    <i class="fa-solid fa-chevron-right text-xl"></i>
+                </button>
+
+                <div id="scroll-content-cat" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide scroll-smooth">
+                    
+                    <div class="category-card min-w-[300px] md:min-w-[350px] snap-center flex-shrink-0 relative group rounded-[40px] overflow-hidden shadow-xl h-[350px]">
+                        <img src="imagenes/bodega.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-center">
+                            <i class="fa-solid fa-warehouse text-turquesa text-3xl mb-3"></i>
+                            <h3 class="text-white text-2xl font-black uppercase tracking-wider">Bodega</h3>
+                        </div>
+                    </div>
+
+                    <div class="category-card min-w-[300px] md:min-w-[350px] snap-center flex-shrink-0 relative group rounded-[40px] overflow-hidden shadow-xl h-[350px]">
+                        <img src="imagenes/oficina.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-center">
+                            <i class="fa-solid fa-briefcase text-turquesa text-3xl mb-3"></i>
+                            <h3 class="text-white text-2xl font-black uppercase tracking-wider">Oficina</h3>
+                        </div>
+                    </div>
+
+                    <a href="propiedades.html?cat=casa" class="category-card min-w-[300px] md:min-w-[350px] snap-center flex-shrink-0 relative group rounded-[40px] overflow-hidden shadow-xl h-[350px] cursor-pointer block">                        <img src="imagenes/casa1.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-center">
+                            <i class="fa-solid fa-house-chimney text-turquesa text-3xl mb-3"></i>
+                            <h3 class="text-white text-2xl font-black uppercase tracking-wider">Casa</h3>
+                        </div>
+                    </a> ```
+
+                    <div class="category-card min-w-[300px] md:min-w-[350px] snap-center flex-shrink-0 relative group rounded-[40px] overflow-hidden shadow-xl h-[350px]">
+                        <img src="imagenes/apartamento.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-center">
+                            <i class="fa-solid fa-building text-turquesa text-3xl mb-3"></i>
+                            <h3 class="text-white text-2xl font-black uppercase tracking-wider">Apartamento</h3>
+                        </div>
+                    </div>
+
+                    <div class="category-card min-w-[300px] md:min-w-[350px] snap-center flex-shrink-0 relative group rounded-[40px] overflow-hidden shadow-xl h-[350px]">
+                        <img src="imagenes/lote.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-center">
+                            <i class="fa-solid fa-map text-turquesa text-3xl mb-3"></i>
+                            <h3 class="text-white text-2xl font-black uppercase tracking-wider">Lote</h3>
+                        </div>
+                    </div>
+
+                    <div class="category-card min-w-[300px] md:min-w-[350px] snap-center flex-shrink-0 relative group rounded-[40px] overflow-hidden shadow-xl h-[350px]">
+                        <img src="imagenes/finca.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-center">
+                            <i class="fa-solid fa-seedling text-turquesa text-3xl mb-3"></i>
+                            <h3 class="text-white text-2xl font-black uppercase tracking-wider">Finca</h3>
+                        </div>
+                    </div>
+
+                    <div class="category-card min-w-[300px] md:min-w-[350px] snap-center flex-shrink-0 relative group rounded-[40px] overflow-hidden shadow-xl h-[350px]">
+                        <img src="imagenes/quinta.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-center">
+                            <i class="fa-solid fa-tree text-turquesa text-3xl mb-3"></i>
+                            <h3 class="text-white text-2xl font-black uppercase tracking-wider">Quinta</h3>
+                        </div>
+                    </div>
+
+                    <div class="category-card min-w-[300px] md:min-w-[350px] snap-center flex-shrink-0 relative group rounded-[40px] overflow-hidden shadow-xl h-[350px]">
+                        <img src="imagenes/localcomercial.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-center">
+                            <i class="fa-solid fa-shop text-turquesa text-3xl mb-3"></i>
+                            <h3 class="text-white text-2xl font-black uppercase tracking-wider">Local Comercial</h3>
+                        </div>
+                    </div>
+
+                    <div class="category-card min-w-[300px] md:min-w-[350px] snap-center flex-shrink-0 relative group rounded-[40px] overflow-hidden shadow-xl h-[350px]">
+                        <img src="imagenes/casadeplaya.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-center">
+                            <i class="fa-solid fa-umbrella-beach text-turquesa text-3xl mb-3"></i>
+                            <h3 class="text-white text-2xl font-black uppercase tracking-wider">Casa de Playa</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section id="ubicaciones" class="py-24 bg-transparent overflow-visible">
+    <div class="container mx-auto glass-section">
+        <a href="#inicio" class="btn-return"><i class="fa-solid fa-arrow-up mr-2"></i>Inicio</a>
+        <div class="text-center mb-16">
+            <div class="reveal-bar rounded-lg mb-6">
+                <span class="reveal-text-white text-lg md:text-xl uppercase tracking-[4px]">Presencia</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black text-gray-900 leading-tight">
+                Nuestras <span class="text-turquesa italic">Ubicaciones.</span>
+            </h2>
+        </div>
+
+        <div class="scroll-container relative group px-4">
+            <button id="btn-scroll-left" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-turquesa text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+                <i class="fa-solid fa-chevron-left text-xl"></i>
+            </button>
+
+            <button id="btn-scroll-right" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 animate-bounce bg-turquesa text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-opacity duration-300">
+                <i class="fa-solid fa-chevron-right text-xl"></i>
+            </button>
+
+            <div id="scroll-content" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide scroll-smooth">
+                
+                <div class="location-card min-w-[300px] md:min-w-[380px] relative rounded-[40px] overflow-hidden shadow-xl h-[400px] snap-center flex-shrink-0">
+                    <img src="imagenes/sanjose.jpg" alt="San José" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-10 left-10"><h3 class="text-white text-3xl font-black uppercase">San José</h3></div>
+                </div>
+
+                <div class="location-card min-w-[300px] md:min-w-[380px] relative rounded-[40px] overflow-hidden shadow-xl h-[400px] snap-center flex-shrink-0">
+                    <img src="imagenes/heredia.jpg" alt="Heredia" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-10 left-10"><h3 class="text-white text-3xl font-black uppercase">Heredia</h3></div>
+                </div>
+
+                <div class="location-card min-w-[300px] md:min-w-[380px] relative rounded-[40px] overflow-hidden shadow-xl h-[400px] snap-center flex-shrink-0">
+                    <img src="imagenes/alajuela.jpg" alt="Alajuela" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-10 left-10"><h3 class="text-white text-3xl font-black uppercase">Alajuela</h3></div>
+                </div>
+
+                <div class="location-card min-w-[300px] md:min-w-[380px] relative rounded-[40px] overflow-hidden shadow-xl h-[400px] snap-center flex-shrink-0">
+                    <img src="imagenes/cartago.jpg" alt="Cartago" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-10 left-10"><h3 class="text-white text-3xl font-black uppercase">Cartago</h3></div>
+                </div>
+
+                <div class="location-card min-w-[300px] md:min-w-[380px] relative rounded-[40px] overflow-hidden shadow-xl h-[400px] snap-center flex-shrink-0">
+                    <img src="imagenes/guanacaste.jpg" alt="Guanacaste" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-10 left-10"><h3 class="text-white text-3xl font-black uppercase">Guanacaste</h3></div>
+                </div>
+
+                <div class="location-card min-w-[300px] md:min-w-[380px] relative rounded-[40px] overflow-hidden shadow-xl h-[400px] snap-center flex-shrink-0">
+                    <img src="imagenes/puntarenas.jpg" alt="Puntarenas" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-10 left-10"><h3 class="text-white text-3xl font-black uppercase">Puntarenas</h3></div>
+                </div>
+
+                <div class="location-card min-w-[300px] md:min-w-[380px] relative rounded-[40px] overflow-hidden shadow-xl h-[400px] snap-center flex-shrink-0">
+                    <img src="imagenes/limon.jpg" alt="Limón" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-10 left-10"><h3 class="text-white text-3xl font-black uppercase">Limón</h3></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+                </div> </div> </div>
+     </section> <footer id="footer-contacto" class="py-20 bg-black w-full relative">
+        <a href="#inicio" class="btn-return"><i class="fa-solid fa-arrow-up mr-2"></i>Inicio</a>
+        
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 text-white">
+                
+                <div class="space-y-6">
+                    <img src="Imagenes/logo.jpg" alt="Logo" class="h-24 w-24 rounded-full border-4 border-turquesa shadow-lg object-cover">
+                    <h3 class="text-2xl font-black uppercase text-turquesa">Turquesa Real Estate</h3>
+                    <p class="font-medium leading-relaxed opacity-90">
+                        <i class="fa-solid fa-location-dot text-turquesa mr-2"></i>
+                        Pozos de Santa Ana. Residencial Montana. Primera Casa detrás de caseta de guardas.
+                    </p>
+                    <div class="flex space-x-6 text-3xl">
+                        <a href="https://www.instagram.com/turquesare/" target="_blank" class="text-white hover:text-turquesa transition duration-300">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/ncrealestatecostarica" target="_blank" class="text-white hover:text-turquesa transition duration-300">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-black uppercase text-turquesa border-b-2 border-turquesa pb-2 inline-block">Contacto</h3>
+                    <div class="space-y-6">
+                        <a href="https://wa.me/50683817689" target="_blank" class="flex items-center group">
+                            <div class="w-12 flex justify-start">
+                                <i class="fa-solid fa-phone text-2xl text-turquesa transition-transform group-hover:scale-110"></i>
+                            </div>
+                            <span class="text-xl font-bold tracking-wide hover:text-turquesa transition">+506 8381-7689</span>
+                        </a>
+                        <a href="mailto:ebarrenechea@turquesagroup.net" class="flex items-center group">
+                            <div class="w-12 flex justify-start">
+                                <i class="fa-solid fa-envelope text-2xl text-turquesa transition-transform group-hover:scale-110"></i>
+                            </div>
+                            <span class="text-base font-bold tracking-wide hover:text-turquesa transition break-all">ebarrenechea@turquesagroup.net</span>
+                        </a>
+                        <a href="mailto:nelly@turquesagroup.net" class="flex items-center group">
+                            <div class="w-12 flex justify-start">
+                                <i class="fa-solid fa-envelope text-2xl text-turquesa transition-transform group-hover:scale-110"></i>
+                            </div>
+                            <span class="text-base font-bold tracking-wide hover:text-turquesa transition break-all">nelly@turquesagroup.net</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-black uppercase text-turquesa border-b-2 border-turquesa pb-2 inline-block">Escríbanos</h3>
+                    <form action="https://formspree.io/f/mzdklrev" method="POST" class="space-y-3">
+                        <input type="text" name="Nombre" placeholder="Nombre" required class="w-full bg-white/10 border border-white/20 rounded-xl py-3 px-4 text-white placeholder:text-white/60 focus:outline-none focus:border-turquesa font-semibold">
+                        <input type="tel" name="Telefono" placeholder="Teléfono" required class="w-full bg-white/10 border border-white/20 rounded-xl py-3 px-4 text-white placeholder:text-white/60 focus:outline-none focus:border-turquesa font-semibold">
+                        <input type="text" name="Asunto" placeholder="Asunto" required class="w-full bg-white/10 border border-white/20 rounded-xl py-3 px-4 text-white placeholder:text-white/60 focus:outline-none focus:border-turquesa font-semibold">
+                        <textarea name="Mensaje" placeholder="Escriba su mensaje aquí..." rows="3" required class="w-full bg-white/10 border border-white/20 rounded-xl py-3 px-4 text-white placeholder:text-white/60 focus:outline-none focus:border-turquesa font-semibold resize-none"></textarea>
+                        
+                        <button type="submit" class="w-full bg-turquesa text-black font-black py-3 rounded-xl shadow-lg hover:bg-white transition transform hover:scale-[1.02] uppercase tracking-wider">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+            
+            <div class="mt-20 pt-8 border-t border-white/10 text-center font-bold text-white/40">
+                <p>© 2026 Turquesa Real Estate. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(type, element) {
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(btn => {
+        // Pestañas inactivas: Turquesa con transparencia para que se note cuál no está seleccionada
+        btn.classList.remove('bg-[#40E0D0]', 'shadow-lg');
+        btn.classList.add('bg-[#40E0D0]/40', 'hover:bg-[#40E0D0]');
+    });
+
+    // Pestaña activa: Turquesa puro y sólido
+    element.classList.add('bg-[#40E0D0]', 'shadow-lg');
+    element.classList.remove('bg-[#40E0D0]/40', 'hover:bg-[#40E0D0]');
+
+    const mainSubmit = document.getElementById('main-submit');
+    const inputLocation = document.getElementById('input-location');
+    const extraFields = document.getElementById('extra-fields');
+    const priceBox = document.getElementById('price-box');
+    const priceSelect = document.getElementById('price-select');
+
+    if (type === 'vender') {
+        extraFields.style.display = 'block';
+        priceBox.style.display = 'block';
+        priceSelect.style.display = 'none';
+        mainSubmit.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i> Enviar Solicitud';
+        inputLocation.placeholder = '¿Dónde se ubica su propiedad?';
+    } else {
+        extraFields.style.display = 'none';
+        priceBox.style.display = 'none';
+        priceSelect.style.display = 'block';
+        if (type === 'venta') {
+            mainSubmit.innerHTML = '<i class="fa-solid fa-magnifying-glass mr-2"></i> Buscar en Venta';
+            inputLocation.placeholder = '¿En qué zona busca comprar?';
+        } else if (type === 'renta') {
+            mainSubmit.innerHTML = '<i class="fa-solid fa-key mr-2"></i> Buscar Rentas';
+            inputLocation.placeholder = '¿En qué zona busca rentar?';
+        }
+    }
+}
+    </script>
+
+    <a href="https://wa.me/50683817689" 
+       class="fixed bottom-8 right-8 z-[100] bg-[#25d366] text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform duration-300 animate-bounce-slow"
+       target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <script>
+    const scrollContainer = document.getElementById('scroll-content');
+    const btnLeft = document.getElementById('btn-scroll-left');
+    const btnRight = document.getElementById('btn-scroll-right');
+
+    // Función para mover el scroll al hacer clic
+    btnRight.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: 350, behavior: 'smooth' });
+    });
+
+    btnLeft.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: -350, behavior: 'smooth' });
+    });
+
+    // Función para mostrar/ocultar flechas según la posición
+    scrollContainer.addEventListener('scroll', () => {
+        const scrollLeft = scrollContainer.scrollLeft;
+        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+        // Flecha izquierda: aparece si no estamos al puro inicio
+        if (scrollLeft > 10) {
+            btnLeft.classList.remove('opacity-0', 'pointer-events-none');
+            btnLeft.classList.add('opacity-100');
+        } else {
+            btnLeft.classList.add('opacity-0', 'pointer-events-none');
+            btnLeft.classList.remove('opacity-100');
+        }
+
+        // Flecha derecha: desaparece si llegamos al final
+        if (scrollLeft >= maxScroll - 10) {
+            btnRight.classList.add('opacity-0', 'pointer-events-none');
+        } else {
+            btnRight.classList.remove('opacity-0', 'pointer-events-none');
+        }
+    });
+</script>
+
+<script>
+    const scrollCat = document.getElementById('scroll-content-cat');
+    const btnCatLeft = document.getElementById('btn-cat-left');
+    const btnCatRight = document.getElementById('btn-cat-right');
+
+    btnCatRight.addEventListener('click', () => {
+        scrollCat.scrollBy({ left: 380, behavior: 'smooth' });
+    });
+
+    btnCatLeft.addEventListener('click', () => {
+        scrollCat.scrollBy({ left: -380, behavior: 'smooth' });
+    });
+
+    scrollCat.addEventListener('scroll', () => {
+        const scrollLeft = scrollCat.scrollLeft;
+        const maxScroll = scrollCat.scrollWidth - scrollCat.clientWidth;
+
+        // Lógica flecha izquierda
+        if (scrollLeft > 20) {
+            btnCatLeft.classList.remove('opacity-0', 'pointer-events-none');
+            btnCatLeft.classList.add('opacity-100');
+        } else {
+            btnCatLeft.classList.add('opacity-0', 'pointer-events-none');
+            btnCatLeft.classList.remove('opacity-100');
+        }
+
+        // Lógica flecha derecha
+        if (scrollLeft >= maxScroll - 20) {
+            btnCatRight.classList.add('opacity-0', 'pointer-events-none');
+        } else {
+            btnCatRight.classList.remove('opacity-0', 'pointer-events-none');
+        }
+    });
+</script>
+
+<script>
+    // Seleccionamos el botón y el menú por sus IDs
+    const btnMovil = document.getElementById('mobile-menu-button');
+    const menuDesplegable = document.getElementById('mobile-menu');
+
+    if (btnMovil && menuDesplegable) {
+        btnMovil.addEventListener('click', () => {
+            // Quita o pone la clase 'hidden' para mostrar/ocultar
+            menuDesplegable.classList.toggle('hidden');
+        });
+
+        // Esto cierra el menú automáticamente cuando el cliente toca una sección
+        const linksMenu = menuDesplegable.querySelectorAll('a');
+        linksMenu.forEach(link => {
+            link.addEventListener('click', () => {
+                menuDesplegable.classList.add('hidden');
+            });
+        });
+    }
+</script>
+
+</body>
+</html>
