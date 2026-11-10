@@ -451,5 +451,53 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
 	    overflow: hidden !important;
 	    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important;
   }
+	/* =======================================================
+           OPTIMIZACIÓN MÓVIL RESPONSIVE (SIN AFECTAR PC)
+           ======================================================= */
+        @media (max-width: 768px) {
+            /* 1. Evitar desplazamiento lateral accidental en teléfonos */
+            body, html {
+                overflow-x: hidden !important;
+                width: 100% !important;
+            }
+
+            /* 2. Reducir paddings generales de secciones para ganar espacio */
+            header .max-w-7xl, main, footer {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            /* 3. Transformar los carruseles/listas horizontales de Nicepage en columnas verticales */
+            .u-layout-horizontal, .u-repeater {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                transform: none !important;
+            }
+
+            /* 4. Forzar que las tarjetas de socios e items se ajusten al ancho del móvil */
+            .u-repeater-item, .u-list-item {
+                width: 100% !important;
+                margin-right: 0 !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            /* 5. Asegurar que las celdas de contacto y formularios se apilen (Mitad y mitad a 100%) */
+            .u-layout-cell {
+                width: 100% !important;
+                display: block !important;
+            }
+
+            /* 6. Ajustar tamaños de títulos muy grandes en pantallas compactas */
+            h1.u-text {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+
+            /* 7. Reajustar mapa y formularios para evitar desbordamientos */
+            .u-map-1 {
+                height: 300px !important;
+            }
+        }
     </style>
 </body></html>
