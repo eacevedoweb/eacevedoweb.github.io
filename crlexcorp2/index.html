@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRLEXCORP ABOGADOS</title>
+    <!-- Tailwind CSS v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Librería AOS para efecto de aparición al bajar -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Fuente Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #111827;
+            font-family: 'Playfair Display', Georgia, serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes hazDorado {
+            0% { clip-path: inset(0 100% 0 0); opacity: 0; }
+            100% { clip-path: inset(0 0 0 0); opacity: 1; }
+        }
+
+        .nav-link {
+            position: relative;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding-bottom: 6px;
+            color: #C5A059;
+            animation: hazDorado 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+            opacity: 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:nth-child(1) { animation-delay: 0.2s; }
+        .nav-link:nth-child(2) { animation-delay: 0.4s; }
+        .nav-link:nth-child(3) { animation-delay: 0.6s; }
+        .nav-link:nth-child(4) { animation-delay: 0.8s; }
+        .nav-link:nth-child(5) { animation-delay: 1.0s; }
+        .nav-link:nth-child(6) { animation-delay: 1.2s; }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.9), transparent);
+            opacity: 0;
+            pointer-events: none;
+            animation: destelloRayo 1.2s ease-out forwards;
+        }
+
+        .nav-link:nth-child(1)::before { animation-delay: 0.2s; }
+        .nav-link:nth-child(2)::before { animation-delay: 0.4s; }
+        .nav-link:nth-child(3)::before { animation-delay: 0.6s; }
+        .nav-link:nth-child(4)::before { animation-delay: 0.8s; }
+        .nav-link:nth-child(5)::before { animation-delay: 1.0s; }
+        .nav-link:nth-child(6)::before { animation-delay: 1.2s; }
+
+        @keyframes destelloRayo {
+            0% { transform: translateX(-100%); opacity: 1; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+
+        .nav-link:hover { color: #6B7280; }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+            background-color: #111827;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            width: 100%;
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            align-items: center;
+            animation: scrollMarquee 22s linear infinite;
+        }
+
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .team-section {
+            background-color: #0A1128;
+            position: relative;
+            background-image: url('imagenes/Logo_CRLEX_TEST1_NBCKG.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 40% auto;
+        }
+
+        .team-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(10, 17, 40, 0.93);
+            pointer-events: none;
+        }
+
+        .whatsapp-floating-button {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 99999;
+        }
+        .whatsapp-floating-button a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px; height: 60px;
+            background-color: #25d366;
+            color: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .whatsapp-floating-button a:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+        }
+        .whatsapp-icon { width: 32px; height: 32px; fill: currentColor; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- NAVBAR -->
+    <header class="w-full bg-white border-b border-gray-100 shadow-xs py-6 px-8 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-center relative">
+            <nav class="hidden md:flex items-center gap-10 justify-center">
+                <a href="index.html" class="nav-link active">Inicio</a>
+                <a href="servicios.html" class="nav-link">Servicios</a>
+                <a href="profesionales.html" class="nav-link">Profesionales</a>
+                <a href="firma.html" class="nav-link">La Firma</a>
+                <a href="socios.html" class="nav-link">Socios</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+            </nav>
+            <div class="md:hidden w-full flex justify-end">
+                <button id="menu-btn" class="text-gray-800 focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden pt-4 pb-3 border-t border-gray-100 mt-4 flex flex-col items-center gap-4 text-sm tracking-widest uppercase">
+            <a href="index.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Inicio</a>
+            <a href="servicios.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Servicios</a>
+            <a href="profesionales.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Profesionales</a>
+            <a href="firma.html" class="text-[#C5A059] hover:text-gray-500 font-bold">La Firma</a>
+            <a href="socios.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Socios</a>
+            <a href="contacto.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Contacto</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- BANNER VIDEO -->
+        <section class="w-full overflow-hidden leading-none bg-[#050C1A]">
+            <video autoplay muted playsinline class="w-full h-auto block" onended="this.pause();">
+                <source src="imagenes/Firmalegalinternacional1.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+        </section>
+
+        <!-- LÍNEA BLANCA -->
+        <div class="w-full h-[2px] bg-white"></div>
+
+        <!-- MARQUESINA PAÍSES -->
+        <div class="w-full bg-[#0A1128] py-3 overflow-hidden">
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">Panamá</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">México</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">Ecuador</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">Francia</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">España</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">Panamá</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">México</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">Ecuador</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">Francia</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">España</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">Panamá</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">México</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">Ecuador</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">Francia</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                    <span class="text-white text-sm md:text-base font-semibold tracking-widest uppercase mx-6">España</span>
+                    <span class="text-[#C5A059] mx-2">•</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- LÍNEA BLANCA -->
+        <div class="w-full h-[2px] bg-white"></div>
+
+        <!-- SECCIÓN EQUIPO -->
+        <section class="team-section py-24 px-6 relative">
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl font-bold text-white tracking-wider uppercase mb-3">Nuestro Equipo</h2>
+                    <div class="w-24 h-1 bg-[#C5A059] mx-auto"></div>
+                    <p class="text-gray-300 mt-4 text-sm tracking-widest uppercase font-sans">Excelencia, experiencia y liderazgo jurídico internacional</p>
+                </div>
+
+                <!-- CUADRÍCULA SIN RECUADROS -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+                    <!-- 3. Marco Sánchez -->
+                    <div class="text-center transition-transform duration-300 hover:-translate-y-1">
+                        <div class="overflow-hidden mb-6 aspect-[4/5]" data-aos="zoom-in-up">
+                            <img src="/imagenes/personal /marco_Sanchez.jpg" alt="Lic. Marco Antonio Sánchez" class="w-full h-full object-cover">
+                        </div>
+                        <div data-aos="fade" data-aos-delay="200">
+                            <h3 class="text-lg font-bold text-white mb-1">Lic. Marco Antonio Sánchez</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase mb-4 font-sans">Socio Director y Fundador</p>
+                            <div class="flex justify-center gap-5 text-gray-400">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- 8. Laura Maroto -->
+                    <div class="text-center transition-transform duration-300 hover:-translate-y-1">
+                        <div class="overflow-hidden mb-6 aspect-[4/5]" data-aos="zoom-in-up">
+                            <img src="imagenes/personal /laura_Maroto.jpg" alt="Licda. Laura Maroto Valerio" class="w-full h-full object-cover">
+                        </div>
+                        <div data-aos="fade" data-aos-delay="200">
+                            <h3 class="text-lg font-bold text-white mb-1">Licda. Laura Maroto Valerio</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase mb-4 font-sans">Socia</p>
+                            <div class="flex justify-center gap-5 text-gray-400">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 9. Stephany Hernández -->
+                    <div class="text-center transition-transform duration-300 hover:-translate-y-1">
+                        <div class="overflow-hidden mb-6 aspect-[4/5]" data-aos="zoom-in-up">
+                            <img src="imagenes/personal /stephany_Hernandez.jpg" alt="M.Sc. Stephany Hernández Agüero" class="w-full h-full object-cover">
+                        </div>
+                        <div data-aos="fade" data-aos-delay="200">
+                            <h3 class="text-lg font-bold text-white mb-1">M.Sc. Stephany Hernández Agüero</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase mb-4 font-sans">Socia</p>
+                            <div class="flex justify-center gap-5 text-gray-400">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 10. María Jesús Tamayo -->
+                    <div class="text-center transition-transform duration-300 hover:-translate-y-1">
+                        <div class="overflow-hidden mb-6 aspect-[4/5]" data-aos="zoom-in-up">
+                            <img src="imagenes/personal /maria_tamayo.jpg" alt="MSc. María Jesús Tamayo Vargas" class="w-full h-full object-cover">
+                        </div>
+                        <div data-aos="fade" data-aos-delay="200">
+                            <h3 class="text-lg font-bold text-white mb-1">MSc. María Jesús Tamayo Vargas</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase mb-4 font-sans">Especialista en Derecho Fiduciario y Bancario</p>
+                            <div class="flex justify-center gap-5 text-gray-400">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 4. Ronald Chaves -->
+                    <div class="text-center transition-transform duration-300 hover:-translate-y-1">
+                        <div class="overflow-hidden mb-6 aspect-[4/5]" data-aos="zoom-in-up">
+                            <img src="imagenes/personal /ronald_Chaves.jpg" alt="Lic. Ronald Chaves Díaz" class="w-full h-full object-cover">
+                        </div>
+                        <div data-aos="fade" data-aos-delay="200">
+                            <h3 class="text-lg font-bold text-white mb-1">Lic. Ronald Chaves Díaz</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase mb-4 font-sans">Socio y Director Enfoque Laboral</p>
+                            <div class="flex justify-center gap-5 text-gray-400">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 7. Fabiola Gamboa -->
+                    <div class="text-center transition-transform duration-300 hover:-translate-y-1">
+                        <div class="overflow-hidden mb-6 aspect-[4/5]" data-aos="zoom-in-up">
+                            <img src="imagenes/personal /fabiola_Gamboa.jpg" alt="Licda. Fabiola Gamboa Arce" class="w-full h-full object-cover">
+                        </div>
+                        <div data-aos="fade" data-aos-delay="200">
+                            <h3 class="text-lg font-bold text-white mb-1">Licda. Fabiola Gamboa Arce</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase mb-4 font-sans">Directora Tributario Financiero Contable</p>
+                            <div class="flex justify-center gap-5 text-gray-400">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 6. Claudia Monge -->
+                    <div class="text-center transition-transform duration-300 hover:-translate-y-1">
+                        <div class="overflow-hidden mb-6 aspect-[4/5]" data-aos="zoom-in-up">
+                            <img src="imagenes/personal /claudia_Monge.jpg" alt="Licda. Claudia Monge" class="w-full h-full object-cover">
+                        </div>
+                        <div data-aos="fade" data-aos-delay="200">
+                            <h3 class="text-lg font-bold text-white mb-1">Licda. Claudia Monge</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase mb-4 font-sans">Especialista en Derecho de Familia</p>
+                            <div class="flex justify-center gap-5 text-gray-400">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2. José Ramírez -->
+                    <div class="text-center transition-transform duration-300 hover:-translate-y-1">
+                        <div class="overflow-hidden mb-6 aspect-[4/5]" data-aos="zoom-in-up">
+                            <img src="/imagenes/personal /jose_Ramirez.jpg" alt="Lic. José Roberto Ramírez" class="w-full h-full object-cover">
+                        </div>
+                        <div data-aos="fade" data-aos-delay="200">
+                            <h3 class="text-lg font-bold text-white mb-1">Lic. José Roberto Ramírez</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase mb-4 font-sans">Asociado</p>
+                            <div class="flex justify-center gap-5 text-gray-400">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 5. Andrea Granados -->
+                    <div class="text-center transition-transform duration-300 hover:-translate-y-1">
+                        <div class="overflow-hidden mb-6 aspect-[4/5]" data-aos="zoom-in-up">
+                            <img src="imagenes/personal /andrea_Granados.jpg" alt="Licda. Andrea Granados M." class="w-full h-full object-cover">
+                        </div>
+                        <div data-aos="fade" data-aos-delay="200">
+                            <h3 class="text-lg font-bold text-white mb-1">Licda. Andrea Granados M.</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase mb-4 font-sans">Encargada de Comercio Internacional & Registros</p>
+                            <div class="flex justify-center gap-5 text-gray-400">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 1. Hansel Vargas -->
+                    <div class="text-center transition-transform duration-300 hover:-translate-y-1">
+                        <div class="overflow-hidden mb-6 aspect-[4/5]" data-aos="zoom-in-up">
+                            <img src="imagenes/personal /hansel_Vargas.jpg" alt="Hansel Vargas Arias" class="w-full h-full object-cover">
+                        </div>
+                        <div data-aos="fade" data-aos-delay="200">
+                            <h3 class="text-lg font-bold text-white mb-1">Hansel Vargas Arias</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase mb-4 font-sans">Relaciones Públicas</p>
+                            <div class="flex justify-center gap-5 text-gray-400">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A059] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECCIÓN ALIANZAS INTERNACIONALES -->
+         <div class="w-full h-[2px] bg-white"></div>
+        <section class="py-24 px-6 relative overflow-hidden" style="background-color: #0A1128;">
+            <!-- Imagen de fondo con opacidad/difuminado -->
+            <div class="absolute inset-0 bg-cover bg-center z-0 opacity-40 pointer-events-none" style="background-image: url('/imagenes/alianzas_internacionales/pordata_alianzas.avif');"></div>
+            
+            <!-- Difuminado / Degradado en el borde inferior para fundir con el diseño -->
+            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0A1128] to-transparent pointer-events-none z-0"></div>
+
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl font-bold text-white tracking-wider uppercase mb-3">Alianzas Internacionales</h2>
+                    <div class="w-24 h-1 bg-[#C5A059] mx-auto"></div>
+                    <p class="text-gray-300 mt-4 text-sm tracking-widest uppercase font-sans">Red global de excelencia jurídica y colaboración sin fronteras</p>
+                </div>
+
+                <!-- Cuadrícula de Alianzas (Grid de 5 columnas en pantallas grandes) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+
+                    <!-- 5. Panamá: NDM Law Firm & Associates -->
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-5 text-center transition-transform duration-300 hover:-translate-y-2 flex flex-col justify-between" data-aos="zoom-in-up" data-aos-delay="500">
+                        <div class="overflow-hidden mb-5 aspect-[4/3] flex items-center justify-center p-4 bg-white/95 rounded-sm">
+                            <img src="imagenes/alianzas_internacionales/NDMLaw Firm_Associates Panama.avif" alt="NDM Law Firm & Associates - Panamá" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white mb-1">NDM Law Firm & Associates</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase font-sans">Panamá</p>
+                        </div>
+                    </div>
+                    <!-- 1. Francia: Adelante Avocat -->
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-5 text-center transition-transform duration-300 hover:-translate-y-2 flex flex-col justify-between" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="overflow-hidden mb-5 aspect-[4/3] flex items-center justify-center p-4 bg-white/95 rounded-sm">
+                            <img src="imagenes/alianzas_internacionales/adelante_avocat_francia.avif" alt="Adelante Avocat - Francia" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white mb-1">Adelante Avocat</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase font-sans">Francia</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. México: Corporativo Buendía -->
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-5 text-center transition-transform duration-300 hover:-translate-y-2 flex flex-col justify-between" data-aos="zoom-in-up" data-aos-delay="200">
+                        <div class="overflow-hidden mb-5 aspect-[4/3] flex items-center justify-center p-4 bg-white/95 rounded-sm">
+                            <img src="imagenes/alianzas_internacionales/CorporativoBuendiaBuendia_Asociados.avif" alt="Corporativo Buendía & Asociados - México" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white mb-1">Buendía & Asociados</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase font-sans">México</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. España: MCO Innovation & Law -->
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-5 text-center transition-transform duration-300 hover:-translate-y-2 flex flex-col justify-between" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="overflow-hidden mb-5 aspect-[4/3] flex items-center justify-center p-4 bg-white/95 rounded-sm">
+                            <img src="imagenes/alianzas_internacionales/MCOInnovationLaw.avif" alt="MCO Innovation & Law - España" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white mb-1">MCO Innovation & Law</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase font-sans">España</p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Ecuador: IURISRED Legal Expertise -->
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-5 text-center transition-transform duration-300 hover:-translate-y-2 flex flex-col justify-between" data-aos="zoom-in-up" data-aos-delay="400">
+                        <div class="overflow-hidden mb-5 aspect-[4/3] flex items-center justify-center p-4 bg-white/95 rounded-sm">
+                            <img src="imagenes/alianzas_internacionales/IURISREDLegalExpertise Ecuador.avif" alt="IURISRED Legal Expertise - Ecuador" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white mb-1">IURISRED</h3>
+                            <p class="text-[#C5A059] font-semibold text-xs tracking-widest uppercase font-sans">Ecuador</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- LÍNEA BLANCA -->
+        <div class="w-full h-[2px] bg-white"></div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-gray-900 text-white py-6 text-center text-xs font-sans">
+        <p>&copy; 2026 CRLEXCORP ABOGADOS. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- WHATSAPP -->
+    <div class="whatsapp-floating-button">
+      <a href="https://wa.me/50685847286?text=Solicito%20mas%20informacion%20para%20una%20asesoria%20legal" target="_blank" rel="noopener noreferrer" aria-label="Chat de WhatsApp">
+        <svg viewBox="0 0 24 24" class="whatsapp-icon">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 900,
+            once: true,
+            offset: 80
+        });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+   
+</body>
+</html>
