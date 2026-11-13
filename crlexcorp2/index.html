@@ -589,6 +589,203 @@
 
     <!-- FOOTER -->
     <footer class="w-full bg-gray-900 text-white py-6 text-center text-xs font-sans">
+        <!-- SECCIÓN DE CONTACTO INTERACTIVA + UBICACIÓN -->
+        <section id="contacto-interactivo" class="py-24 px-6 relative bg-[#0A1128] text-white">
+            
+            <div class="max-w-7xl mx-auto relative z-10">
+                
+                <!-- TÍTULO GENERAL DE LA SECCIÓN -->
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl font-bold text-white tracking-wider uppercase mb-3">Asesoría Jurídica y Ubicación</h2>
+                    <div class="w-24 h-1 bg-[#C5A059] mx-auto mb-4"></div>
+                    <p class="text-gray-300 text-sm tracking-widest uppercase font-sans">Agende su consulta personalizada o visítenos en nuestras oficinas</p>
+                </div>
+
+                <!-- CUADRÍCULA DE 2 COLUMNAS: FORMULARIO (IZQ) Y MAPA (DER) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+
+                    <!-- COLUMNA IZQUIERDA (7 COLUMNAS): FORMULARIO INTERACTIVO -->
+                    <div class="lg:col-span-7 bg-white/5 border border-[#C5A059]/30 rounded-3xl p-8 md:p-10 shadow-2xl backdrop-blur-md flex flex-col justify-center" data-aos="zoom-in-up">
+                        <!-- LOGO Y NOMBRE DE LA FIRMA -->
+                        <div class="flex flex-col items-center justify-center mb-6">
+                                <img src="imagenes/Logo_CRLEX_TEST1_NBCKG.avif" alt="CRLEXCORP Logo" class="w-70 h-auto mb-3 opacity-90">                            </div>
+                        <!-- PASO INICIAL: BOTÓN DE LLAMADA A LA ACCIÓN -->
+                        <div id="step-start" class="text-center py-10">
+                            <h3 class="text-2xl font-bold text-white mb-4">¿Necesita respaldo legal especializado?</h3>
+                            <p class="text-gray-300 text-base mb-8 font-sans max-w-lg mx-auto leading-relaxed">Permítanos conocer su requerimiento legal en tres sencillos pasos para coordinar una atención directa con nuestros abogados.</p>
+                            <button type="button" onclick="iniciarFormulario()" class="inline-block bg-[#C5A059] hover:bg-[#b08d4c] text-[#0A1128] font-bold text-sm md:text-base tracking-widest uppercase py-4 px-10 rounded-full shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer font-sans">
+                                Conversemos sobre su caso
+                            </button>
+                        </div>
+
+                        <!-- FORMULARIO MULTI-PASO (OCULTO INICIALMENTE) -->
+                        <form id="interactive-form" class="hidden space-y-6" onsubmit="enviarCita(event)">
+                            
+                            <!-- PASO 1: TIPO DE CASO / ÁREA LEGAL -->
+                            <div id="form-step-1" class="form-step">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="w-9 h-9 rounded-full bg-[#C5A059] text-[#0A1128] font-bold flex items-center justify-center text-base shrink-0">1</span>
+                                    <h3 class="text-xl font-bold text-white">¿Cuál es el área o tipo de caso que tiene?</h3>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[340px] overflow-y-auto pr-2">
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Corporativo" required class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Corporativo</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Servicios Internacionales" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Servicios Internacionales</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Cobros y Procesos Concursales" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Cobros y Procesos Concursales</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Penal" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Penal</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Comercial y Civil" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Comercial y Civil</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Laboral" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Laboral</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Tributario y Contable" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Tributario y Contable</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Administrativo" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Administrativo</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Trámites Migratorios" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Trámites Migratorios</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Comercio Internacional y Registros" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Comercio Internacional y Registros</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all sm:col-span-2">
+                                        <input type="radio" name="area_legal" value="Notariado Público" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Notariado Público</span>
+                                    </label>
+                                </div>
+
+                                <div class="mt-8 text-right">
+                                    <button type="button" onclick="siguientePaso(2)" class="bg-[#C5A059] hover:bg-[#b08d4c] text-[#0A1128] font-bold text-xs md:text-sm tracking-widest uppercase py-3 px-8 rounded-full transition-transform hover:scale-105 font-sans cursor-pointer">
+                                        Siguiente: Seleccionar Fecha
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- PASO 2: AGENDA Y DISPONIBILIDAD -->
+                            <div id="form-step-2" class="form-step hidden">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="w-9 h-9 rounded-full bg-[#C5A059] text-[#0A1128] font-bold flex items-center justify-center text-base shrink-0">2</span>
+                                    <h3 class="text-xl font-bold text-white">Seleccione la fecha y horario disponible</h3>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
+                                    <div>
+                                        <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Fecha preferida para la cita</label>
+                                        <input type="date" id="fecha_cita" class="w-full bg-white/10 border border-white/20 rounded-xl p-4 text-white focus:outline-none focus:border-[#C5A059]">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Horario de preferencia</label>
+                                        <select id="horario_cita" class="w-full bg-[#0A1128] border border-white/20 rounded-xl p-4 text-white focus:outline-none focus:border-[#C5A059]">
+                                            <option value="Mañana (9:00 AM - 12:00 PM)">Mañana (9:00 AM - 12:00 PM)</option>
+                                            <option value="Tarde (1:00 PM - 5:00 PM)">Tarde (1:00 PM - 5:00 PM)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mt-8 flex justify-between">
+                                    <button type="button" onclick="siguientePaso(1)" class="border border-white/30 text-white hover:bg-white/10 font-bold text-xs md:text-sm tracking-widest uppercase py-3 px-6 rounded-full font-sans cursor-pointer">
+                                        Anterior
+                                    </button>
+                                    <button type="button" onclick="siguientePaso(3)" class="bg-[#C5A059] hover:bg-[#b08d4c] text-[#0A1128] font-bold text-xs md:text-sm tracking-widest uppercase py-3 px-8 rounded-full transition-transform hover:scale-105 font-sans cursor-pointer">
+                                        Siguiente: Datos
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- PASO 3: DATOS DE CONTACTO Y CONFIRMACIÓN -->
+                            <div id="form-step-3" class="form-step hidden">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="w-9 h-9 rounded-full bg-[#C5A059] text-[#0A1128] font-bold flex items-center justify-center text-base shrink-0">3</span>
+                                    <h3 class="text-xl font-bold text-white">¿A qué nombre y número coordinamos la cita?</h3>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
+                                    <div>
+                                        <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Nombre completo</label>
+                                        <input type="text" id="nombre_cliente" placeholder="Ej. Juan Pérez" required class="w-full bg-white/10 border border-white/20 rounded-xl p-4 text-white placeholder-gray-400 focus:outline-none focus:border-[#C5A059]">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Número de teléfono / WhatsApp</label>
+                                        <input type="tel" id="telefono_cliente" placeholder="Ej. +506 8888 8888" required class="w-full bg-white/10 border border-white/20 rounded-xl p-4 text-white placeholder-gray-400 focus:outline-none focus:border-[#C5A059]">
+                                    </div>
+                                </div>
+
+                                <div class="mt-8 flex flex-wrap gap-4 justify-between items-center">
+                                    <button type="button" onclick="siguientePaso(2)" class="border border-white/30 text-white hover:bg-white/10 font-bold text-xs md:text-sm tracking-widest uppercase py-3 px-6 rounded-full font-sans cursor-pointer">
+                                        Anterior
+                                    </button>
+                                    <button type="submit" class="bg-[#C5A059] hover:bg-[#b08d4c] text-[#0A1128] font-bold text-xs md:text-sm tracking-widest uppercase py-4 px-8 rounded-full shadow-lg transition-transform hover:scale-105 font-sans cursor-pointer">
+                                        Confirmar y Enviar por WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!-- COLUMNA DERECHA (5 COLUMNAS): MAPA DE GOOGLE MAPS -->
+                    <div class="lg:col-span-5 bg-white/5 border border-[#C5A059]/30 rounded-3xl p-8 shadow-2xl backdrop-blur-md flex flex-col justify-between" data-aos="zoom-in-up" data-aos-delay="200">
+                        
+                        <div>
+                            <!-- TÍTULO ENCUÉNTRANOS -->
+                            <div class="text-center mb-6">
+                                <h3 class="text-2xl font-bold text-white tracking-wider uppercase mb-2">Encuéntranos</h3>
+                                <div class="w-16 h-0.5 bg-[#C5A059] mx-auto mb-3"></div>
+                                <p class="text-gray-300 text-xs font-sans tracking-wide">San José, Costa Rica • CRLEXCORP Abogados</p>
+                            </div>
+
+                            <!-- CONTENEDOR DEL MAPA CON BORDES REDONDOS -->
+                            <div class="w-full h-72 rounded-2xl overflow-hidden border border-[#C5A059]/40 shadow-inner mb-6">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.0332295980606!2d-84.06450902446704!3d9.931190590170626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb001c1166df%3A0xb45018c55ddd5a45!2sCRLEXCORP%20Abogados%20Costa%20Rica!5e0!3m2!1ses!2scr!4v1794609650556!5m2!1ses!2scr" 
+                                    class="w-full h-full border-0" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="strict-origin-when-cross-origin">
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <!-- BOTÓN CÓMO LLEGAR -->
+                        <div class="text-center">
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=9.931190590170626,-84.06450902446704" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-3 bg-[#C5A059] hover:bg-[#b08d4c] text-[#0A1128] font-bold text-sm tracking-widest uppercase py-4 px-8 rounded-full shadow-lg transition-transform duration-300 hover:scale-105 font-sans">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                Cómo llegar
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
         <p>&copy; 2026 CRLEXCORP ABOGADOS. Todos los derechos reservados.</p>
     </footer>
 
@@ -617,7 +814,41 @@
                 mobileMenu.classList.toggle('hidden');
             });
         }
+        
     </script>
+            <!-- SCRIPT PARA CONTROLAR EL FORMULARIO INTERACTIVO -->
+        <script>
+            function iniciarFormulario() {
+                document.getElementById('step-start').classList.add('hidden');
+                document.getElementById('interactive-form').classList.remove('hidden');
+            }
+
+            function siguientePaso(paso) {
+                document.getElementById('form-step-1').classList.add('hidden');
+                document.getElementById('form-step-2').classList.add('hidden');
+                document.getElementById('form-step-3').classList.add('hidden');
+                document.getElementById('form-step-' + paso).classList.remove('hidden');
+            }
+
+            function enviarCita(event) {
+                event.preventDefault();
+                
+                const areaSeleccionada = document.querySelector('input[name="area_legal"]:checked') ? document.querySelector('input[name="area_legal"]:checked').value : 'No especificada';
+                const fecha = document.getElementById('fecha_cita').value || 'Por definir';
+                const horario = document.getElementById('horario_cita').value;
+                const nombre = document.getElementById('nombre_cliente').value;
+                const telefono = document.getElementById('telefono_cliente').value;
+
+                const mensaje = `*SOLICITUD DE ASESORÍA LEGAL - CRLEXCORP*%0A%0A` +
+                                `*Área Legal:* ${areaSeleccionada}%0A` +
+                                `*Fecha Preferida:* ${fecha}%0A` +
+                                `*Horario:* ${horario}%0A` +
+                                `*Nombre:* ${nombre}%0A` +
+                                `*Teléfono:* ${telefono}`;
+
+                window.open(`https://wa.me/50685847286?text=${mensaje}`, '_blank');
+            }
+        </script>
    
 </body>
 </html>
