@@ -137,6 +137,7 @@
             background-color: #20ba5a;
         }
         .whatsapp-icon { width: 32px; height: 32px; fill: currentColor; }
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -385,9 +386,11 @@
 <!-- SECCIÓN NUESTROS SERVICIOS -->
         <section class="py-24 px-6 relative overflow-hidden" style="background-color: #F4EFE6;">
             
-            <!-- LOGO DE FONDO AL LADO IZQUIERDO (MÁS VISIBLE) -->
-            <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-[550px] opacity-10 pointer-events-none z-0">
-                <img src="imagenes/Logo_CRLEX_TEST1_NBCKG.avif" alt="Logo de Fondo" class="w-full h-auto">
+            <!-- LOGO DE FONDO CON MOVIMIENTO INFINITO DE DERECHA A IZQUIERDA -->
+            <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center">
+                <div class="absolute left-1/2 -translate-x-1/2 w-[750px] opacity-05">
+                    <img src="imagenes/Logo_CRLEX_TEST1_NBCKG.avif" alt="Logo de Fondo" class="w-full h-auto">
+                </div>
             </div>
 
             <div class="max-w-6xl mx-auto relative z-10">
@@ -491,7 +494,7 @@
                         <p class="text-gray-300 text-sm leading-relaxed font-sans">Registros sanitarios de alimentos/bebidas y gestión de importación, exportación y seguros de carga.</p>
                     </div>
 
-                    <!-- 11. Notariado Público (Centrado al fondo si queda impar) -->
+                    <!-- 11. Notariado Público (Centrado al fondo) -->
                     <div class="bg-[#0A1128] p-8 rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 border border-white/10 flex flex-col text-left md:col-span-2 md:max-w-xl md:mx-auto w-full" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="w-14 h-14 rounded-full bg-[#C5A059] flex items-center justify-center mb-6 shadow-md">
                             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
