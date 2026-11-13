@@ -875,7 +875,7 @@
                 wheelMinutos.innerHTML = '';
 
                 // Poblar Horas (8 AM a 5 PM -> 8 a 17)
-                for (let h = 8; h <= 17; h++) {
+                for (let h = 8; h <= 16; h++) {
                     let formatoHora = h > 12 ? h - 12 : h;
                     let ampm = h >= 12 ? 'PM' : 'AM';
                     let div = document.createElement('div');
