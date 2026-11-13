@@ -681,7 +681,6 @@
                                     </button>
                                 </div>
                             </div>
-
                             <!-- PASO 2: AGENDA Y DISPONIBILIDAD -->
                             <div id="form-step-2" class="form-step hidden">
                                 <div class="flex items-center gap-4 mb-6">
@@ -690,16 +689,48 @@
                                 </div>
 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
+                                    <!-- FECHA -->
                                     <div>
                                         <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Fecha preferida para la cita</label>
                                         <input type="date" id="fecha_cita" class="w-full bg-white/10 border border-white/20 rounded-xl p-4 text-white focus:outline-none focus:border-[#C5A059]">
                                     </div>
+
+                                    <!-- RELOJ ESTILO IWATCH (HORAS Y MINUTOS INDEPENDIENTES) -->
                                     <div>
-                                        <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Horario de preferencia</label>
-                                        <select id="horario_cita" class="w-full bg-[#0A1128] border border-white/20 rounded-xl p-4 text-white focus:outline-none focus:border-[#C5A059]">
-                                            <option value="Mañana (9:00 AM - 12:00 PM)">Mañana (9:00 AM - 12:00 PM)</option>
-                                            <option value="Tarde (1:00 PM - 5:00 PM)">Tarde (1:00 PM - 5:00 PM)</option>
-                                        </select>
+                                        <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Hora de preferencia (8:00 AM - 5:00 PM)</label>
+                                        
+                                        <div class="bg-[#0A1128] border border-white/20 rounded-2xl p-4 flex flex-col items-center justify-center relative shadow-inner">
+                                            
+                                            <!-- Visor de Hora Seleccionada -->
+                                            <div class="text-2xl font-bold text-[#C5A059] mb-4 tracking-widest bg-white/5 py-2 px-6 rounded-xl border border-[#C5A059]/30" id="reloj-display">
+                                                08:00 AM
+                                            </div>
+
+                                            <!-- Contenedor de Ruedas de Selección -->
+                                            <div class="flex items-center justify-center gap-4 w-full">
+                                                
+                                                <!-- Columna Horas -->
+                                                <div class="flex-1 text-center">
+                                                    <span class="text-[10px] text-gray-400 uppercase tracking-widest block mb-1">Hora</span>
+                                                    <div id="wheel-horas" class="h-28 overflow-y-auto snap-y snap-mandatory bg-white/5 rounded-xl border border-white/10 p-2 scrollbar-thin scrollbar-thumb-[#C5A059]">
+                                                        <!-- Se llena por JS -->
+                                                    </div>
+                                                </div>
+
+                                                <span class="text-2xl font-bold text-white">:</span>
+
+                                                <!-- Columna Minutos -->
+                                                <div class="flex-1 text-center">
+                                                    <span class="text-[10px] text-gray-400 uppercase tracking-widest block mb-1">Minutos</span>
+                                                    <div id="wheel-minutos" class="h-28 overflow-y-auto snap-y snap-mandatory bg-white/5 rounded-xl border border-white/10 p-2 scrollbar-thin scrollbar-thumb-[#C5A059]">
+                                                        <!-- Se llena por JS -->
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- Indicador de Almuerzo Bloqueado -->
+                                            <p id="almuerzo-aviso" class="text-[10px] text-amber-400/80 mt-2 hidden text-center">⚠️ Hora de almuerzo (12:00 PM - 1:00 PM) no disponible</p>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -818,9 +849,13 @@
     </script>
             <!-- SCRIPT PARA CONTROLAR EL FORMULARIO INTERACTIVO -->
         <script>
+            let horaSeleccionada = 8;
+            let minutoSeleccionado = 0;
+
             function iniciarFormulario() {
                 document.getElementById('step-start').classList.add('hidden');
                 document.getElementById('interactive-form').classList.remove('hidden');
+                inicializarReloj();
             }
 
             function siguientePaso(paso) {
@@ -830,25 +865,106 @@
                 document.getElementById('form-step-' + paso).classList.remove('hidden');
             }
 
+            // Inicializar las ruedas estilo iWatch
+            function inicializarReloj() {
+                const wheelHoras = document.getElementById('wheel-horas');
+                const wheelMinutos = document.getElementById('wheel-minutos');
+                if (!wheelHoras || !wheelMinutos) return;
+
+                wheelHoras.innerHTML = '';
+                wheelMinutos.innerHTML = '';
+
+                // Poblar Horas (8 AM a 5 PM -> 8 a 17)
+                for (let h = 8; h <= 17; h++) {
+                    let formatoHora = h > 12 ? h - 12 : h;
+                    let ampm = h >= 12 ? 'PM' : 'AM';
+                    let div = document.createElement('div');
+                    div.className = `py-2 text-sm font-bold cursor-pointer rounded-lg snap-center transition-all ${h === horaSeleccionada ? 'bg-[#C5A059] text-[#0A1128]' : 'text-white hover:bg-white/10'}`;
+                    div.dataset.value = h;
+                    div.textContent = `${formatoHora < 10 ? '0' + formatoHora : formatoHora} ${ampm}`;
+                    div.onclick = () => {
+                        horaSeleccionada = h;
+                        verificarValidezHora();
+                        inicializarReloj();
+                    };
+                    wheelHoras.appendChild(div);
+                }
+
+                // Poblar Minutos (00, 15, 30, 45)
+                const minutosValidos = [0, 15, 30, 45];
+                minutosValidos.forEach(m => {
+                    let div = document.createElement('div');
+                    div.className = `py-2 text-sm font-bold cursor-pointer rounded-lg snap-center transition-all ${m === minutoSeleccionado ? 'bg-[#C5A059] text-[#0A1128]' : 'text-white hover:bg-white/10'}`;
+                    div.dataset.value = m;
+                    div.textContent = m === 0 ? '00' : m;
+                    div.onclick = () => {
+                        minutoSeleccionado = m;
+                        verificarValidezHora();
+                        inicializarReloj();
+                    };
+                    wheelMinutos.appendChild(div);
+                });
+
+                actualizarDisplayReloj();
+            }
+
+            // Validar la excepción de almuerzo (12:00 PM - 1:00 PM) y el límite de las 5 PM
+            function verificarValidezHora() {
+                const aviso = document.getElementById('almuerzo-aviso');
+                
+                // Si son las 12:00 PM (hora 12, min > 0) o cualquier minuto entre 12:01 y 12:45
+                if (horaSeleccionada === 12 && minutoSeleccionado > 0) {
+                    minutoSeleccionado = 0; // Forzar a la 1:00 PM si caen en almuerzo
+                    horaSeleccionada = 13;
+                    aviso.classList.remove('hidden');
+                    setTimeout(() => aviso.classList.add('hidden'), 3500);
+                } else if (horaSeleccionada === 17 && minutoSeleccionado > 0) {
+                    minutoSeleccionado = 0; // El límite es exactamente las 5:00 PM (17:00)
+                } else {
+                    aviso.classList.add('hidden');
+                }
+            }
+
+            function actualizarDisplayReloj() {
+                const display = document.getElementById('reloj-display');
+                let h = horaSeleccionada;
+                let m = minutoSeleccionado;
+
+                let formatoHora = h > 12 ? h - 12 : h;
+                let ampm = h >= 12 ? 'PM' : 'AM';
+                let formatoMinuto = m === 0 ? '00' : m;
+
+                display.textContent = `${formatoHora < 10 ? '0' + formatoHora : formatoHora}:${formatoMinuto} ${ampm}`;
+            }
+
             function enviarCita(event) {
                 event.preventDefault();
                 
                 const areaSeleccionada = document.querySelector('input[name="area_legal"]:checked') ? document.querySelector('input[name="area_legal"]:checked').value : 'No especificada';
                 const fecha = document.getElementById('fecha_cita').value || 'Por definir';
-                const horario = document.getElementById('horario_cita').value;
+                
+                let h = horaSeleccionada;
+                let m = minutoSeleccionado;
+                let formatoHora = h > 12 ? h - 12 : h;
+                let ampm = h >= 12 ? 'PM' : 'AM';
+                let horarioTexto = `${formatoHora < 10 ? '0' + formatoHora : formatoHora}:${m === 0 ? '00' : m} ${ampm}`;
+
                 const nombre = document.getElementById('nombre_cliente').value;
                 const telefono = document.getElementById('telefono_cliente').value;
 
                 const mensaje = `*SOLICITUD DE ASESORÍA LEGAL - CRLEXCORP*%0A%0A` +
                                 `*Área Legal:* ${areaSeleccionada}%0A` +
                                 `*Fecha Preferida:* ${fecha}%0A` +
-                                `*Horario:* ${horario}%0A` +
+                                `*Hora:* ${horarioTexto}%0A` +
                                 `*Nombre:* ${nombre}%0A` +
                                 `*Teléfono:* ${telefono}`;
 
                 window.open(`https://wa.me/50685847286?text=${mensaje}`, '_blank');
             }
         </script>
+    </script>
+
+        
    
 </body>
 </html>
