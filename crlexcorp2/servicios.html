@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestros Servicios | Bufete de Abogados</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#0A1128',
+            gold: '#C5A059',
+            'gold-hover': '#B08D4B',
+            bone: '#F4EFE6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Cinzel', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilos personalizados para animaciones y scrollbar */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0A1128;
+      color: #ffffff;
+    }
+
+    .font-serif-title {
+      font-family: 'Cinzel', serif;
+    }
+
+    /* Animación suave para tarjetas */
+    .service-card {
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px -10px rgba(197, 160, 89, 0.15);
+    }
+
+    /* Modal Animation */
+    .modal-backdrop {
+      transition: opacity 0.3s ease;
+    }
+    .modal-content {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A1128;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C5A059;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #B08D4B;
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen">
+
+  <!-- SECCIÓN PRINCIPAL: NUESTROS SERVICIOS (FONDO AZUL MARINO) -->
+  <section class="bg-[#0A1128] py-16 md:py-24 px-4 sm:px-6 lg:px-12 transition-colors duration-500 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- ENCABEZADO DE LA SECCIÓN -->
+      <div class="text-center mb-12">
+        <span class="text-gold uppercase tracking-widest text-xs md:text-sm font-semibold mb-2 block">
+          Soluciones Legales Integrales
+        </span>
+        <h1 class="text-3xl md:text-5xl font-bold text-white font-serif-title tracking-tight">
+          NUESTROS SERVICIOS
+        </h1>
+        <div class="w-24 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+        <p class="text-bone/80 mt-5 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+          Ofrecemos asesoría corporativa, litigios y soluciones notariales con el más alto estándar de excelencia, respaldo transfronterizo y enfoque ético.
+        </p>
+
+        <!-- FILTROS Y BÚSQUEDA -->
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto bg-[#131d3b] p-3 rounded-xl shadow-md border border-gold/30">
+          
+          <!-- Filtros de Categorías -->
+          <div class="flex flex-wrap items-center justify-center gap-2 w-full sm:w-auto" id="categoryFilters">
+            <button onclick="filterCategory('all')" class="category-btn active px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all bg-gold text-navy shadow-sm">
+              Todos
+            </button>
+            <button onclick="filterCategory('corporativo')" class="category-btn px-4 py-2 rounded-lg text-xs md:text-sm font-semibold text-bone hover:bg-gold/20 transition-all">
+              Empresarial
+            </button>
+            <button onclick="filterCategory('litigios')" class="category-btn px-4 py-2 rounded-lg text-xs md:text-sm font-semibold text-bone hover:bg-gold/20 transition-all">
+              Litigios
+            </button>
+            <button onclick="filterCategory('notarial')" class="category-btn px-4 py-2 rounded-lg text-xs md:text-sm font-semibold text-bone hover:bg-gold/20 transition-all">
+              Notarial & Migratorio
+            </button>
+          </div>
+
+          <!-- Buscador en tiempo real -->
+          <div class="relative w-full sm:w-64">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gold/60 text-xs"></i>
+            <input 
+              type="text" 
+              id="searchInput" 
+              oninput="handleSearch()"
+              placeholder="Buscar servicio legal..." 
+              class="w-full pl-9 pr-4 py-2 bg-[#0A1128] text-white placeholder-gray-400 text-xs md:text-sm rounded-lg border border-gold/30 focus:border-gold focus:outline-none transition-all"
+            >
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GRILLA DE SERVICIOS (11 SERVICIOS CON FONDO AZUL PROFUNDO) -->
+      <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- SERVICIO 1 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="derecho corporativo empresas me&a marcas contratos fusiones">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-building"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">1. Derecho Corporativo</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Fusiones y adquisiciones, constitución de sociedades, gobierno corporativo, marcas y contratos internacionales.
+            </p>
+          </div>
+          <button onclick="openModal(0)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 2 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="internacional transfronterizo arbitraje eapil mba justo">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">2. Servicios Internacionales</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Gestión de asuntos transfronterizos con respaldo en la Asociación Europea de Abogados e International Bar Association.
+            </p>
+          </div>
+          <button onclick="openModal(1)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 3 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="cobros deudas prescripcion ejecucion monitorio insolvencia concursales">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-scale-unbalanced"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">3. Cobros & Concursales</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Procesos monitorios de cobro judicial, prescripción de deudas, ejecuciones hipotecarias, prendarias e insolvencia.
+            </p>
+          </div>
+          <button onclick="openModal(2)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 4 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="derecho penal delitos querella imputado defensa casacion">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-gavel"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">4. Derecho Penal</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Defensa y representación técnica de imputados y víctimas, medidas cautelares, querellas y recursos procesales.
+            </p>
+          </div>
+          <button onclick="openModal(3)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 5 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="civil comercial contratos arrendamiento desahucio sucesiones indemnizacion">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">5. Comercial & Civil</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Defensa en litigios civiles, responsabilidad civil, contratos, desahucios, acuerdos de accionistas y sucesiones.
+            </p>
+          </div>
+          <button onclick="openModal(4)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 6 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="laboral patronos empleados acoso reglamento trabajo auditoria">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">6. Derecho Laboral</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Cumplimiento laboral corporativo, litigio laboral, protocolos de prevención de acoso y régimen disciplinario.
+            </p>
+          </div>
+          <button onclick="openModal(5)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 7 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="tributario fiscal impuestos dgt contabilidad pymes renta iva">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-calculator"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">7. Tributario & Fiscal</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Asesoría fiscal, planeamiento tributario, defensa ante la DGT, contabilidad integral y estados financieros.
+            </p>
+          </div>
+          <button onclick="openModal(6)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 8 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="administrativo sicop estado licitaciones municipal ambiental expropiacion">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-landmark"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">8. Derecho Administrativo</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Contratación pública (SICOP), procesos disciplinarios, demandas contenciosas contra el Estado y derecho ambiental.
+            </p>
+          </div>
+          <button onclick="openModal(7)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 9 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="notarial" data-keywords="migratorio residencia visa pensionado rentista inversionista trabajo">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-passport"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">9. Trámites Migratorios</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Residencias temporales y permanentes para inversionistas o rentistas, permisos laborales y naturalizaciones.
+            </p>
+          </div>
+          <button onclick="openModal(8)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 10 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="registro sanitario productos alimentos aduanas seguros carga importacion exportacion">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-box-archive"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">10. Registro & Comercio</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Registros sanitarios de alimentos y bebidas, trámites de importación/exportación y seguros de carga.
+            </p>
+          </div>
+          <button onclick="openModal(9)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 11 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between md:col-span-2 lg:col-span-1" data-category="notarial" data-keywords="notario escritura compraventa bienes matrimonios divorcio testamento patrimonio">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-file-signature"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">11. Notariado Público</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Compraventa de inmuebles y vehículos, matrimonios civiles, divorcios de mutuo acuerdo, certificaciones y poderes.
+            </p>
+          </div>
+          <button onclick="openModal(10)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- NO RESULTS PLACEHOLDER -->
+      <div id="noResults" class="hidden text-center py-16">
+        <i class="fa-solid fa-folder-open text-4xl text-gold mb-3"></i>
+        <h4 class="text-lg font-bold text-white">No se encontraron servicios</h4>
+        <p class="text-sm text-bone/60">Intente buscar con otros términos o cambie la categoría seleccionada.</p>
+      </div>
+
+      <!-- BANNER CTA INSTITUCIONAL CON MARCO DESTACADO EN DORADO -->
+      <div class="mt-20 bg-[#131d3b] rounded-2xl p-8 md:p-14 text-center text-white shadow-2xl border-2 border-gold/40 relative overflow-hidden">
+        <!-- Elemento decorativo de fondo -->
+        <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-10 -top-10 w-64 h-64 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10">
+          <span class="inline-block px-3 py-1 bg-gold/20 text-gold text-xs font-semibold rounded-full uppercase tracking-wider mb-4 border border-gold/40">
+            Atención Especializada
+          </span>
+          <h3 class="text-2xl md:text-4xl font-bold font-serif-title mb-4">
+            ¿Requiere asesoría legal para su caso o empresa?
+          </h3>
+          <p class="text-bone/80 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+            Nuestro bufete le brindará la solución jurídica adecuada con representación nacional e internacional. Conversemos sobre las necesidades de su asunto legal.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button onclick="triggerCTA()" class="w-full sm:w-auto bg-gold hover:bg-gold-hover text-navy font-bold py-3.5 px-8 rounded-lg transition-all duration-300 shadow-md hover:shadow-gold/20 flex items-center justify-center gap-2">
+              <i class="fa-solid fa-comments"></i>
+              <span>Conversemos sobre su caso</span>
+            </button>
+            <button onclick="triggerLocation()" class="w-full sm:w-auto bg-[#0A1128] border border-gold/60 hover:bg-white/10 text-bone font-semibold py-3.5 px-8 rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
+              <i class="fa-solid fa-location-dot text-gold"></i>
+              <span>Cómo llegar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MODAL DE DETALLE DE SERVICIO (ADAPTADO AL TEMA OSCURO) -->
+  <div id="serviceModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <!-- Backdrop -->
+    <div id="modalBackdrop" onclick="closeModal()" class="modal-backdrop fixed inset-0 bg-navy/90 backdrop-blur-sm opacity-0"></div>
+    
+    <!-- Modal Content -->
+    <div id="modalContent" class="modal-content bg-[#131d3b] rounded-2xl shadow-2xl max-w-2xl w-full p-6 md:p-8 relative z-10 border-t-8 border-gold border-x border-b border-gold/30 opacity-0 scale-95 max-h-[90vh] overflow-y-auto text-white">
+      <button onclick="closeModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gold text-xl transition-colors">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="flex items-center gap-4 mb-4">
+        <div id="modalIcon" class="w-12 h-12 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-xl flex-shrink-0">
+        </div>
+        <div>
+          <span id="modalCategory" class="text-xs uppercase tracking-wider text-gold font-semibold"></span>
+          <h3 id="modalTitle" class="text-xl md:text-2xl font-bold text-white font-serif-title"></h3>
+        </div>
+      </div>
+
+      <hr class="border-gold/20 my-4">
+
+      <div class="mb-6">
+        <h4 class="text-sm font-bold text-gold mb-3 uppercase tracking-wider">Detalles del Servicio Legal:</h4>
+        <ul id="modalList" class="space-y-2.5 text-sm text-bone/90">
+          <!-- Se llena dinámicamente -->
+        </ul>
+      </div>
+
+      <div class="pt-4 border-t border-gold/20 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <span class="text-xs text-bone/60">¿Tiene una consulta urgente sobre esta materia?</span>
+        <button onclick="closeModal(); triggerCTA()" class="w-full sm:w-auto bg-gold hover:bg-gold-hover text-navy font-bold py-2.5 px-5 rounded-lg text-xs transition-all flex items-center justify-center gap-2">
+          <span>Consultar ahora</span>
+          <i class="fa-solid fa-chevron-right text-navy text-xs"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTIFICACIÓN DE MENSAJE -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-[#131d3b] text-white px-5 py-3 rounded-xl shadow-2xl border-l-4 border-gold hidden flex items-center gap-3 z-50 text-sm border border-gold/20">
+    <i class="fa-solid fa-circle-check text-gold text-lg"></i>
+    <span id="toastMessage">Iniciando consulta legal...</span>
+  </div>
+
+  <!-- LÓGICA JAVASCRIPT (FILTROS Y EVENTOS ACTUALIZADOS) -->
+  <script>
+    // DATOS DETALLADOS DE CADA UNO DE LOS 11 SERVICIOS
+    const servicesData = [
+      {
+        title: "1. Derecho Corporativo",
+        category: "Empresarial",
+        icon: "fa-building",
+        details: [
+          "Fusiones y Adquisiciones Empresariales, Derecho Corporativo y Empresarial.",
+          "Constitución de Sociedades y modificaciones de estatutos sociales.",
+          "Gobierno Corporativo y estructuración de acuerdos societarios.",
+          "Asesoría integral en contratos internacionales y negociación comercial.",
+          "Atención a inicio de operaciones en micro, pequeñas, medianas y grandes empresas.",
+          "Servicios de tramitología en Registro de Marcas, nombres comerciales y derechos de autor."
+        ]
+      },
+      {
+        title: "2. Servicios Internacionales",
+        category: "Empresarial / Transfronterizo",
+        icon: "fa-globe",
+        details: [
+          "Miembros de la Asociación Europea de Abogados, Justinian Lawyers, IBA y EAPIL.",
+          "Gestión de Asuntos Transfronterizos: representación ágil y segura en distintos países.",
+          "Asesoría Corporativa Internacional: constitución de sociedades en diversas jurisdicciones.",
+          "Arbitraje y Litigios Internacionales en cortes extranjeras.",
+          "Protección de Inversiones y Propiedad Intelectual en múltiples países.",
+          "Acompañamiento global directo donde sus proyectos lo requieran."
+        ]
+      },
+      {
+        title: "3. Cobros & Procesos Concursales",
+        category: "Litigios",
+        icon: "fa-scale-unbalanced",
+        details: [
+          "Procesos Monitorios de Cobro Judicial y Procesos Concursales.",
+          "Especialistas en Prescripciones de deudas e Interposición de Caducidades.",
+          "Incidentes de Nulidad de Notificación.",
+          "Ejecuciones Hipotecarias y Prendarias.",
+          "Prueba Anticipada y Reconocimiento de Documento.",
+          "Negociaciones con acreedores y acuerdos judiciales/extrajudiciales."
+        ]
+      },
+      {
+        title: "4. Derecho Penal",
+        category: "Litigios",
+        icon: "fa-gavel",
+        details: [
+          "Defensa y representación técnica del imputado.",
+          "Suspensión de procedimiento a prueba o Extinción de la acción penal.",
+          "Representación integral de los derechos de la víctima.",
+          "Denuncias o Querellas en delitos de acción pública y privada.",
+          "Acción civil resarcitoria y preparación de prueba.",
+          "Recursos de revocatoria, apelación, apelación de sentencia y casación."
+        ]
+      },
+      {
+        title: "5. Derecho Comercial y Civil",
+        category: "Litigios",
+        icon: "fa-handshake",
+        details: [
+          "Defensa en procedimientos civiles en sede Judicial y Extrajudicial.",
+          "Indemnizaciones por responsabilidad civil.",
+          "Redacción y revisión de todo tipo de contratos comerciales y civiles.",
+          "Arrendamientos urbanos y rústicos, desahucios y cobro de rentas.",
+          "Derechos de accionistas minoritarios y administración de sociedades.",
+          "Medidas cautelares y Procesos Sucesorios (Herencias)."
+        ]
+      },
+      {
+        title: "6. Derecho Laboral",
+        category: "Empresarial",
+        icon: "fa-users",
+        details: [
+          "Cumplimiento e implementación de estructuras laborales corporativas.",
+          "Procedimientos Administrativos y Auditoría de Políticas Laborales.",
+          "Litigio Laboral en estrados judiciales.",
+          "Consultoría y Planeamiento Laboral preventivo.",
+          "Abordaje de protocolos de Acoso Laboral.",
+          "Procesos de Régimen disciplinario interno."
+        ]
+      },
+      {
+        title: "7. Derecho Tributario y Fiscal",
+        category: "Empresarial",
+        icon: "fa-calculator",
+        details: [
+          "Asesoría Tributaria General y planeamiento fiscal legal.",
+          "Cumplimiento Tributario: Declaraciones de IVA, Renta y Retenciones.",
+          "Defensa y atención de auditorías/fiscalizaciones ante la DGT.",
+          "Recursos administrativos contra ajustes tributarios.",
+          "Contabilidad integral mensual y estados financieros.",
+          "Modelos contables ajustados para Emprendedores y PYMES."
+        ]
+      },
+      {
+        title: "8. Derecho Administrativo",
+        category: "Litigios",
+        icon: "fa-landmark",
+        details: [
+          "Procedimientos Disciplinarios Administrativos y Recursos en Sede Administrativa.",
+          "Derecho Municipal y Derechos del Consumidor.",
+          "Reclamos por Responsabilidad de la Administración y Expropiaciones.",
+          "Contratación Administrativa y tramitología en plataforma SICOP.",
+          "Demandas contenciosas contra el Estado para resarcimiento de daños.",
+          "Derecho Ambiental y recursos de casación o revisión."
+        ]
+      },
+      {
+        title: "9. Trámites Migratorios",
+        category: "Notarial / Migratorio",
+        icon: "fa-passport",
+        details: [
+          "Residencias temporales y permanentes en Costa Rica.",
+          "Residencia especial para Inversionistas, Pensionados y Rentistas.",
+          "Permisos de trabajo y solicitudes de reunificación familiar.",
+          "Naturalización y obtención de ciudadanía costarricense.",
+          "Renovaciones, cambio de categoría y contratación de personal extranjero."
+        ]
+      },
+      {
+        title: "10. Registro de Productos & Comercio",
+        category: "Empresarial",
+        icon: "fa-box-archive",
+        details: [
+          "Registro Sanitario de Productos Alimenticios y Bebidas.",
+          "Obtención y renovación de permisos sanitarios ante autoridades.",
+          "Gestión integral de procesos de Importación, Exportación y Reexportación.",
+          "Asesoría en transporte internacional y seguros de carga.",
+          "Cumplimiento regulatorio, revisión de etiquetado y ficha técnica."
+        ]
+      },
+      {
+        title: "11. Notariado Público",
+        category: "Notarial",
+        icon: "fa-file-signature",
+        details: [
+          "Escrituras de Compra-Venta de Bienes Muebles e Inmuebles.",
+          "Constitución de Sociedades e Hipotecas.",
+          "Matrimonios Civiles y Divorcios por mutuo consentimiento.",
+          "Donaciones, Certificaciones, Declaraciones Juradas y Actas Notariales.",
+          "Afectación a Patrimonio Familiar y Testamentos."
+        ]
+      }
+    ];
+
+    // MODAL HANDLERS
+    function openModal(index) {
+      const data = servicesData[index];
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalCategory').innerText = data.category;
+      document.getElementById('modalIcon').innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
+      
+      const listContainer = document.getElementById('modalList');
+      listContainer.innerHTML = data.details.map(detail => `
+        <li class="flex items-start gap-2.5">
+          <i class="fa-solid fa-circle-check text-gold text-xs mt-1"></i>
+          <span>${detail}</span>
+        </li>
+      `).join('');
+
+      const modal = document.getElementById('serviceModal');
+      const backdrop = document.getElementById('modalBackdrop');
+      const content = document.getElementById('modalContent');
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        content.classList.remove('opacity-0', 'scale-95');
+      }, 10);
+    }
+
+    function closeModal() {
+      const backdrop = document.getElementById('modalBackdrop');
+      const content = document.getElementById('modalContent');
+
+      backdrop.classList.add('opacity-0');
+      content.classList.add('opacity-0', 'scale-95');
+
+      setTimeout(() => {
+        document.getElementById('serviceModal').classList.add('hidden');
+      }, 300);
+    }
+
+    // CATEGORY FILTERING LOGIC
+    let currentCategory = 'all';
+
+    function filterCategory(category) {
+      currentCategory = category;
+      
+      // Update buttons style for Dark Theme
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-gold', 'text-navy', 'shadow-sm');
+        btn.classList.add('text-bone');
+      });
+      event.currentTarget.classList.add('bg-gold', 'text-navy', 'shadow-sm');
+      event.currentTarget.classList.remove('text-bone');
+
+      applyFilters();
+    }
+
+    // SEARCH LOGIC
+    function handleSearch() {
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.service-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const keywords = card.getAttribute('data-keywords').toLowerCase();
+        const cardText = card.innerText.toLowerCase();
+
+        const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+        const matchesSearch = searchTerm === '' || keywords.includes(searchTerm) || cardText.includes(searchTerm);
+
+        if (matchesCategory && matchesSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      const noResults = document.getElementById('noResults');
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    // NOTIFICATION TOAST
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMessage');
+      toastMsg.innerText = msg;
+      
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    function triggerCTA() {
+      showToast("Conectando con la oficina legal para su consulta...");
+    }
+
+    function triggerLocation() {
+      showToast("Abriendo ubicación en Google Maps...");
+    }
+  </script>
+
+</body>
+</html>
