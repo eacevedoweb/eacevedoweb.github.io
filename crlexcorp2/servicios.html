@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nuestros Servicios | Bufete de Abogados</title>
+  <title>Nuestros Servicios | CRLEXCORP ABOGADOS</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,10 +11,10 @@
   <!-- Font Awesome Icons CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Google Font: Inter -->
+  <!-- Google Fonts: Cinzel, Inter y Playfair Display (para la navbar) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -36,11 +36,71 @@
   </script>
 
   <style>
-    /* Estilos personalizados para animaciones y scrollbar */
+    /* ESTILOS DE LA BARRA DE NAVEGACIÓN (IDÉNTICOS A INDEX) */
+    @keyframes hazDorado {
+        0% { clip-path: inset(0 100% 0 0); opacity: 0; }
+        100% { clip-path: inset(0 0 0 0); opacity: 1; }
+    }
+
+    @keyframes destelloRayo {
+        0% { transform: translateX(-100%); opacity: 1; }
+        50% { opacity: 1; }
+        100% { transform: translateX(100%); opacity: 0; }
+    }
+
+    .nav-link {
+        font-family: 'Playfair Display', Georgia, serif;
+        position: relative;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding-bottom: 6px;
+        color: #C5A059;
+        animation: hazDorado 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        opacity: 0;
+        transition: color 0.3s ease;
+    }
+
+    .nav-link:nth-child(1) { animation-delay: 0.2s; }
+    .nav-link:nth-child(2) { animation-delay: 0.4s; }
+    .nav-link:nth-child(3) { animation-delay: 0.6s; }
+    .nav-link:nth-child(4) { animation-delay: 0.8s; }
+    .nav-link:nth-child(5) { animation-delay: 1.0s; }
+    .nav-link:nth-child(6) { animation-delay: 1.2s; }
+
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.9), transparent);
+        opacity: 0;
+        pointer-events: none;
+        animation: destelloRayo 1.2s ease-out forwards;
+    }
+
+    .nav-link:nth-child(1)::before { animation-delay: 0.2s; }
+    .nav-link:nth-child(2)::before { animation-delay: 0.4s; }
+    .nav-link:nth-child(3)::before { animation-delay: 0.6s; }
+    .nav-link:nth-child(4)::before { animation-delay: 0.8s; }
+    .nav-link:nth-child(5)::before { animation-delay: 1.0s; }
+    .nav-link:nth-child(6)::before { animation-delay: 1.2s; }
+
+    .nav-link:hover { color: #6B7280; }
+
+    .nav-link.active::after {
+        content: '';
+        position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+        background-color: #111827;
+    }
+
+    /* ESTILOS DE LA PÁGINA DE SERVICIOS */
     body {
       font-family: 'Inter', sans-serif;
       background-color: #0A1128;
       color: #ffffff;
+      margin: 0;
+      padding: 0;
     }
 
     .font-serif-title {
@@ -80,10 +140,39 @@
     }
   </style>
 </head>
-<body class="antialiased min-h-screen">
+<body class="antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- NAVBAR -->
+  <header class="w-full bg-white border-b border-gray-100 shadow-sm py-6 px-8 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto flex items-center justify-center relative">
+          <nav class="hidden md:flex items-center gap-10 justify-center">
+              <a href="index.html" class="nav-link">Inicio</a>
+              <a href="servicios.html" class="nav-link active">Servicios</a>
+              <a href="profesionales.html" class="nav-link">Profesionales</a>
+              <a href="firma.html" class="nav-link">La Firma</a>
+              <a href="socios.html" class="nav-link">Socios</a>
+              <a href="index.html#contacto-interactivo" class="nav-link">Contacto</a>
+          </nav>
+          <div class="md:hidden w-full flex justify-end">
+              <button id="menu-btn" class="text-gray-800 focus:outline-none">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                  </svg>
+              </button>
+          </div>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden pt-4 pb-3 border-t border-gray-100 mt-4 flex flex-col items-center gap-4 text-sm tracking-widest uppercase">
+          <a href="index.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Inicio</a>
+          <a href="servicios.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Servicios</a>
+          <a href="profesionales.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Profesionales</a>
+          <a href="firma.html" class="text-[#C5A059] hover:text-gray-500 font-bold">La Firma</a>
+          <a href="socios.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Socios</a>
+          <a href="index.html#contacto-interactivo" class="text-[#C5A059] hover:text-gray-500 font-bold">Contacto</a>
+      </div>
+  </header>
 
   <!-- SECCIÓN PRINCIPAL: NUESTROS SERVICIOS (FONDO AZUL MARINO) -->
-  <section class="bg-[#0A1128] py-16 md:py-24 px-4 sm:px-6 lg:px-12 transition-colors duration-500 min-h-screen">
+  <section class="bg-[#0A1128] py-16 md:py-24 px-4 sm:px-6 lg:px-12 transition-colors duration-500 flex-grow">
     <div class="max-w-7xl mx-auto">
       
       <!-- ENCABEZADO DE LA SECCIÓN -->
@@ -349,14 +438,14 @@
             Nuestro bufete le brindará la solución jurídica adecuada con representación nacional e internacional. Conversemos sobre las necesidades de su asunto legal.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button onclick="triggerCTA()" class="w-full sm:w-auto bg-gold hover:bg-gold-hover text-navy font-bold py-3.5 px-8 rounded-lg transition-all duration-300 shadow-md hover:shadow-gold/20 flex items-center justify-center gap-2">
+            <a href="index.html#contacto-interactivo" class="w-full sm:w-auto bg-gold hover:bg-gold-hover text-navy font-bold py-3.5 px-8 rounded-lg transition-all duration-300 shadow-md hover:shadow-gold/20 flex items-center justify-center gap-2">
               <i class="fa-solid fa-comments"></i>
               <span>Conversemos sobre su caso</span>
-            </button>
-            <button onclick="triggerLocation()" class="w-full sm:w-auto bg-[#0A1128] border border-gold/60 hover:bg-white/10 text-bone font-semibold py-3.5 px-8 rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=9.931190590170626,-84.06450902446704" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-[#0A1128] border border-gold/60 hover:bg-white/10 text-bone font-semibold py-3.5 px-8 rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
               <i class="fa-solid fa-location-dot text-gold"></i>
               <span>Cómo llegar</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -395,22 +484,30 @@
 
       <div class="pt-4 border-t border-gold/20 flex flex-col sm:flex-row items-center justify-between gap-3">
         <span class="text-xs text-bone/60">¿Tiene una consulta urgente sobre esta materia?</span>
-        <button onclick="closeModal(); triggerCTA()" class="w-full sm:w-auto bg-gold hover:bg-gold-hover text-navy font-bold py-2.5 px-5 rounded-lg text-xs transition-all flex items-center justify-center gap-2">
+        <a href="index.html#contacto-interactivo" class="w-full sm:w-auto bg-gold hover:bg-gold-hover text-navy font-bold py-2.5 px-5 rounded-lg text-xs transition-all flex items-center justify-center gap-2">
           <span>Consultar ahora</span>
           <i class="fa-solid fa-chevron-right text-navy text-xs"></i>
-        </button>
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- NOTIFICACIÓN DE MENSAJE -->
-  <div id="toast" class="fixed bottom-5 right-5 bg-[#131d3b] text-white px-5 py-3 rounded-xl shadow-2xl border-l-4 border-gold hidden flex items-center gap-3 z-50 text-sm border border-gold/20">
-    <i class="fa-solid fa-circle-check text-gold text-lg"></i>
-    <span id="toastMessage">Iniciando consulta legal...</span>
-  </div>
+  <!-- FOOTER -->
+  <footer class="w-full bg-gray-900 text-white py-6 text-center text-xs font-sans border-t border-gold/20">
+    <p>&copy; 2026 CRLEXCORP ABOGADOS. Todos los derechos reservados.</p>
+  </footer>
 
-  <!-- LÓGICA JAVASCRIPT (FILTROS Y EVENTOS ACTUALIZADOS) -->
+  <!-- LÓGICA JAVASCRIPT -->
   <script>
+    // MENÚ MÓVIL
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
     // DATOS DETALLADOS DE CADA UNO DE LOS 11 SERVICIOS
     const servicesData = [
       {
@@ -599,7 +696,6 @@
     function filterCategory(category) {
       currentCategory = category;
       
-      // Update buttons style for Dark Theme
       const buttons = document.querySelectorAll('.category-btn');
       buttons.forEach(btn => {
         btn.classList.remove('bg-gold', 'text-navy', 'shadow-sm');
@@ -643,26 +739,6 @@
       } else {
         noResults.classList.add('hidden');
       }
-    }
-
-    // NOTIFICATION TOAST
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toastMessage');
-      toastMsg.innerText = msg;
-      
-      toast.classList.remove('hidden');
-      setTimeout(() => {
-        toast.classList.add('hidden');
-      }, 3500);
-    }
-
-    function triggerCTA() {
-      showToast("Conectando con la oficina legal para su consulta...");
-    }
-
-    function triggerLocation() {
-      showToast("Abriendo ubicación en Google Maps...");
     }
   </script>
 
