@@ -674,24 +674,24 @@
             });
         }
 
-        // Animación progresiva al hacer scroll sin ocultar el contenido si falla JS
+        // Animación progresiva al hacer scroll (incluyendo la primera tarjeta al cargar)
         const cards = document.querySelectorAll('.pro-card');
         if ('IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.remove('is-hidden');
-                        entry.target.classList.add('is-visible');
+                        setTimeout(() => {
+                            entry.target.classList.remove('is-hidden');
+                            entry.target.classList.add('is-visible');
+                        }, 120);
                         observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.12 });
 
-            cards.forEach((card, index) => {
-                if (index > 0) {
-                    card.classList.remove('is-visible');
-                    card.classList.add('is-hidden');
-                }
+            cards.forEach((card) => {
+                card.classList.remove('is-visible');
+                card.classList.add('is-hidden');
                 observer.observe(card);
             });
         }
