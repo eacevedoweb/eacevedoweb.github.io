@@ -11,6 +11,9 @@
   <!-- Font Awesome Icons CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
   <!-- Google Fonts: Cinzel, Inter y Playfair Display (para la navbar) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -174,7 +177,7 @@
     <div class="max-w-7xl mx-auto">
       
       <!-- ENCABEZADO DE LA SECCIÓN -->
-      <div class="text-center mb-12">
+      <div class="text-center mb-12" data-aos="fade-down" data-aos-duration="1000">
         <span class="text-gold uppercase tracking-widest text-xs md:text-sm font-semibold mb-2 block">
           Soluciones Legales Integrales
         </span>
@@ -220,11 +223,11 @@
         </div>
       </div>
 
-      <!-- GRILLA DE SERVICIOS (11 SERVICIOS CON FONDO AZUL PROFUNDO) -->
+      <!-- GRILLA DE SERVICIOS (11 SERVICIOS CON EFECTO AOS DE APARICIÓN AL HACER SCROLL) -->
       <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         
         <!-- SERVICIO 1 -->
-        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="derecho corporativo empresas me&a marcas contratos fusiones">
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="derecho corporativo empresas me&a marcas contratos fusiones" data-aos="zoom-in-up" data-aos-delay="100">
           <div>
             <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
               <i class="fa-solid fa-building"></i>
@@ -241,7 +244,7 @@
         </div>
 
         <!-- SERVICIO 2 -->
-        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="internacional transfronterizo arbitraje eapil mba justo">
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="internacional transfronterizo arbitraje eapil mba justo" data-aos="zoom-in-up" data-aos-delay="200">
           <div>
             <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
               <i class="fa-solid fa-globe"></i>
@@ -258,7 +261,7 @@
         </div>
 
         <!-- SERVICIO 3 -->
-        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="cobros deudas prescripcion ejecucion monitorio insolvencia concursales">
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="cobros deudas prescripcion ejecucion monitorio insolvencia concursales" data-aos="zoom-in-up" data-aos-delay="300">
           <div>
             <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
               <i class="fa-solid fa-scale-unbalanced"></i>
@@ -275,7 +278,7 @@
         </div>
 
         <!-- SERVICIO 4 -->
-        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="derecho penal delitos querella imputado defensa casacion">
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="derecho penal delitos querella imputado defensa casacion" data-aos="zoom-in-up" data-aos-delay="100">
           <div>
             <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
               <i class="fa-solid fa-gavel"></i>
@@ -292,7 +295,7 @@
         </div>
 
         <!-- SERVICIO 5 -->
-        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="civil comercial contratos arrendamiento desahucio sucesiones indemnizacion">
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="civil comercial contratos arrendamiento desahucio sucesiones indemnizacion" data-aos="zoom-in-up" data-aos-delay="200">
           <div>
             <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
               <i class="fa-solid fa-handshake"></i>
@@ -309,7 +312,7 @@
         </div>
 
         <!-- SERVICIO 6 -->
-        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="laboral patronos empleados acoso reglamento trabajo auditoria">
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="laboral patronos empleados acoso reglamento trabajo auditoria" data-aos="zoom-in-up" data-aos-delay="300">
           <div>
             <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
               <i class="fa-solid fa-users"></i>
@@ -326,7 +329,7 @@
         </div>
 
         <!-- SERVICIO 7 -->
-        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="tributario fiscal impuestos dgt contabilidad pymes renta iva">
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="tributario fiscal impuestos dgt contabilidad pymes renta iva" data-aos="zoom-in-up" data-aos-delay="100">
           <div>
             <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
               <i class="fa-solid fa-calculator"></i>
@@ -343,7 +346,7 @@
         </div>
 
         <!-- SERVICIO 8 -->
-        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="administrativo sicop estado licitaciones municipal ambiental expropiacion">
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="administrativo sicop estado licitaciones municipal ambiental expropiacion" data-aos="zoom-in-up" data-aos-delay="200">
           <div>
             <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
               <i class="fa-solid fa-landmark"></i>
@@ -360,7 +363,7 @@
         </div>
 
         <!-- SERVICIO 9 -->
-        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="notarial" data-keywords="migratorio residencia visa pensionado rentista inversionista trabajo">
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="notarial" data-keywords="migratorio residencia visa pensionado rentista inversionista trabajo" data-aos="zoom-in-up" data-aos-delay="300">
           <div>
             <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
               <i class="fa-solid fa-passport"></i>
@@ -377,7 +380,7 @@
         </div>
 
         <!-- SERVICIO 10 -->
-        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="registro sanitario productos alimentos aduanas seguros carga importacion exportacion">
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="registro sanitario productos alimentos aduanas seguros carga importacion exportacion" data-aos="zoom-in-up" data-aos-delay="100">
           <div>
             <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
               <i class="fa-solid fa-box-archive"></i>
@@ -394,7 +397,7 @@
         </div>
 
         <!-- SERVICIO 11 -->
-        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between md:col-span-2 lg:col-span-1" data-category="notarial" data-keywords="notario escritura compraventa bienes matrimonios divorcio testamento patrimonio">
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between md:col-span-2 lg:col-span-1" data-category="notarial" data-keywords="notario escritura compraventa bienes matrimonios divorcio testamento patrimonio" data-aos="zoom-in-up" data-aos-delay="200">
           <div>
             <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
               <i class="fa-solid fa-file-signature"></i>
@@ -420,7 +423,7 @@
       </div>
 
       <!-- BANNER CTA INSTITUCIONAL CON MARCO DESTACADO EN DORADO -->
-      <div class="mt-20 bg-[#131d3b] rounded-2xl p-8 md:p-14 text-center text-white shadow-2xl border-2 border-gold/40 relative overflow-hidden">
+      <div class="mt-20 bg-[#131d3b] rounded-2xl p-8 md:p-14 text-center text-white shadow-2xl border-2 border-gold/40 relative overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
         <!-- Elemento decorativo de fondo -->
         <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -left-10 -top-10 w-64 h-64 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -495,8 +498,15 @@
     <p>&copy; 2026 CRLEXCORP ABOGADOS. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- LÓGICA JAVASCRIPT -->
+  <!-- AOS (Animate On Scroll) JS CDN -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    // INICIALIZAR AOS
+    AOS.init({
+      once: true, // La animación ocurre solo una vez al hacer scroll hacia abajo
+      offset: 50  // Margen de activación
+    });
+
     // MENÚ MÓVIL
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
