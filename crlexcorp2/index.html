@@ -191,44 +191,6 @@
             line-height: 1.2;
             letter-spacing: 0.09em;
         }
-        @keyframes aparicionNavbar {
-            0% {
-                opacity: 0;
-                transform: translateY(6px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .marca-crlex-titulo {
-            font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-            color: #9E813E;
-            font-weight: 600;
-            line-height: 0.96;
-            letter-spacing: -0.01em;
-            transform: scaleX(0.92);
-            transform-origin: left center;
-        }
-
-        .marca-crlex-sub {
-            font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
-            color: #111827;
-            font-weight: 700;
-            text-transform: uppercase;
-            line-height: 1.25;
-            letter-spacing: 0.09em;
-        }
-
-        /* Animación aplicada en el enlace completo o por partes */
-        .nav-marca-animada {
-            animation: aparicionNavbar 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-        .nav-sub-animado {
-            animation: aparicionNavbar 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both;
-        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -236,12 +198,12 @@
     <!-- NAVBAR -->
     <header class="w-full bg-white border-b border-gray-100 shadow-sm py-4 sm:py-5 px-6 sm:px-8 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-        <!-- Nombre de la firma (PC y Mobile) con efecto de aparición -->
-        <a href="index.html" class="nav-marca-animada inline-flex flex-col items-start gap-2 select-none shrink-0 group">
+        <!-- Nombre de la firma (PC y Mobile) -->
+        <a href="index.html" class="inline-flex flex-col items-start gap-0.8 select-none shrink-0 group">
             <span class="marca-crlex-titulo text-[39px] md:text-[52px] group-hover:text-[#C5A059] transition-colors">
                 CRLexcorp
             </span>
-            <span class="nav-sub-animado marca-crlex-sub text-[7px] sm:text-[8.5px] md:text-[9.5px]">
+            <span class="marca-crlex-sub text-[6.2px] sm:text-[8.5px] md:text-[8.2px]">
                 ATTORNEYS AT LAW - COSTA RICA
             </span>
         </a>
