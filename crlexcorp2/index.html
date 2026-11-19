@@ -186,14 +186,15 @@
     </header>
 
     <main class="flex-grow">
-        <!-- BANNER VIDEO -->
-        <section class="w-full overflow-hidden leading-none bg-[#050C1A]">
-            <img src="imagenes/mapa.avif" alt="Mapa de cobertura y presencia internacional - CRLEXCORP Abogados" class="w-full h-auto block object-cover">
-            <!-- Logo superpuesto a la izquierda con animación corriendo hacia la derecha -->
-           <div class="logo-banner-der absolute inset-y-0 left-0 h-full flex items-center pl-0 z-10 pointer-events-none">
-                <img src="imagenes/logosinfondo.avif" alt="Logo CRLEXCORP Abogados" class="h-[80%] w-auto max-w-[45vw] -ml-16 md:-ml-24 -translate-x-4 md:-translate-x-8 object-contain">
-            </div>
-        </section>
+    <!-- BANNER IMAGEN CON LOGO SUPERPUESTO -->
+    <section class="relative w-full overflow-hidden leading-none bg-[#050C1A]">
+        <img src="imagenes/mapa.avif" alt="Mapa de cobertura y presencia internacional - CRLEXCORP Abogados" class="w-full h-auto block object-cover">
+
+        <!-- Logo superpuesto a la izquierda con animación corriendo hacia la derecha -->
+        <div class="logo-banner-der absolute inset-y-0 left-0 h-full flex items-center pl-2 sm:pl-6 md:pl-0 z-10 pointer-events-none">
+            <img src="imagenes/logo2sinfondo.avif" alt="Logo CRLEXCORP Abogados" class="h-[72%] sm:h-[78%] md:h-[80%] w-auto max-w-[34vw] sm:max-w-[38vw] md:max-w-[45vw] -ml-1 sm:-ml-4 md:-ml-24 md:-translate-x-8 object-contain">
+        </div>
+    </section>
 
         <!-- LÍNEA BLANCA -->
         <div class="w-full h-[2px] bg-white"></div>
