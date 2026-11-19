@@ -191,6 +191,24 @@
             line-height: 1.2;
             letter-spacing: 0.09em;
         }
+                @keyframes emergerDesdeAbajo {
+            0% {
+                opacity: 0;
+                transform: translateY(26px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-marca-animada {
+            animation: emergerDesdeAbajo 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .nav-sub-animado {
+            animation: emergerDesdeAbajo 1s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -199,11 +217,11 @@
     <header class="w-full bg-white border-b border-gray-100 shadow-sm py-4 sm:py-5 px-6 sm:px-8 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
         <!-- Nombre de la firma (PC y Mobile) -->
-        <a href="index.html" class="inline-flex flex-col items-start gap-0.8 select-none shrink-0 group">
+        <a href="index.html" class="nav-marca-animada inline-flex flex-col items-start gap-[0.8px] overflow-hidden py-1 select-none shrink-0 group">
             <span class="marca-crlex-titulo text-[39px] md:text-[52px] group-hover:text-[#C5A059] transition-colors">
                 CRLexcorp
             </span>
-            <span class="marca-crlex-sub text-[6.2px] sm:text-[8.5px] md:text-[8.2px]">
+            <span class="nav-sub-animado marca-crlex-sub text-[6.2px] sm:text-[8.5px] md:text-[8.2px]">
                 ATTORNEYS AT LAW - COSTA RICA
             </span>
         </a>
