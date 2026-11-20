@@ -14,10 +14,10 @@
   <!-- AOS (Animate On Scroll) CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
-  <!-- Google Fonts: Cinzel, Inter y Playfair Display (para la navbar) -->
+  <!-- Google Fonts: Cinzel, Inter, Playfair Display, Cormorant Garamond y Libre Baskerville (para la navbar) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -97,6 +97,62 @@
         background-color: #111827;
     }
 
+    .nav-link.nav-cta {
+        padding: 8px 18px;
+        border: 1px solid #C5A059;
+        border-radius: 6px;
+        background-color: rgba(197, 160, 89, 0.12);
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
+    }
+
+    .nav-link.nav-cta:hover {
+        background-color: #C5A059;
+        color: #0A1128;
+        transform: translateY(-1px);
+    }
+
+    .nav-link.nav-cta::after {
+        display: none;
+    }
+
+    .marca-crlex-titulo {
+        font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+        color: #9E813E;
+        font-weight: 600;
+        line-height: 0.92;
+        letter-spacing: -0.01em;
+        transform: scaleX(0.92);
+        transform-origin: left center;
+    }
+
+    .marca-crlex-sub {
+        font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+        color: #111827;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 1.2;
+        letter-spacing: 0.09em;
+    }
+
+    @keyframes emergerDesdeAbajo {
+        0% {
+            opacity: 0;
+            transform: translateY(26px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nav-marca-animada {
+        animation: emergerDesdeAbajo 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .nav-sub-animado {
+        animation: emergerDesdeAbajo 1s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+    }
+
     /* ESTILOS DE LA PÁGINA DE SERVICIOS */
     body {
       font-family: 'Inter', sans-serif;
@@ -146,30 +202,45 @@
 <body class="antialiased min-h-screen flex flex-col justify-between">
 
   <!-- NAVBAR -->
-  <header class="w-full bg-white border-b border-gray-100 shadow-sm py-6 px-8 sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto flex items-center justify-center relative">
-          <nav class="hidden md:flex items-center gap-10 justify-center">
-              <a href="index.html" class="nav-link">Inicio</a>
-              <a href="servicios.html" class="nav-link active">Servicios</a>
-              <a href="profesionales.html" class="nav-link">Profesionales</a>
-              <a href="alianzas_internacionales.html" class="nav-link">Alianzas</a>
-              <a href="index.html#contacto-interactivo" class="nav-link">Contacto</a>
-          </nav>
-          <div class="md:hidden w-full flex justify-end">
-              <button id="menu-btn" class="text-gray-800 focus:outline-none">
-                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                  </svg>
-              </button>
-          </div>
-      </div>
-      <div id="mobile-menu" class="hidden md:hidden pt-4 pb-3 border-t border-gray-100 mt-4 flex flex-col items-center gap-4 text-sm tracking-widest uppercase">
-          <a href="index.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Inicio</a>
-          <a href="servicios.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Servicios</a>
-          <a href="profesionales.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Profesionales</a>
-          <a href="alianzas_internacionales.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Alianzas</a>
-          <a href="index.html#contacto-interactivo" class="text-[#C5A059] hover:text-gray-500 font-bold">Contacto</a>
-      </div>
+  <header class="w-full bg-white border-b border-gray-100 shadow-sm py-4 sm:py-5 px-6 sm:px-8 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <!-- Nombre de la firma (PC y Mobile) -->
+        <a href="index.html" class="nav-marca-animada inline-flex flex-col items-start gap-[0.8px] overflow-hidden py-1 select-none shrink-0 group">
+            <span class="marca-crlex-titulo text-[39px] md:text-[52px] group-hover:text-[#C5A059] transition-colors">
+                CRLexcorp
+            </span>
+            <span class="nav-sub-animado marca-crlex-sub text-[6.2px] sm:text-[8.5px] md:text-[8.2px]">
+                ATTORNEYS AT LAW - COSTA RICA
+            </span>
+        </a>
+
+        <!-- Menú en PC a la derecha -->
+        <nav class="hidden md:flex items-center gap-10 justify-end">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="servicios.html" class="nav-link active">Servicios</a>
+            <a href="profesionales.html" class="nav-link">Profesionales</a>
+            <a href="alianzas_internacionales.html" class="nav-link">Alianzas</a>
+            <a href="index.html#contacto-interactivo" class="nav-link nav-cta">Contacto</a>
+        </nav>
+
+        <!-- Botón hamburguesa en Mobile a la derecha -->
+        <div class="md:hidden flex items-center">
+            <button id="menu-btn" class="text-gray-800 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- NAVBAR Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden pt-4 pb-3 border-t border-gray-100 mt-4 flex flex-col items-center gap-4 text-sm tracking-widest uppercase">
+        <a href="index.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Inicio</a>
+        <a href="servicios.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Servicios</a>
+        <a href="profesionales.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Profesionales</a>
+        <a href="alianzas_internacionales.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Alianzas</a>
+        <a href="index.html#contacto-interactivo" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-5 py-2 border border-[#C5A059] rounded-md bg-[#C5A059]/15 text-[#C5A059] hover:bg-[#C5A059] hover:text-[#0A1128] font-bold transition-colors">Contacto</a>
+    </div>
   </header>
 
   <!-- SECCIÓN PRINCIPAL: NUESTROS SERVICIOS (FONDO AZUL MARINO) -->
