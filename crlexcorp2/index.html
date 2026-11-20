@@ -209,6 +209,33 @@
         .nav-sub-animado {
             animation: emergerDesdeAbajo 1s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
         }
+                @keyframes entrarDesdeDerecha {
+            0% {
+                opacity: 0;
+                transform: translateX(65px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-entrar-izq {
+            opacity: 0;
+            animation: entrarDesdeDerecha 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .hero-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .hero-delay-2 {
+            animation-delay: 0.42s;
+        }
+
+        .hero-delay-3 {
+            animation-delay: 0.65s;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -254,15 +281,45 @@
     </header>
 
     <main class="flex-grow">
-    <!-- BANNER IMAGEN CON LOGO SUPERPUESTO -->
-    <section class="relative w-full overflow-hidden leading-none bg-[#050C1A]">
-        <img src="imagenes/mapa.avif" alt="Mapa de cobertura y presencia internacional - CRLEXCORP Abogados" class="w-full h-auto block object-cover">
+   <!-- BANNER IMAGEN CON LOGO SUPERPUESTO -->
+        <section class="relative w-full overflow-hidden leading-none bg-[#050C1A]">
+            <img src="imagenes/mapa.avif" alt="Mapa de cobertura y presencia internacional - CRLEXCORP Abogados" class="w-full h-auto block object-cover">
 
-        <!-- Logo superpuesto a la izquierda con animación corriendo hacia la derecha -->
-        <div class="logo-banner-der absolute inset-y-0 left-0 h-full flex items-center pl-2 sm:pl-6 md:pl-4 z-10 pointer-events-none">
-            <img src="imagenes/logosinfondo.avif" alt="Logo CRLEXCORP Abogados" class="h-[72%] sm:h-[78%] md:h-[80%] w-auto max-w-[34vw] sm:max-w-[38vw] md:max-w-[45vw] ml-0 sm:ml-2 md:ml-0 md:-translate-x-[28px] object-contain">
-        </div>
-    </section>
+            <!-- Logo superpuesto a la izquierda con animación corriendo hacia la derecha -->
+            <div class="logo-banner-der absolute inset-y-0 left-0 h-full flex items-center pl-0 sm:pl-0 md:pl-0 z-10 pointer-events-none">
+                <img src="imagenes/logosinfondo.avif" alt="Logo CRLEXCORP Abogados" class="h-full sm:h-full md:h-full w-auto max-w-[49vw] sm:max-w-[54.6vw] md:max-w-[64.4vw] -ml-6 sm:-ml-8 md:-ml-12 -translate-x-[10%] md:-translate-x-[76px] object-contain">
+            </div>
+
+            <!-- Bloque de texto y CTA separado más a la derecha del logo (~3 cm extra en PC) -->
+            <div class="absolute inset-0 z-20 flex items-center justify-start pl-[34vw] sm:pl-[37vw] md:pl-[33vw] pr-6 sm:pr-10 leading-normal">
+                <div class="w-full max-w-md lg:max-w-lg md:ml-16 lg:ml-24 flex flex-col items-start justify-center">
+
+                    <!-- H2: Subtítulo superior (Kicker) -->
+                    <h2 class="hero-entrar-izq hero-delay-1 text-sm sm:text-base lg:text-lg text-[#E5C47B] font-semibold tracking-wide mb-1.5 sm:mb-2 [text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_18px_rgba(0,0,0,0.9)]">
+                        La tranquilidad de contar con el equipo legal correcto.
+                    </h2>
+
+                    <!-- H1: Título principal ajustado a 3 renglones en escritorio -->
+                    <h1 class="hero-entrar-izq hero-delay-2 text-base sm:text-xl lg:text-3xl font-serif font-bold text-white mb-2 sm:mb-3 leading-snug [text-shadow:0_3px_12px_rgba(0,0,0,0.98),0_0_24px_rgba(0,0,0,0.9)]">
+                        Soluciones integrales en materia <span class="text-[#E5C47B]">corporativa, penal, laboral, tributaria e internacional.</span>
+                    </h1>
+
+                    <!-- Párrafo descriptivo secundario -->
+                    <p class="hero-entrar-izq hero-delay-2 text-xs sm:text-sm lg:text-base text-white font-medium font-sans mb-4 sm:mb-6 [text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_18px_rgba(0,0,0,0.9)]">
+                        Resultados claros cuando más lo necesita.
+                    </p>
+
+                    <!-- Botón Call To Action -->
+                    <a href="#contacto-interactivo" class="hero-entrar-izq hero-delay-3 inline-flex items-center justify-center px-5 sm:px-7 py-2.5 sm:py-3 bg-[#C5A059] text-white font-semibold rounded-lg shadow-[0_6px_20px_rgba(0,0,0,0.65)] hover:bg-[#b08c47] transition-all duration-300 transform hover:-translate-y-0.5 font-sans text-xs sm:text-sm lg:text-base">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        AGENDAR SESIÓN LEGAL
+                    </a>
+
+                </div>
+            </div>
+        </section>
 
         <!-- LÍNEA BLANCA -->
         <div class="w-full h-[2px] bg-white"></div>
