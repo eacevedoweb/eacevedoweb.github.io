@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-<html lang="es">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRLEXCORP ABOGADOS</title>
     <!-- Tailwind CSS v4 -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
+
     <!-- Librería AOS para efecto de aparición al bajar -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -141,7 +139,7 @@
             background-color: #20ba5a;
         }
         .whatsapp-icon { width: 32px; height: 32px; fill: currentColor; }
-       
+
         @keyframes correrHaciaDerecha {
             0% {
                 opacity: 0;
@@ -173,7 +171,7 @@
         .nav-link.nav-cta::after {
             display: none;
         }
-                .marca-crlex-titulo {
+        .marca-crlex-titulo {
             font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
             color: #9E813E;
             font-weight: 600;
@@ -191,7 +189,7 @@
             line-height: 1.2;
             letter-spacing: 0.09em;
         }
-                @keyframes emergerDesdeAbajo {
+        @keyframes emergerDesdeAbajo {
             0% {
                 opacity: 0;
                 transform: translateY(26px);
@@ -209,7 +207,7 @@
         .nav-sub-animado {
             animation: emergerDesdeAbajo 1s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
         }
-                @keyframes entrarDesdeDerecha {
+        @keyframes entrarDesdeDerecha {
             0% {
                 opacity: 0;
                 transform: translateX(65px);
@@ -277,48 +275,77 @@
             <a href="servicios.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Servicios</a>
             <a href="profesionales.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Profesionales</a>
             <a href="alianzas_internacionales.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Alianzas</a>
-            <a href="#contacto-interactivo" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-5 py-2 border border-[#C5A059] rounded-md bg-[#C5A059]/15 text-[#C5A059] hover:bg-[#C5A059] hover:text-[#0A1128] font-bold transition-colors">Contacto</a>        </div>
+            <a href="#contacto-interactivo" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-5 py-2 border border-[#C5A059] rounded-md bg-[#C5A059]/15 text-[#C5A059] hover:bg-[#C5A059] hover:text-[#0A1128] font-bold transition-colors">Contacto</a>
+        </div>
     </header>
 
     <main class="flex-grow">
-   <!-- BANNER IMAGEN CON LOGO SUPERPUESTO -->
-        <section class="relative w-full overflow-hidden leading-none bg-[#050C1A]">
-            <img src="imagenes/mapa.avif" alt="Mapa de cobertura y presencia internacional - CRLEXCORP Abogados" class="w-full h-auto block object-cover">
+        <!-- BANNER HERO: ESCRITORIO (mapa.avif) + MÓVIL 9:16 (mapamobile.avif) -->
+        <section class="relative w-full overflow-hidden bg-[#050C1A]">
 
-            <!-- Logo superpuesto a la izquierda con animación corriendo hacia la derecha -->
-            <div class="logo-banner-der absolute inset-y-0 left-0 h-full flex items-center pl-0 sm:pl-0 md:pl-0 z-10 pointer-events-none">
-                <img src="imagenes/logosinfondo.avif" alt="Logo CRLEXCORP Abogados" class="h-full sm:h-full md:h-full w-auto max-w-[49vw] sm:max-w-[54.6vw] md:max-w-[64.4vw] -ml-6 sm:-ml-8 md:-ml-12 -translate-x-[10%] md:-translate-x-[76px] object-contain">
+            <!-- VERSIÓN ESCRITORIO / TABLET -->
+            <div class="hidden md:block relative w-full leading-none">
+                <img src="imagenes/mapa.avif" alt="Mapa de cobertura y presencia internacional - CRLEXCORP Abogados" class="w-full h-auto block object-cover">
+
+                <!-- Logo superpuesto a la izquierda con animación corriendo hacia la derecha -->
+                <div class="logo-banner-der absolute inset-y-0 left-0 h-full flex items-center pl-0 z-10 pointer-events-none">
+                    <img src="imagenes/logosinfondo.avif" alt="Logo CRLEXCORP Abogados" class="h-full w-auto max-w-[64.4vw] -ml-12 -translate-x-[76px] object-contain">
+                </div>
+
+                <!-- Bloque de texto y CTA separado más a la derecha del logo -->
+                <div class="absolute inset-0 z-20 flex items-center justify-start pl-[33vw] pr-10 leading-normal">
+                    <div class="w-full max-w-lg ml-24 flex flex-col items-start justify-center">
+                        <h2 class="hero-entrar-izq hero-delay-1 text-lg text-[#E5C47B] font-semibold tracking-wide mb-2 [text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_18px_rgba(0,0,0,0.9)]">
+                            La tranquilidad de contar con el equipo legal correcto.
+                        </h2>
+                        <h1 class="hero-entrar-izq hero-delay-2 text-3xl font-serif font-bold text-white mb-3 leading-snug [text-shadow:0_3px_12px_rgba(0,0,0,0.98),0_0_24px_rgba(0,0,0,0.9)]">
+                            Soluciones integrales en materia <span class="text-[#E5C47B]">corporativa, penal, laboral, tributaria e internacional.</span>
+                        </h1>
+                        <p class="hero-entrar-izq hero-delay-2 text-base text-white font-medium font-sans mb-6 [text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_18px_rgba(0,0,0,0.9)]">
+                            Resultados claros cuando más lo necesita.
+                        </p>
+                        <a href="#contacto-interactivo" class="hero-entrar-izq hero-delay-3 inline-flex items-center justify-center px-7 py-3 bg-[#C5A059] text-white font-semibold rounded-lg shadow-[0_6px_20px_rgba(0,0,0,0.65)] hover:bg-[#b08c47] transition-all duration-300 transform hover:-translate-y-0.5 font-sans text-base">
+                            <svg class="w-5 h-5 mr-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            AGENDAR SESIÓN LEGAL
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Bloque de texto y CTA separado más a la derecha del logo (~3 cm extra en PC) -->
-            <div class="absolute inset-0 z-20 flex items-center justify-start pl-[34vw] sm:pl-[37vw] md:pl-[33vw] pr-6 sm:pr-10 leading-normal">
-                <div class="w-full max-w-md lg:max-w-lg md:ml-16 lg:ml-24 flex flex-col items-start justify-center">
+            <!-- VERSIÓN MÓVIL 9:16 -->
+            <div class="block md:hidden relative w-full aspect-[9/16] max-h-[88vh] overflow-hidden">
+                <img src="imagenes/mapamobile.avif" alt="Mapa de cobertura y presencia internacional - CRLEXCORP Abogados" class="w-full h-full object-cover object-center origin-center scale-[1.2] block [mask-image:linear-gradient(to_bottom,black_75%,rgba(0,0,0,0.25)_100%)]">                <!-- Logo protagonista primero al cargar en móvil -->
+                <div class="logo-banner-der absolute top-6 inset-x-0 z-10 flex justify-center px-6 pointer-events-none">
+                    <img src="imagenes/logosinfondo.avif" alt="Logo CRLEXCORP Abogados" class="h-54 w-auto max-w-[92vw] object-contain drop-shadow-[0_6px_18px_rgba(0,0,0,0.85)]">                </div>
 
-                    <!-- H2: Subtítulo superior (Kicker) -->
-                    <h2 class="hero-entrar-izq hero-delay-1 text-sm sm:text-base lg:text-lg text-[#E5C47B] font-semibold tracking-wide mb-1.5 sm:mb-2 [text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_18px_rgba(0,0,0,0.9)]">
+                <!-- Frase y CTA que aparecen al hacer scroll -->
+                <div class="absolute inset-x-0 bottom-[16%] z-20 px-5 pb-4 pt-4 flex flex-col items-start justify-end leading-normal"
+                    data-aos="fade-left"
+                    data-aos-duration="800">
+
+                    <h2 class="text-[0.95rem] text-[#E5C47B] font-semibold tracking-wide mb-1 [text-shadow:0_2px_10px_rgba(0,0,0,0.98),0_0_18px_rgba(0,0,0,0.95)]">
                         La tranquilidad de contar con el equipo legal correcto.
                     </h2>
 
-                    <!-- H1: Título principal ajustado a 3 renglones en escritorio -->
-                    <h1 class="hero-entrar-izq hero-delay-2 text-base sm:text-xl lg:text-3xl font-serif font-bold text-white mb-2 sm:mb-3 leading-snug [text-shadow:0_3px_12px_rgba(0,0,0,0.98),0_0_24px_rgba(0,0,0,0.9)]">
+                    <h1 class="text-[1.4rem] font-serif font-bold text-white mb-1.5 leading-snug [text-shadow:0_3px_12px_rgba(0,0,0,0.98),0_0_24px_rgba(0,0,0,0.95)]">
                         Soluciones integrales en materia <span class="text-[#E5C47B]">corporativa, penal, laboral, tributaria e internacional.</span>
                     </h1>
 
-                    <!-- Párrafo descriptivo secundario -->
-                    <p class="hero-entrar-izq hero-delay-2 text-xs sm:text-sm lg:text-base text-white font-medium font-sans mb-4 sm:mb-6 [text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_18px_rgba(0,0,0,0.9)]">
+                    <p class="text-[11px] text-white font-medium font-sans mb-3 [text-shadow:0_2px_10px_rgba(0,0,0,0.98),0_0_18px_rgba(0,0,0,0.95)]">
                         Resultados claros cuando más lo necesita.
                     </p>
 
-                    <!-- Botón Call To Action -->
-                    <a href="#contacto-interactivo" class="hero-entrar-izq hero-delay-3 inline-flex items-center justify-center px-5 sm:px-7 py-2.5 sm:py-3 bg-[#C5A059] text-white font-semibold rounded-lg shadow-[0_6px_20px_rgba(0,0,0,0.65)] hover:bg-[#b08c47] transition-all duration-300 transform hover:-translate-y-0.5 font-sans text-xs sm:text-sm lg:text-base">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <a href="#contacto-interactivo" class="inline-flex items-center justify-center px-4 py-2 bg-[#C5A059] text-white font-semibold rounded-lg shadow-[0_6px_20px_rgba(0,0,0,0.75)] hover:bg-[#b08c47] transition-all duration-300 font-sans text-xs">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                         AGENDAR SESIÓN LEGAL
                     </a>
-
                 </div>
             </div>
+
         </section>
 
         <!-- LÍNEA BLANCA -->
@@ -524,9 +551,9 @@
             </div>
         </section>
 
-<!-- SECCIÓN NUESTROS SERVICIOS -->
+        <!-- SECCIÓN NUESTROS SERVICIOS -->
         <section class="py-24 px-6 relative overflow-hidden" style="background-color: #F4EFE6;">
-            
+
             <!-- LOGO DE FONDO CON MOVIMIENTO INFINITO DE DERECHA A IZQUIERDA -->
             <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center">
                 <div class="absolute left-1/2 -translate-x-1/2 w-[750px] opacity-05">
@@ -576,13 +603,9 @@
                     <div class="bg-[#0A1128] p-8 rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 border border-white/10 flex flex-col text-left" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="w-14 h-14 rounded-full bg-[#C5A059] flex items-center justify-center mb-6 shadow-md">
                             <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                <!-- Estructura del libro con lomo curvo inferior -->
                                 <path d="M5 19V5a2 2 0 0 1 2-2h11a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H7a2 2 0 0 0-2 2zm0 0a2 2 0 0 0 2 2h12" />
-                                <!-- Línea vertical del lomo izquierdo -->
                                 <path d="M8 3v15" />
-                                <!-- Marcapáginas superior -->
                                 <path d="M12.5 3v4l1.5-1.2L15.5 7V3" />
-                                <!-- Balanza de la justicia -->
                                 <path d="M14 9.5v6.5" />
                                 <path d="M12.2 16h3.6" />
                                 <path d="M11 11h6" />
@@ -634,29 +657,18 @@
                     <div class="bg-[#0A1128] p-8 rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 border border-white/10 flex flex-col text-left" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="w-14 h-14 rounded-full bg-[#C5A059] flex items-center justify-center mb-6 shadow-md">
                             <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                <!-- Arco del globo terráqueo (interrumpido limpiamente donde van los perfiles) -->
                                 <path d="M7.5 13.8A5.2 5.2 0 0 1 15 7.5" />
                                 <path d="M16.8 11.2A5.2 5.2 0 0 1 9.8 16.8" />
-                                
-                                <!-- Continentes interiores del globo -->
                                 <path d="M9.5 8.5c1.2.4 1.5 1.8.5 2.7-.8.7-.5 2 .5 2.3.8.2 1 1.3.4 2.2" />
                                 <path d="M14.2 8.2c-.8.7-.6 1.8.4 2.1" />
                                 <path d="M15.8 12.2c-1.2-.2-1.8.8-1.4 1.9.3.8-.2 1.6-1 1.9" />
-
-                                <!-- Perfil superior derecho (cabeza y hombros cerrados) -->
                                 <circle cx="17.8" cy="6.2" r="1.9" />
                                 <path d="M14.5 10.6c0-1.6 1.5-2.6 3.3-2.6s3.3 1 3.3 2.6h-6.6z" />
-
-                                <!-- Perfil inferior izquierdo (cabeza y hombros cerrados) -->
                                 <circle cx="6.2" cy="15.2" r="1.9" />
                                 <path d="M2.9 19.6c0-1.6 1.5-2.6 3.3-2.6s3.3 1 3.3 2.6H2.9z" />
-
-                                <!-- Flecha curva superior (totalmente separada del globo) -->
                                 <path d="M12.5 3.6A8.8 8.8 0 0 0 4.2 9.5" />
                                 <path d="M3.6 7.4l.5 2.3 2.3-.5" />
                                 <path d="M10.8 2.4l2 1.2-1.3 1.9" />
-
-                                <!-- Flecha curva inferior (totalmente separada del globo) -->
                                 <path d="M11.5 20.4A8.8 8.8 0 0 0 19.8 14.5" />
                                 <path d="M20.4 16.6l-.5-2.3-2.3.5" />
                             </svg>
@@ -669,7 +681,6 @@
                     <div class="bg-[#0A1128] p-8 rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 border border-white/10 flex flex-col text-left" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="w-14 h-14 rounded-full bg-[#C5A059] flex items-center justify-center mb-6 shadow-md">
                             <svg class="w-13 h-13 text-white" fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                <!-- Globo terráqueo central limpio -->
                                 <circle cx="12" cy="12" r="5" />
                                 <path d="M12 7v10" />
                                 <path d="M7 12h10" />
@@ -677,21 +688,13 @@
                                 <path d="M8.5 15.2c1.3-.9 2.2-.9 3.5 0" />
                                 <path d="M9 9.5c.8 1.5.8 2.5 0 5" />
                                 <path d="M15 9.5c-.8 1.5-.8 2.5 0 5" />
-
-                                <!-- Flecha curva superior (izquierda hacia arriba, dejando libre la esquina superior derecha) -->
                                 <path d="M4.2 13.5A8.2 8.2 0 0 1 12.5 3.8" />
                                 <path d="M10.5 2.5l2.3 1.3-1.4 2.2" />
-
-                                <!-- Moneda superior derecha en el espacio libre entre las flechas -->
                                 <circle cx="18.2" cy="5.8" r="2.7" />
                                 <path d="M18.2 4.6v2.4" />
                                 <path d="M18.9 5.1c0-.2-.3-.3-.7-.3s-.7.1-.7.4.3.3.7.5.7.3.7.5-.3.4-.7.4-.7-.1-.7-.4" />
-
-                                <!-- Flecha curva inferior (derecha hacia abajo, dejando libre la esquina inferior izquierda) -->
                                 <path d="M19.8 10.5A8.2 8.2 0 0 1 11.5 20.2" />
                                 <path d="M13.5 21.5l-2.3-1.3 1.4-2.2" />
-
-                                <!-- Moneda inferior izquierda en el espacio libre entre las flechas -->
                                 <circle cx="5.8" cy="18.2" r="2.7" />
                                 <path d="M5.8 17v2.4" />
                                 <path d="M6.5 17.5c0-.2-.3-.3-.7-.3s-.7.1-.7.4.3.3.7.5.7.3.7.5-.3.4-.7.4-.7-.1-.7-.4" />
@@ -713,13 +716,13 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- SECCIÓN ALIANZAS INTERNACIONALES -->
-         <div class="w-full h-[2px] bg-white"></div>
+        <div class="w-full h-[2px] bg-white"></div>
         <section class="py-24 px-6 relative overflow-hidden" style="background-color: #0A1128;">
             <!-- Imagen de fondo con opacidad/difuminado -->
             <div class="absolute inset-0 bg-cover bg-center z-0 opacity-40 pointer-events-none" style="background-image: url('imagenes/alianzas_internacionales/pordata_alianzas.avif');"></div>
-            
+
             <!-- Difuminado / Degradado en el borde inferior para fundir con el diseño -->
             <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0A1128] to-transparent pointer-events-none z-0"></div>
 
@@ -789,7 +792,7 @@
                 </div>
             </div>
         </section>
-         <!-- LÍNEA BLANCA -->
+        <!-- LÍNEA BLANCA -->
         <div class="w-full h-[2px] bg-white"></div>
 
     </main>
@@ -798,9 +801,9 @@
     <footer class="w-full bg-gray-900 text-white py-6 text-center text-xs font-sans">
         <!-- SECCIÓN DE CONTACTO INTERACTIVA + UBICACIÓN -->
         <section id="contacto-interactivo" class="py-24 px-6 relative bg-[#0A1128] text-white">
-            
+
             <div class="max-w-7xl mx-auto relative z-10">
-                
+
                 <!-- TÍTULO GENERAL DE LA SECCIÓN -->
                 <div class="text-center mb-16" data-aos="fade-up">
                     <h2 class="text-4xl font-bold text-white tracking-wider uppercase mb-3">Asesoría Jurídica y Ubicación</h2>
@@ -815,12 +818,12 @@
                     <div class="lg:col-span-7 bg-white/5 border border-[#C5A059]/30 rounded-3xl p-8 md:p-10 shadow-2xl backdrop-blur-md flex flex-col justify-center" data-aos="zoom-in-up">
                         <!-- LOGO Y NOMBRE DE LA FIRMA -->
                         <div class="flex flex-col items-center justify-center mb-1">
-                                <img src="imagenes/Logo_CRLEX_TEST1_NBCKG.avif" alt="CRLEXCORP Logo" class="w-70 h-auto mb-0 opacity-90">
-                            </div>
+                            <img src="imagenes/Logo_CRLEX_TEST1_NBCKG.avif" alt="CRLEXCORP Logo" class="w-70 h-auto mb-0 opacity-90">
+                        </div>
 
-                            <!-- PASO INICIAL: BOTÓN DE LLAMADA A LA ACCIÓN -->
-                            <div id="step-start" class="text-center pt-0 pb-6">
-                                <h3 class="text-2xl font-bold text-white mb-3">¿Necesita respaldo legal especializado?</h3>
+                        <!-- PASO INICIAL: BOTÓN DE LLAMADA A LA ACCIÓN -->
+                        <div id="step-start" class="text-center pt-0 pb-6">
+                            <h3 class="text-2xl font-bold text-white mb-3">¿Necesita respaldo legal especializado?</h3>
                             <p class="text-gray-300 text-base mb-8 font-sans max-w-lg mx-auto leading-relaxed">Permítanos conocer su requerimiento legal en tres sencillos pasos para coordinar una atención directa con nuestros abogados.</p>
                             <button type="button" onclick="iniciarFormulario()" class="inline-block bg-[#C5A059] hover:bg-[#b08d4c] text-[#0A1128] font-bold text-sm md:text-base tracking-widest uppercase py-4 px-10 rounded-full shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer font-sans">
                                 Conversemos sobre su caso
@@ -829,14 +832,14 @@
 
                         <!-- FORMULARIO MULTI-PASO (OCULTO INICIALMENTE) -->
                         <form id="interactive-form" class="hidden space-y-6" onsubmit="enviarCita(event)">
-                            
+
                             <!-- PASO 1: TIPO DE CASO / ÁREA LEGAL -->
                             <div id="form-step-1" class="form-step">
                                 <div class="flex items-center gap-4 mb-6">
                                     <span class="w-9 h-9 rounded-full bg-[#C5A059] text-[#0A1128] font-bold flex items-center justify-center text-base shrink-0">1</span>
                                     <h3 class="text-xl font-bold text-white">¿Cuál es el área o tipo de caso que tiene?</h3>
                                 </div>
-                                
+
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[340px] overflow-y-auto pr-2">
                                     <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
                                         <input type="radio" name="area_legal" value="Derecho Corporativo" required class="text-[#C5A059] focus:ring-[#C5A059]">
@@ -907,9 +910,9 @@
                                     <!-- RELOJ ESTILO IWATCH (HORAS Y MINUTOS INDEPENDIENTES) -->
                                     <div>
                                         <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Hora de preferencia (8:00 AM - 5:00 PM)</label>
-                                        
+
                                         <div class="bg-[#0A1128] border border-white/20 rounded-2xl p-4 flex flex-col items-center justify-center relative shadow-inner">
-                                            
+
                                             <!-- Visor de Hora Seleccionada -->
                                             <div class="text-2xl font-bold text-[#C5A059] mb-4 tracking-widest bg-white/5 py-2 px-6 rounded-xl border border-[#C5A059]/30" id="reloj-display">
                                                 08:00 AM
@@ -917,7 +920,7 @@
 
                                             <!-- Contenedor de Ruedas de Selección -->
                                             <div class="flex items-center justify-center gap-4 w-full">
-                                                
+
                                                 <!-- Columna Horas -->
                                                 <div class="flex-1 text-center">
                                                     <span class="text-[10px] text-gray-400 uppercase tracking-widest block mb-1">Hora</span>
@@ -986,7 +989,7 @@
 
                     <!-- COLUMNA DERECHA (5 COLUMNAS): MAPA DE GOOGLE MAPS -->
                     <div class="lg:col-span-5 bg-white/5 border border-[#C5A059]/30 rounded-3xl p-8 shadow-2xl backdrop-blur-md flex flex-col justify-between" data-aos="zoom-in-up" data-aos-delay="200">
-                        
+
                         <div>
                             <!-- TÍTULO ENCUÉNTRANOS -->
                             <div class="text-center mb-6">
@@ -997,11 +1000,11 @@
 
                             <!-- CONTENEDOR DEL MAPA CON BORDES REDONDOS -->
                             <div class="w-full h-72 rounded-2xl overflow-hidden border border-[#C5A059]/40 shadow-inner mb-6">
-                                <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.0332295980606!2d-84.06450902446704!3d9.931190590170626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb001c1166df%3A0xb45018c55ddd5a45!2sCRLEXCORP%20Abogados%20Costa%20Rica!5e0!3m2!1ses!2scr!4v1794609650556!5m2!1ses!2scr" 
-                                    class="w-full h-full border-0" 
-                                    allowfullscreen="" 
-                                    loading="lazy" 
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.0332295980606!2d-84.06450902446704!3d9.931190590170626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb001c1166df%3A0xb45018c55ddd5a45!2sCRLEXCORP%20Abogados%20Costa%20Rica!5e0!3m2!1ses!2scr!4v1794609650556!5m2!1ses!2scr"
+                                    class="w-full h-full border-0"
+                                    allowfullscreen=""
+                                    loading="lazy"
                                     referrerpolicy="strict-origin-when-cross-origin">
                                 </iframe>
                             </div>
@@ -1024,7 +1027,6 @@
 
             </div>
         </section>
-
 
         <p>&copy; 2026 CRLEXCORP ABOGADOS. Todos los derechos reservados.</p>
     </footer>
@@ -1054,126 +1056,117 @@
                 mobileMenu.classList.toggle('hidden');
             });
         }
-        
-    </script>
-            <!-- SCRIPT PARA CONTROLAR EL FORMULARIO INTERACTIVO -->
-        <script>
-            let horaSeleccionada = 8;
-            let minutoSeleccionado = 0;
-
-            function iniciarFormulario() {
-                document.getElementById('step-start').classList.add('hidden');
-                document.getElementById('interactive-form').classList.remove('hidden');
-                inicializarReloj();
-            }
-
-            function siguientePaso(paso) {
-                document.getElementById('form-step-1').classList.add('hidden');
-                document.getElementById('form-step-2').classList.add('hidden');
-                document.getElementById('form-step-3').classList.add('hidden');
-                document.getElementById('form-step-' + paso).classList.remove('hidden');
-            }
-
-            // Inicializar las ruedas estilo iWatch
-            function inicializarReloj() {
-                const wheelHoras = document.getElementById('wheel-horas');
-                const wheelMinutos = document.getElementById('wheel-minutos');
-                if (!wheelHoras || !wheelMinutos) return;
-
-                wheelHoras.innerHTML = '';
-                wheelMinutos.innerHTML = '';
-
-                // Poblar Horas (8 AM a 5 PM -> 8 a 17)
-                for (let h = 8; h <= 16; h++) {
-                    let formatoHora = h > 12 ? h - 12 : h;
-                    let ampm = h >= 12 ? 'PM' : 'AM';
-                    let div = document.createElement('div');
-                    div.className = `py-2 text-sm font-bold cursor-pointer rounded-lg snap-center transition-all ${h === horaSeleccionada ? 'bg-[#C5A059] text-[#0A1128]' : 'text-white hover:bg-white/10'}`;
-                    div.dataset.value = h;
-                    div.textContent = `${formatoHora < 10 ? '0' + formatoHora : formatoHora} ${ampm}`;
-                    div.onclick = () => {
-                        horaSeleccionada = h;
-                        verificarValidezHora();
-                        inicializarReloj();
-                    };
-                    wheelHoras.appendChild(div);
-                }
-
-                // Poblar Minutos (00, 15, 30, 45)
-                const minutosValidos = [0, 15, 30, 45];
-                minutosValidos.forEach(m => {
-                    let div = document.createElement('div');
-                    div.className = `py-2 text-sm font-bold cursor-pointer rounded-lg snap-center transition-all ${m === minutoSeleccionado ? 'bg-[#C5A059] text-[#0A1128]' : 'text-white hover:bg-white/10'}`;
-                    div.dataset.value = m;
-                    div.textContent = m === 0 ? '00' : m;
-                    div.onclick = () => {
-                        minutoSeleccionado = m;
-                        verificarValidezHora();
-                        inicializarReloj();
-                    };
-                    wheelMinutos.appendChild(div);
-                });
-
-                actualizarDisplayReloj();
-            }
-
-            // Validar la excepción de almuerzo (12:00 PM - 1:00 PM) y el límite de las 5 PM
-            function verificarValidezHora() {
-                const aviso = document.getElementById('almuerzo-aviso');
-                
-                // Si son las 12:00 PM (hora 12, min > 0) o cualquier minuto entre 12:01 y 12:45
-                if (horaSeleccionada === 12 && minutoSeleccionado > 0) {
-                    minutoSeleccionado = 0; // Forzar a la 1:00 PM si caen en almuerzo
-                    horaSeleccionada = 13;
-                    aviso.classList.remove('hidden');
-                    setTimeout(() => aviso.classList.add('hidden'), 3500);
-                } else if (horaSeleccionada === 17 && minutoSeleccionado > 0) {
-                    minutoSeleccionado = 0; // El límite es exactamente las 5:00 PM (17:00)
-                } else {
-                    aviso.classList.add('hidden');
-                }
-            }
-
-            function actualizarDisplayReloj() {
-                const display = document.getElementById('reloj-display');
-                let h = horaSeleccionada;
-                let m = minutoSeleccionado;
-
-                let formatoHora = h > 12 ? h - 12 : h;
-                let ampm = h >= 12 ? 'PM' : 'AM';
-                let formatoMinuto = m === 0 ? '00' : m;
-
-                display.textContent = `${formatoHora < 10 ? '0' + formatoHora : formatoHora}:${formatoMinuto} ${ampm}`;
-            }
-
-            function enviarCita(event) {
-                event.preventDefault();
-                
-                const areaSeleccionada = document.querySelector('input[name="area_legal"]:checked') ? document.querySelector('input[name="area_legal"]:checked').value : 'No especificada';
-                const fecha = document.getElementById('fecha_cita').value || 'Por definir';
-                
-                let h = horaSeleccionada;
-                let m = minutoSeleccionado;
-                let formatoHora = h > 12 ? h - 12 : h;
-                let ampm = h >= 12 ? 'PM' : 'AM';
-                let horarioTexto = `${formatoHora < 10 ? '0' + formatoHora : formatoHora}:${m === 0 ? '00' : m} ${ampm}`;
-
-                const nombre = document.getElementById('nombre_cliente').value;
-                const telefono = document.getElementById('telefono_cliente').value;
-
-                const mensaje = `*SOLICITUD DE ASESORÍA LEGAL - CRLEXCORP*%0A%0A` +
-                                `*Área Legal:* ${areaSeleccionada}%0A` +
-                                `*Fecha Preferida:* ${fecha}%0A` +
-                                `*Hora:* ${horarioTexto}%0A` +
-                                `*Nombre:* ${nombre}%0A` +
-                                `*Teléfono:* ${telefono}`;
-
-                window.open(`https://wa.me/50685847286?text=${mensaje}`, '_blank');
-            }
-        </script>
     </script>
 
-        
-   
+    <!-- SCRIPT PARA CONTROLAR EL FORMULARIO INTERACTIVO -->
+    <script>
+        let horaSeleccionada = 8;
+        let minutoSeleccionado = 0;
+
+        function iniciarFormulario() {
+            document.getElementById('step-start').classList.add('hidden');
+            document.getElementById('interactive-form').classList.remove('hidden');
+            inicializarReloj();
+        }
+
+        function siguientePaso(paso) {
+            document.getElementById('form-step-1').classList.add('hidden');
+            document.getElementById('form-step-2').classList.add('hidden');
+            document.getElementById('form-step-3').classList.add('hidden');
+            document.getElementById('form-step-' + paso).classList.remove('hidden');
+        }
+
+        function inicializarReloj() {
+            const wheelHoras = document.getElementById('wheel-horas');
+            const wheelMinutos = document.getElementById('wheel-minutos');
+            if (!wheelHoras || !wheelMinutos) return;
+
+            wheelHoras.innerHTML = '';
+            wheelMinutos.innerHTML = '';
+
+            for (let h = 8; h <= 16; h++) {
+                let formatoHora = h > 12 ? h - 12 : h;
+                let ampm = h >= 12 ? 'PM' : 'AM';
+                let div = document.createElement('div');
+                div.className = `py-2 text-sm font-bold cursor-pointer rounded-lg snap-center transition-all ${h === horaSeleccionada ? 'bg-[#C5A059] text-[#0A1128]' : 'text-white hover:bg-white/10'}`;
+                div.dataset.value = h;
+                div.textContent = `${formatoHora < 10 ? '0' + formatoHora : formatoHora} ${ampm}`;
+                div.onclick = () => {
+                    horaSeleccionada = h;
+                    verificarValidezHora();
+                    inicializarReloj();
+                };
+                wheelHoras.appendChild(div);
+            }
+
+            const minutosValidos = [0, 15, 30, 45];
+            minutosValidos.forEach(m => {
+                let div = document.createElement('div');
+                div.className = `py-2 text-sm font-bold cursor-pointer rounded-lg snap-center transition-all ${m === minutoSeleccionado ? 'bg-[#C5A059] text-[#0A1128]' : 'text-white hover:bg-white/10'}`;
+                div.dataset.value = m;
+                div.textContent = m === 0 ? '00' : m;
+                div.onclick = () => {
+                    minutoSeleccionado = m;
+                    verificarValidezHora();
+                    inicializarReloj();
+                };
+                wheelMinutos.appendChild(div);
+            });
+
+            actualizarDisplayReloj();
+        }
+
+        function verificarValidezHora() {
+            const aviso = document.getElementById('almuerzo-aviso');
+
+            if (horaSeleccionada === 12 && minutoSeleccionado > 0) {
+                minutoSeleccionado = 0;
+                horaSeleccionada = 13;
+                aviso.classList.remove('hidden');
+                setTimeout(() => aviso.classList.add('hidden'), 3500);
+            } else if (horaSeleccionada === 17 && minutoSeleccionado > 0) {
+                minutoSeleccionado = 0;
+            } else {
+                aviso.classList.add('hidden');
+            }
+        }
+
+        function actualizarDisplayReloj() {
+            const display = document.getElementById('reloj-display');
+            let h = horaSeleccionada;
+            let m = minutoSeleccionado;
+
+            let formatoHora = h > 12 ? h - 12 : h;
+            let ampm = h >= 12 ? 'PM' : 'AM';
+            let formatoMinuto = m === 0 ? '00' : m;
+
+            display.textContent = `${formatoHora < 10 ? '0' + formatoHora : formatoHora}:${formatoMinuto} ${ampm}`;
+        }
+
+        function enviarCita(event) {
+            event.preventDefault();
+
+            const areaSeleccionada = document.querySelector('input[name="area_legal"]:checked') ? document.querySelector('input[name="area_legal"]:checked').value : 'No especificada';
+            const fecha = document.getElementById('fecha_cita').value || 'Por definir';
+
+            let h = horaSeleccionada;
+            let m = minutoSeleccionado;
+            let formatoHora = h > 12 ? h - 12 : h;
+            let ampm = h >= 12 ? 'PM' : 'AM';
+            let horarioTexto = `${formatoHora < 10 ? '0' + formatoHora : formatoHora}:${m === 0 ? '00' : m} ${ampm}`;
+
+            const nombre = document.getElementById('nombre_cliente').value;
+            const telefono = document.getElementById('telefono_cliente').value;
+
+            const mensaje = `*SOLICITUD DE ASESORÍA LEGAL - CRLEXCORP*%0A%0A` +
+                            `*Área Legal:* ${areaSeleccionada}%0A` +
+                            `*Fecha Preferida:* ${fecha}%0A` +
+                            `*Hora:* ${horarioTexto}%0A` +
+                            `*Nombre:* ${nombre}%0A` +
+                            `*Teléfono:* ${telefono}`;
+
+            window.open(`https://wa.me/50685847286?text=${mensaje}`, '_blank');
+        }
+    </script>
 </body>
 </html>
