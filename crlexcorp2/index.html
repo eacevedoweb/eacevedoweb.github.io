@@ -881,9 +881,13 @@
                                         <input type="radio" name="area_legal" value="Comercio Internacional y Registros" class="text-[#C5A059] focus:ring-[#C5A059]">
                                         <span class="text-xs md:text-sm font-sans text-gray-200">Comercio Internacional y Registros</span>
                                     </label>
-                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all sm:col-span-2">
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
                                         <input type="radio" name="area_legal" value="Notariado Público" class="text-[#C5A059] focus:ring-[#C5A059]">
                                         <span class="text-xs md:text-sm font-sans text-gray-200">Notariado Público</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Otros" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Otros</span>
                                     </label>
                                 </div>
 
@@ -904,7 +908,7 @@
                                     <!-- FECHA -->
                                     <div>
                                         <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Fecha preferida para la cita</label>
-                                        <input type="date" id="fecha_cita" class="w-full bg-white/10 border border-white/20 rounded-xl p-4 text-white focus:outline-none focus:border-[#C5A059]">
+                                        <input type="date" id="fecha_cita" onchange="mostrarAvisoSeleccion()" class="w-full bg-white/10 border border-white/20 rounded-xl p-4 text-white focus:outline-none focus:border-[#C5A059]">
                                     </div>
 
                                     <!-- RELOJ ESTILO IWATCH (HORAS Y MINUTOS INDEPENDIENTES) -->
@@ -944,6 +948,10 @@
                                             <p id="almuerzo-aviso" class="text-[10px] text-amber-400/80 mt-2 hidden text-center">⚠️ Hora de almuerzo (12:00 PM - 1:00 PM) no disponible</p>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div id="aviso-seleccion-cita" class="hidden mt-5 p-3.5 rounded-xl bg-[#C5A059]/10 border border-[#C5A059]/40 text-gray-200 text-xs font-sans leading-relaxed text-left">
+                                    La fecha y hora seleccionadas están sujetas a disponibilidad y validación por parte de nuestro equipo. Al continuar, se enviará su solicitud por WhatsApp para coordinar y confirmar el espacio.
                                 </div>
 
                                 <div class="mt-8 flex justify-between">
@@ -1095,6 +1103,7 @@
                     horaSeleccionada = h;
                     verificarValidezHora();
                     inicializarReloj();
+                    mostrarAvisoSeleccion();
                 };
                 wheelHoras.appendChild(div);
             }
@@ -1109,6 +1118,7 @@
                     minutoSeleccionado = m;
                     verificarValidezHora();
                     inicializarReloj();
+                    mostrarAvisoSeleccion();
                 };
                 wheelMinutos.appendChild(div);
             });
@@ -1141,6 +1151,14 @@
             let formatoMinuto = m === 0 ? '00' : m;
 
             display.textContent = `${formatoHora < 10 ? '0' + formatoHora : formatoHora}:${formatoMinuto} ${ampm}`;
+        }
+
+        function mostrarAvisoSeleccion() {
+            const fecha = document.getElementById('fecha_cita')?.value;
+            const aviso = document.getElementById('aviso-seleccion-cita');
+            if (fecha && aviso) {
+                aviso.classList.remove('hidden');
+            }
         }
 
         function enviarCita(event) {
