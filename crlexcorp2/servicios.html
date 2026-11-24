@@ -603,17 +603,18 @@
 
       <div class="pt-4 border-t border-gold/20 flex flex-col sm:flex-row items-center justify-between gap-3">
         <span class="text-xs text-bone/60">¿Tiene una consulta urgente sobre esta materia?</span>
-        <a href="#contacto-interactivo" onclick="closeModal()" class="w-full sm:w-auto bg-gold hover:bg-gold-hover text-navy font-bold py-2.5 px-5 rounded-lg text-xs transition-all flex items-center justify-center gap-2">
+        <button type="button" onclick="irAConsultaDesdeModal()" class="w-full sm:w-auto bg-gold hover:bg-gold-hover text-navy font-bold py-2.5 px-5 rounded-lg text-xs transition-all flex items-center justify-center gap-2 cursor-pointer">
           <span>Consultar ahora</span>
           <i class="fa-solid fa-chevron-right text-navy text-xs"></i>
-        </a>
+        </button>
       </div>
     </div>
   </div>
 
   <!-- FOOTER -->
-    <footer class="w-full bg-gray-900 text-white py-6 text-center text-xs font-sans overflow-x-hidden">        <!-- SECCIÓN DE CONTACTO INTERACTIVA + UBICACIÓN -->
-        <section class="bg-[#0A1128] py-16 md:py-24 px-4 sm:px-6 lg:px-12 transition-colors duration-500 flex-grow overflow-x-hidden">
+    <footer class="w-full bg-gray-900 text-white py-6 text-center text-xs font-sans overflow-x-hidden">
+        <!-- SECCIÓN DE CONTACTO INTERACTIVA + UBICACIÓN -->
+        <section id="contacto-interactivo" class="bg-[#0A1128] py-16 md:py-24 px-4 sm:px-6 lg:px-12 transition-colors duration-500 flex-grow overflow-x-hidden">
             <div class="max-w-7xl mx-auto relative z-10">
 
                 <!-- TÍTULO GENERAL DE LA SECCIÓN -->
@@ -1059,8 +1060,26 @@
       }
     ];
 
+    // MAPEO ENTRE SERVICIO Y ÁREA LEGAL DEL FORMULARIO
+    const serviceToFormArea = {
+      0: "Derecho Corporativo",
+      1: "Servicios Internacionales",
+      2: "Cobros y Procesos Concursales",
+      3: "Derecho Penal",
+      4: "Derecho Comercial y Civil",
+      5: "Derecho Laboral",
+      6: "Derecho Tributario y Contable",
+      7: "Derecho Administrativo",
+      8: "Trámites Migratorios",
+      9: "Comercio Internacional y Registros",
+      10: "Notariado Público"
+    };
+
+    let currentServiceIndex = null;
+
     // MODAL HANDLERS
     function openModal(index) {
+      currentServiceIndex = index;
       const data = servicesData[index];
       document.getElementById('modalTitle').innerText = data.title;
       document.getElementById('modalCategory').innerText = data.category;
@@ -1095,6 +1114,32 @@
       setTimeout(() => {
         document.getElementById('serviceModal').classList.add('hidden');
       }, 300);
+    }
+
+    function irAConsultaDesdeModal() {
+      closeModal();
+
+      if (typeof iniciarFormulario === 'function') {
+        const formEl = document.getElementById('interactive-form');
+        if (formEl && formEl.classList.contains('hidden')) {
+          iniciarFormulario();
+        }
+      }
+
+      if (currentServiceIndex !== null && serviceToFormArea[currentServiceIndex]) {
+        const areaValue = serviceToFormArea[currentServiceIndex];
+        const radio = document.querySelector(`#interactive-form input[name="area_legal"][value="${areaValue}"]`);
+        if (radio) {
+          radio.checked = true;
+        }
+      }
+
+      setTimeout(() => {
+        const target = document.getElementById('contacto-interactivo');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 180);
     }
 
     // CATEGORY FILTERING LOGIC
