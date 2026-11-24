@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestros Servicios | CRLEXCORP ABOGADOS</title>
+  <link rel="icon" href="imagenes/logo_favicon2.ico" sizes="any">
+  <link rel="shortcut icon" href="imagenes/logo_favicon2.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="imagenes/logo_favicon2.ico">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Google Fonts: Cinzel, Inter, Playfair Display, Cormorant Garamond y Libre Baskerville (para la navbar) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#0A1128',
+            gold: '#C5A059',
+            'gold-hover': '#B08D4B',
+            bone: '#F4EFE6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Cinzel', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Evita desplazamiento lateral provocado por animaciones o elementos anchos */
+    html, body {
+      overflow-x: clip;
+      max-width: 100%;
+      font-family: 'Inter', sans-serif;
+      background-color: #0A1128;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ESTILOS DE LA BARRA DE NAVEGACIÓN (IDÉNTICOS A INDEX) */
+    @keyframes hazDorado {
+        0% { clip-path: inset(0 100% 0 0); opacity: 0; }
+        100% { clip-path: inset(0 0 0 0); opacity: 1; }
+    }
+
+    @keyframes destelloRayo {
+        0% { transform: translateX(-100%); opacity: 1; }
+        50% { opacity: 1; }
+        100% { transform: translateX(100%); opacity: 0; }
+    }
+
+    .nav-link {
+        font-family: 'Playfair Display', Georgia, serif;
+        position: relative;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding-bottom: 6px;
+        color: #C5A059;
+        animation: hazDorado 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        opacity: 0;
+        transition: color 0.3s ease;
+    }
+
+    .nav-link:nth-child(1) { animation-delay: 0.2s; }
+    .nav-link:nth-child(2) { animation-delay: 0.4s; }
+    .nav-link:nth-child(3) { animation-delay: 0.6s; }
+    .nav-link:nth-child(4) { animation-delay: 0.8s; }
+    .nav-link:nth-child(5) { animation-delay: 1.0s; }
+    .nav-link:nth-child(6) { animation-delay: 1.2s; }
+
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.9), transparent);
+        opacity: 0;
+        pointer-events: none;
+        animation: destelloRayo 1.2s ease-out forwards;
+    }
+
+    .nav-link:nth-child(1)::before { animation-delay: 0.2s; }
+    .nav-link:nth-child(2)::before { animation-delay: 0.4s; }
+    .nav-link:nth-child(3)::before { animation-delay: 0.6s; }
+    .nav-link:nth-child(4)::before { animation-delay: 0.8s; }
+    .nav-link:nth-child(5)::before { animation-delay: 1.0s; }
+    .nav-link:nth-child(6)::before { animation-delay: 1.2s; }
+
+    .nav-link:hover { color: #6B7280; }
+
+    .nav-link.active::after {
+        content: '';
+        position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+        background-color: #111827;
+    }
+
+    .nav-link.nav-cta {
+        padding: 8px 18px;
+        border: 1px solid #C5A059;
+        border-radius: 6px;
+        background-color: rgba(197, 160, 89, 0.12);
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
+    }
+
+    .nav-link.nav-cta:hover {
+        background-color: #C5A059;
+        color: #0A1128;
+        transform: translateY(-1px);
+    }
+
+    .nav-link.nav-cta::after {
+        display: none;
+    }
+
+    .marca-crlex-titulo {
+        font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+        color: #9E813E;
+        font-weight: 600;
+        line-height: 0.92;
+        letter-spacing: -0.01em;
+        transform: scaleX(0.92);
+        transform-origin: left center;
+    }
+
+    .marca-crlex-sub {
+        font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+        color: #111827;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 1.2;
+        letter-spacing: 0.09em;
+    }
+
+    @keyframes emergerDesdeAbajo {
+        0% {
+            opacity: 0;
+            transform: translateY(26px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nav-marca-animada {
+        animation: emergerDesdeAbajo 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .nav-sub-animado {
+        animation: emergerDesdeAbajo 1s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+    }
+
+    /* ESTILOS DE LA PÁGINA DE SERVICIOS */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0A1128;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .font-serif-title {
+      font-family: 'Cinzel', serif;
+    }
+
+    /* Animación suave para tarjetas */
+    .service-card {
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px -10px rgba(197, 160, 89, 0.15);
+    }
+
+    /* Modal Animation */
+    .modal-backdrop {
+      transition: opacity 0.3s ease;
+    }
+    .modal-content {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A1128;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C5A059;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #B08D4B;
+    }
+    .crlex-contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(201, 164, 92, 0.25);
+    width: 100%;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+    .crlex-contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #C9A45C; /* Dorado acorde al botón y logo */
+      text-decoration: none;
+      font-size: 15.5px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .crlex-contact-item:hover {
+      opacity: 0.85;
+      transform: translateX(3px);
+      color: #DFBD78;
+    }
+
+    .crlex-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: #C9A45C;
+    }
+    .crlex-social-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 6px;
+    }
+
+    .crlex-social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #C9A45C;
+        text-decoration: none;
+        transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    }
+
+    .crlex-social-link:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+        color: #DFBD78;
+    }
+
+    .crlex-social-icon {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- NAVBAR -->
+  <header class="w-full bg-white border-b border-gray-100 shadow-sm py-4 sm:py-5 px-6 sm:px-8 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <!-- Nombre de la firma (PC y Mobile) -->
+        <a href="index.html" class="nav-marca-animada inline-flex flex-col items-start gap-[0.8px] overflow-hidden py-1 select-none shrink-0 group">
+            <span class="marca-crlex-titulo text-[39px] md:text-[52px] group-hover:text-[#C5A059] transition-colors">
+                CRLexcorp
+            </span>
+            <span class="nav-sub-animado marca-crlex-sub text-[6.2px] sm:text-[8.5px] md:text-[8.2px]">
+                ATTORNEYS AT LAW - COSTA RICA
+            </span>
+        </a>
+
+        <!-- Menú en PC a la derecha -->
+        <nav class="hidden md:flex items-center gap-6 lg:gap-10 justify-end">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="servicios.html" class="nav-link active">Servicios</a>
+            <a href="profesionales.html" class="nav-link">Profesionales</a>
+            <a href="alianzas_internacionales.html" class="nav-link">Alianzas</a>
+            <a href="index.html#contacto-interactivo" class="nav-link nav-cta">Contacto</a>
+        </nav>
+
+        <!-- Botón hamburguesa en Mobile a la derecha -->
+        <div class="md:hidden flex items-center">
+            <button type="button" id="menu-btn" class="text-gray-800 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- NAVBAR Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden pt-4 pb-3 border-t border-gray-100 mt-4 flex flex-col items-center gap-4 text-sm tracking-widest uppercase">
+        <a href="index.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Inicio</a>
+        <a href="servicios.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Servicios</a>
+        <a href="profesionales.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Profesionales</a>
+        <a href="alianzas_internacionales.html" class="text-[#C5A059] hover:text-gray-500 font-bold">Alianzas</a>
+        <a href="index.html#contacto-interactivo" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-5 py-2 border border-[#C5A059] rounded-md bg-[#C5A059]/15 text-[#C5A059] hover:bg-[#C5A059] hover:text-[#0A1128] font-bold transition-colors">Contacto</a>
+    </div>
+  </header>
+
+  <!-- SECCIÓN PRINCIPAL: NUESTROS SERVICIOS (FONDO AZUL MARINO) -->
+  <section class="bg-[#0A1128] py-16 md:py-24 px-4 sm:px-6 lg:px-12 transition-colors duration-500 flex-grow">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- ENCABEZADO DE LA SECCIÓN -->
+      <div class="text-center mb-12" data-aos="fade-down" data-aos-duration="1000">
+        <span class="text-gold uppercase tracking-widest text-xs md:text-sm font-semibold mb-2 block">
+          Soluciones Legales Integrales
+        </span>
+        <h1 class="text-3xl md:text-5xl font-bold text-white font-serif-title tracking-tight">
+          NUESTROS SERVICIOS
+        </h1>
+        <div class="w-24 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+        <p class="text-bone/80 mt-5 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+          Ofrecemos asesoría corporativa, litigios y soluciones notariales con el más alto estándar de excelencia, respaldo transfronterizo y enfoque ético.
+        </p>
+
+        <!-- FILTROS Y BÚSQUEDA -->
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto bg-[#131d3b] p-3 rounded-xl shadow-md border border-gold/30">
+          
+          <!-- Filtros de Categorías -->
+          <div class="flex flex-wrap items-center justify-center gap-2 w-full sm:w-auto" id="categoryFilters">
+            <button type="button" onclick="filterCategory('all', this)" class="category-btn active px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all bg-gold text-navy shadow-sm">
+              Todos
+            </button>
+            <button type="button" onclick="filterCategory('corporativo', this)" class="category-btn px-4 py-2 rounded-lg text-xs md:text-sm font-semibold text-bone hover:bg-gold/20 transition-all">
+              Empresarial
+            </button>
+            <button type="button" onclick="filterCategory('litigios', this)" class="category-btn px-4 py-2 rounded-lg text-xs md:text-sm font-semibold text-bone hover:bg-gold/20 transition-all">
+              Litigios
+            </button>
+            <button type="button" onclick="filterCategory('notarial', this)" class="category-btn px-4 py-2 rounded-lg text-xs md:text-sm font-semibold text-bone hover:bg-gold/20 transition-all">
+              Notarial & Migratorio
+            </button>
+          </div>
+
+          <!-- Buscador en tiempo real -->
+          <div class="relative w-full sm:w-64">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gold/60 text-xs"></i>
+            <input 
+              type="text" 
+              id="searchInput" 
+              oninput="handleSearch()"
+              placeholder="Buscar servicio legal..." 
+              class="w-full pl-9 pr-4 py-2 bg-[#0A1128] text-white placeholder-gray-400 text-xs md:text-sm rounded-lg border border-gold/30 focus:border-gold focus:outline-none transition-all"
+            >
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GRILLA DE SERVICIOS (11 SERVICIOS CON EFECTO AOS DE APARICIÓN AL HACER SCROLL) -->
+      <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- SERVICIO 1 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="derecho corporativo empresas me&a marcas contratos fusiones" data-aos="zoom-in-up" data-aos-delay="100">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-building"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">1. Derecho Corporativo</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Fusiones y adquisiciones, constitución de sociedades, gobierno corporativo, marcas y contratos internacionales.
+            </p>
+          </div>
+          <button type="button" onclick="openModal(0)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 2 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="internacional transfronterizo arbitraje eapil mba justo" data-aos="zoom-in-up" data-aos-delay="200">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">2. Servicios Internacionales</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Gestión de asuntos transfronterizos con respaldo en la Asociación Europea de Abogados e International Bar Association.
+            </p>
+          </div>
+          <button type="button" onclick="openModal(1)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 3 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="cobros deudas prescripcion ejecucion monitorio insolvencia concursales" data-aos="zoom-in-up" data-aos-delay="300">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-scale-unbalanced"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">3. Cobros & Concursales</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Procesos monitorios de cobro judicial, prescripción de deudas, ejecuciones hipotecarias, prendarias e insolvencia.
+            </p>
+          </div>
+          <button type="button" onclick="openModal(2)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 4 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="derecho penal delitos querella imputado defensa casacion" data-aos="zoom-in-up" data-aos-delay="100">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-gavel"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">4. Derecho Penal</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Defensa y representación técnica de imputados y víctimas, medidas cautelares, querellas y recursos procesales.
+            </p>
+          </div>
+          <button type="button" onclick="openModal(3)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 5 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="civil comercial contratos arrendamiento desahucio sucesiones indemnizacion" data-aos="zoom-in-up" data-aos-delay="200">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">5. Comercial & Civil</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Defensa en litigios civiles, responsabilidad civil, contratos, desahucios, acuerdos de accionistas y sucesiones.
+            </p>
+          </div>
+          <button type="button" onclick="openModal(4)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 6 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="laboral patronos empleados acoso reglamento trabajo auditoria" data-aos="zoom-in-up" data-aos-delay="300">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">6. Derecho Laboral</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Cumplimiento laboral corporativo, litigio laboral, protocolos de prevención de acoso y régimen disciplinario.
+            </p>
+          </div>
+          <button type="button" onclick="openModal(5)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 7 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="tributario fiscal impuestos dgt contabilidad pymes renta iva" data-aos="zoom-in-up" data-aos-delay="100">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-calculator"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">7. Tributario & Fiscal</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Asesoría fiscal, planeamiento tributario, defensa ante la DGT, contabilidad integral y estados financieros.
+            </p>
+          </div>
+          <button type="button" onclick="openModal(6)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 8 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="litigios" data-keywords="administrativo sicop estado licitaciones municipal ambiental expropiacion" data-aos="zoom-in-up" data-aos-delay="200">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-landmark"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">8. Derecho Administrativo</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Contratación pública (SICOP), procesos disciplinarios, demandas contenciosas contra el Estado y derecho ambiental.
+            </p>
+          </div>
+          <button type="button" onclick="openModal(7)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 9 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="notarial" data-keywords="migratorio residencia visa pensionado rentista inversionista trabajo" data-aos="zoom-in-up" data-aos-delay="300">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-passport"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">9. Trámites Migratorios</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Residencias temporales y permanentes para inversionistas o rentistas, permisos laborales y naturalizaciones.
+            </p>
+          </div>
+          <button type="button" onclick="openModal(8)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 10 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between" data-category="corporativo" data-keywords="registro sanitario productos alimentos aduanas seguros carga importacion exportacion" data-aos="zoom-in-up" data-aos-delay="100">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-box-archive"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">10. Registro & Comercio</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Registros sanitarios de alimentos y bebidas, trámites de importación/exportación y seguros de carga.
+            </p>
+          </div>
+          <button type="button" onclick="openModal(9)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <!-- SERVICIO 11 -->
+        <div class="service-card bg-[#131d3b] p-7 rounded-xl shadow-lg border-t-4 border-gold border-x border-b border-gold/20 relative flex flex-col justify-between md:col-span-2 lg:col-span-1" data-category="notarial" data-keywords="notario escritura compraventa bienes matrimonios divorcio testamento patrimonio" data-aos="zoom-in-up" data-aos-delay="200">
+          <div>
+            <div class="w-14 h-14 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-2xl mb-5 shadow-inner">
+              <i class="fa-solid fa-file-signature"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 font-serif-title">11. Notariado Público</h3>
+            <p class="text-bone/70 text-sm leading-relaxed mb-6">
+              Compraventa de inmuebles y vehículos, matrimonios civiles, divorcios de mutuo acuerdo, certificaciones y poderes.
+            </p>
+          </div>
+          <button type="button" onclick="openModal(10)" class="w-full py-2.5 px-4 bg-[#0A1128] hover:bg-gold hover:text-navy text-gold font-semibold text-xs rounded-lg transition-all duration-300 flex items-center justify-between group border border-gold/30">
+            <span>Ver alcance del servicio</span>
+            <i class="fa-solid fa-arrow-right text-gold group-hover:text-navy transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+
+        <div id="noResults" class="hidden col-span-full text-center py-10 text-bone/70 text-sm">
+          No se encontraron servicios que coincidan con su búsqueda.
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE DETALLE DE SERVICIO (ADAPTADO AL TEMA OSCURO) -->
+  <div id="serviceModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <!-- Backdrop -->
+    <div id="modalBackdrop" onclick="closeModal()" class="modal-backdrop fixed inset-0 bg-navy/90 backdrop-blur-sm opacity-0"></div>
+    
+    <!-- Modal Content -->
+    <div id="modalContent" class="modal-content bg-[#131d3b] rounded-2xl shadow-2xl max-w-2xl w-full p-6 md:p-8 relative z-10 border-t-8 border-gold border-x border-b border-gold/30 opacity-0 scale-95 max-h-[90vh] overflow-y-auto text-white">
+      <button type="button" onclick="closeModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gold text-xl transition-colors">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="flex items-center gap-4 mb-4">
+        <div id="modalIcon" class="w-12 h-12 rounded-full bg-[#0A1128] border border-gold/30 flex items-center justify-center text-gold text-xl flex-shrink-0">
+        </div>
+        <div>
+          <span id="modalCategory" class="text-xs uppercase tracking-wider text-gold font-semibold"></span>
+          <h3 id="modalTitle" class="text-xl md:text-2xl font-bold text-white font-serif-title"></h3>
+        </div>
+      </div>
+
+      <hr class="border-gold/20 my-4">
+
+      <div class="mb-6">
+        <h4 class="text-sm font-bold text-gold mb-3 uppercase tracking-wider">Detalles del Servicio Legal:</h4>
+        <ul id="modalList" class="space-y-2.5 text-sm text-bone/90">
+          <!-- Se llena dinámicamente -->
+        </ul>
+      </div>
+
+      <div class="pt-4 border-t border-gold/20 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <span class="text-xs text-bone/60">¿Tiene una consulta urgente sobre esta materia?</span>
+        <a href="#contacto-interactivo" onclick="closeModal()" class="w-full sm:w-auto bg-gold hover:bg-gold-hover text-navy font-bold py-2.5 px-5 rounded-lg text-xs transition-all flex items-center justify-center gap-2">
+          <span>Consultar ahora</span>
+          <i class="fa-solid fa-chevron-right text-navy text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+    <footer class="w-full bg-gray-900 text-white py-6 text-center text-xs font-sans overflow-x-hidden">        <!-- SECCIÓN DE CONTACTO INTERACTIVA + UBICACIÓN -->
+        <section class="bg-[#0A1128] py-16 md:py-24 px-4 sm:px-6 lg:px-12 transition-colors duration-500 flex-grow overflow-x-hidden">
+            <div class="max-w-7xl mx-auto relative z-10">
+
+                <!-- TÍTULO GENERAL DE LA SECCIÓN -->
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl font-bold text-white tracking-wider uppercase mb-3">Asesoría Jurídica y Ubicación</h2>
+                    <div class="w-24 h-1 bg-[#C5A059] mx-auto mb-4"></div>
+                    <p class="text-gray-300 text-sm tracking-widest uppercase font-sans">Agende su consulta personalizada o visítenos en nuestras oficinas</p>
+                </div>
+
+                <!-- CUADRÍCULA DE 2 COLUMNAS: FORMULARIO (IZQ) Y MAPA (DER) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+
+                    <!-- COLUMNA IZQUIERDA (7 COLUMNAS): FORMULARIO INTERACTIVO -->
+                    <div class="lg:col-span-7 bg-white/5 border border-[#C5A059]/30 rounded-3xl p-8 md:p-10 shadow-2xl backdrop-blur-md flex flex-col justify-center" data-aos="zoom-in-up">
+                        <!-- LOGO Y NOMBRE DE LA FIRMA -->
+                        <div class="flex flex-col items-center justify-center mb-1">
+                            <img src="imagenes/Logo_CRLEX_TEST1_NBCKG.avif" alt="CRLEXCORP Logo" class="max-w-[260px] w-full h-auto mb-0 opacity-90">
+                        </div>
+
+                        <!-- PASO INICIAL: BOTÓN DE LLAMADA A LA ACCIÓN -->
+                        <div id="step-start" class="text-center pt-0 pb-6">
+                            <h3 class="text-2xl font-bold text-white mb-3">¿Necesita respaldo legal especializado?</h3>
+                            <p class="text-gray-300 text-base mb-8 font-sans max-w-lg mx-auto leading-relaxed">Permítanos conocer su requerimiento legal en tres sencillos pasos para coordinar una atención directa con nuestros abogados.</p>
+                            <button type="button" onclick="iniciarFormulario()" class="inline-block bg-[#C5A059] hover:bg-[#b08d4c] text-[#0A1128] font-bold text-sm md:text-base tracking-widest uppercase py-4 px-10 rounded-full shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer font-sans">
+                                Conversemos sobre su caso
+                            </button>
+                        </div>
+                        <!-- informacion fija -->
+                        <div class="crlex-contact-info">
+                        <!-- Email -->
+                        <a href="mailto:info@crlexcorp.com" class="crlex-contact-item">
+                            <svg class="crlex-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            <span>Email: info@crlexcorp.com</span>
+                        </a>
+                        <!-- Teléfono Fijo -->
+                        <a href="tel:+50640019538" class="crlex-contact-item">
+                            <svg class="crlex-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
+                            </svg>
+                            <span>Teléfono Fijo: 4001-9538</span>
+                        </a>
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/50685847286" target="_blank" rel="noopener noreferrer" class="crlex-contact-item">
+                            <svg class="crlex-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.758.459 3.475 1.331 4.988L2 22l5.188-1.359a9.927 9.927 0 004.843 1.258h.004c5.515 0 9.969-4.454 9.969-9.969A9.93 9.93 0 0012.031 2zm5.805 14.129c-.244.688-1.414 1.316-1.957 1.398-.5.075-1.133.107-1.832-.115-.425-.135-.971-.316-1.668-.617-2.926-1.263-4.836-4.211-4.982-4.406-.146-.195-1.189-1.582-1.189-3.018 0-1.436.752-2.141 1.02-2.434.268-.293.586-.366.781-.366.195 0 .391.002.562.01.18.009.422-.068.66.504.244.586.83 2.025.902 2.172.073.146.122.317.024.512-.098.195-.146.317-.293.488-.146.171-.308.382-.439.512-.146.146-.299.305-.129.598.171.293.759 1.252 1.629 2.027 1.12.998 2.063 1.307 2.356 1.453.293.146.464.122.635-.073.171-.195.732-.854.928-1.147.195-.293.391-.244.659-.146.268.098 1.708.805 2.001.951.293.146.488.22.562.342.073.122.073.708-.171 1.396z"/>
+                            </svg>
+                            <span>WhatsApp: 8584-7286</span>
+                        </a>
+                        <div class="crlex-social-row">
+                                <!-- Facebook -->
+                                <a href="https://www.facebook.com/crlexcorpabogados?locale=es_la" target="_blank" rel="noopener noreferrer" class="crlex-social-link" aria-label="Facebook de CRLEXCORP Abogados">
+                                    <svg class="crlex-social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </a>
+
+                                <!-- Instagram -->
+                                <a href="https://www.instagram.com/crlexcorpabogados/" target="_blank" rel="noopener noreferrer" class="crlex-social-link" aria-label="Instagram de CRLEXCORP Abogados">
+                                    <svg class="crlex-social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- FORMULARIO MULTI-PASO (OCULTO INICIALMENTE) -->
+                        <form id="interactive-form" class="hidden space-y-6" onsubmit="enviarCita(event)">
+
+                            <!-- PASO 1: TIPO DE CASO / ÁREA LEGAL -->
+                            <div id="form-step-1" class="form-step">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="w-9 h-9 rounded-full bg-[#C5A059] text-[#0A1128] font-bold flex items-center justify-center text-base shrink-0">1</span>
+                                    <h3 class="text-xl font-bold text-white">¿Cuál es el área o tipo de caso que tiene?</h3>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[340px] overflow-y-auto pr-2">
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Corporativo" required class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Corporativo</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Servicios Internacionales" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Servicios Internacionales</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Cobros y Procesos Concursales" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Cobros y Procesos Concursales</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Penal" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Penal</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Comercial y Civil" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Comercial y Civil</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Laboral" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Laboral</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Tributario y Contable" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Tributario y Contable</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Derecho Administrativo" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Derecho Administrativo</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Trámites Migratorios" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Trámites Migratorios</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Comercio Internacional y Registros" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Comercio Internacional y Registros</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Notariado Público" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Notariado Público</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#C5A059] cursor-pointer transition-all">
+                                        <input type="radio" name="area_legal" value="Otros" class="text-[#C5A059] focus:ring-[#C5A059]">
+                                        <span class="text-xs md:text-sm font-sans text-gray-200">Otros</span>
+                                    </label>
+                                </div>
+
+                                <div class="mt-8 text-right">
+                                    <button type="button" onclick="siguientePaso(2)" class="bg-[#C5A059] hover:bg-[#b08d4c] text-[#0A1128] font-bold text-xs md:text-sm tracking-widest uppercase py-3 px-8 rounded-full transition-transform hover:scale-105 font-sans cursor-pointer">
+                                        Siguiente: Seleccionar Fecha
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- PASO 2: AGENDA Y DISPONIBILIDAD -->
+                            <div id="form-step-2" class="form-step hidden">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="w-9 h-9 rounded-full bg-[#C5A059] text-[#0A1128] font-bold flex items-center justify-center text-base shrink-0">2</span>
+                                    <h3 class="text-xl font-bold text-white">Seleccione la fecha y horario disponible</h3>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
+                                    <!-- FECHA -->
+                                    <div>
+                                        <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Fecha preferida para la cita</label>
+                                        <input type="date" id="fecha_cita" onchange="mostrarAvisoSeleccion()" class="w-full bg-white/10 border border-white/20 rounded-xl p-4 text-white focus:outline-none focus:border-[#C5A059]">
+                                    </div>
+
+                                    <!-- RELOJ ESTILO IWATCH (HORAS Y MINUTOS INDEPENDIENTES) -->
+                                    <div>
+                                        <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Hora de preferencia (8:00 AM - 5:00 PM)</label>
+
+                                        <div class="bg-[#0A1128] border border-white/20 rounded-2xl p-4 flex flex-col items-center justify-center relative shadow-inner">
+
+                                            <!-- Visor de Hora Seleccionada -->
+                                            <div class="text-2xl font-bold text-[#C5A059] mb-4 tracking-widest bg-white/5 py-2 px-6 rounded-xl border border-[#C5A059]/30" id="reloj-display">
+                                                08:00 AM
+                                            </div>
+
+                                            <!-- Contenedor de Ruedas de Selección -->
+                                            <div class="flex items-center justify-center gap-4 w-full">
+
+                                                <!-- Columna Horas -->
+                                                <div class="flex-1 text-center">
+                                                    <span class="text-[10px] text-gray-400 uppercase tracking-widest block mb-1">Hora</span>
+                                                    <div id="wheel-horas" class="h-28 overflow-y-auto snap-y snap-mandatory bg-white/5 rounded-xl border border-white/10 p-2 scrollbar-thin scrollbar-thumb-[#C5A059]">
+                                                        <!-- Se llena por JS -->
+                                                    </div>
+                                                </div>
+
+                                                <span class="text-2xl font-bold text-white">:</span>
+
+                                                <!-- Columna Minutos -->
+                                                <div class="flex-1 text-center">
+                                                    <span class="text-[10px] text-gray-400 uppercase tracking-widest block mb-1">Minutos</span>
+                                                    <div id="wheel-minutos" class="h-28 overflow-y-auto snap-y snap-mandatory bg-white/5 rounded-xl border border-white/10 p-2 scrollbar-thin scrollbar-thumb-[#C5A059]">
+                                                        <!-- Se llena por JS -->
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- Indicador de Almuerzo Bloqueado -->
+                                            <p id="almuerzo-aviso" class="text-[10px] text-amber-400/80 mt-2 hidden text-center">⚠️ Hora de almuerzo (12:00 PM - 1:00 PM) no disponible</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="aviso-seleccion-cita" class="hidden mt-5 p-3.5 rounded-xl bg-[#C5A059]/10 border border-[#C5A059]/40 text-gray-200 text-xs font-sans leading-relaxed text-left">
+                                    La fecha y hora seleccionadas están sujetas a disponibilidad y validación por parte de nuestro equipo. Al continuar, se enviará su solicitud por WhatsApp para coordinar y confirmar el espacio.
+                                </div>
+
+                                <div class="mt-8 flex justify-between">
+                                    <button type="button" onclick="siguientePaso(1)" class="border border-white/30 text-white hover:bg-white/10 font-bold text-xs md:text-sm tracking-widest uppercase py-3 px-6 rounded-full font-sans cursor-pointer">
+                                        Anterior
+                                    </button>
+                                    <button type="button" onclick="siguientePaso(3)" class="bg-[#C5A059] hover:bg-[#b08d4c] text-[#0A1128] font-bold text-xs md:text-sm tracking-widest uppercase py-3 px-8 rounded-full transition-transform hover:scale-105 font-sans cursor-pointer">
+                                        Siguiente: Datos
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- PASO 3: DATOS DE CONTACTO Y CONFIRMACIÓN -->
+                            <div id="form-step-3" class="form-step hidden">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="w-9 h-9 rounded-full bg-[#C5A059] text-[#0A1128] font-bold flex items-center justify-center text-base shrink-0">3</span>
+                                    <h3 class="text-xl font-bold text-white">¿A qué nombre y número coordinamos la cita?</h3>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
+                                    <div>
+                                        <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Nombre completo</label>
+                                        <input type="text" id="nombre_cliente" placeholder="Ej. Juan Pérez" required class="w-full bg-white/10 border border-white/20 rounded-xl p-4 text-white placeholder-gray-400 focus:outline-none focus:border-[#C5A059]">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-[#C5A059] uppercase tracking-wider mb-2 font-semibold">Número de teléfono / WhatsApp</label>
+                                        <input type="tel" id="telefono_cliente" placeholder="Ej. +506 8888 8888" required class="w-full bg-white/10 border border-white/20 rounded-xl p-4 text-white placeholder-gray-400 focus:outline-none focus:border-[#C5A059]">
+                                    </div>
+                                </div>
+
+                                <div class="mt-8 flex flex-wrap gap-4 justify-between items-center">
+                                    <button type="button" onclick="siguientePaso(2)" class="border border-white/30 text-white hover:bg-white/10 font-bold text-xs md:text-sm tracking-widest uppercase py-3 px-6 rounded-full font-sans cursor-pointer">
+                                        Anterior
+                                    </button>
+                                    <button type="submit" class="bg-[#C5A059] hover:bg-[#b08d4c] text-[#0A1128] font-bold text-xs md:text-sm tracking-widest uppercase py-4 px-8 rounded-full shadow-lg transition-transform hover:scale-105 font-sans cursor-pointer">
+                                        Confirmar y Enviar por WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!-- COLUMNA DERECHA (5 COLUMNAS): MAPA DE GOOGLE MAPS -->
+                    <div class="lg:col-span-5 bg-white/5 border border-[#C5A059]/30 rounded-3xl p-8 shadow-2xl backdrop-blur-md flex flex-col justify-between" data-aos="zoom-in-up" data-aos-delay="200">
+
+                        <div>
+                            <!-- TÍTULO ENCUÉNTRANOS -->
+                            <div class="text-center mb-6">
+                                <h3 class="text-2xl font-bold text-white tracking-wider uppercase mb-2">Encuéntranos</h3>
+                                <div class="w-16 h-0.5 bg-[#C5A059] mx-auto mb-3"></div>
+                                <p class="text-gray-300 text-xs font-sans tracking-wide">San José, Costa Rica • CRLEXCORP Abogados</p>
+                            </div>
+
+                            <!-- CONTENEDOR DEL MAPA CON BORDES REDONDOS -->
+                            <div class="w-full h-72 rounded-2xl overflow-hidden border border-[#C5A059]/40 shadow-inner mb-6">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.0332295980606!2d-84.06450902446704!3d9.931190590170626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb001c1166df%3A0xb45018c55ddd5a45!2sCRLEXCORP%20Abogados%20Costa%20Rica!5e0!3m2!1ses!2scr!4v1794609650556!5m2!1ses!2scr"
+                                    class="w-full h-full border-0"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="strict-origin-when-cross-origin">
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <!-- BOTÓN CÓMO LLEGAR -->
+                        <div class="text-center">
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=9.931190590170626,-84.06450902446704" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-3 bg-[#C5A059] hover:bg-[#b08d4c] text-[#0A1128] font-bold text-sm tracking-widest uppercase py-4 px-8 rounded-full shadow-lg transition-transform duration-300 hover:scale-105 font-sans">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                Cómo llegar
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <p class="text-gray-400 text-xs mt-2">
+          &copy; 2026 CRLEXCORP ABOGADOS. Todos los derechos reservados.
+          <span class="text-[#C5A059]/80 mx-1">|</span>
+          Sitio desarrollado por
+          <a href="https://www.gsoempresarial.com/" target="_blank" rel="noopener noreferrer"
+            class="text-[#C5A059] hover:text-[#DFBD78] underline underline-offset-4 transition-colors font-medium">
+            GSO Empresarial
+          </a>.
+        </p>
+    </footer>
+
+  <!-- AOS (Animate On Scroll) JS CDN -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // INICIALIZAR AOS
+    AOS.init({
+      once: true, // La animación ocurre solo una vez al hacer scroll hacia abajo
+      offset: 50  // Margen de activación
+    });
+
+    // MENÚ MÓVIL
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    // DATOS DETALLADOS DE CADA UNO DE LOS 11 SERVICIOS
+    const servicesData = [
+      {
+        title: "1. Derecho Corporativo",
+        category: "Empresarial",
+        icon: "fa-building",
+        details: [
+          "Fusiones y Adquisiciones Empresariales, Derecho Corporativo y Empresarial.",
+          "Constitución de Sociedades y modificaciones de estatutos sociales.",
+          "Gobierno Corporativo y estructuración de acuerdos societarios.",
+          "Asesoría integral en contratos internacionales y negociación comercial.",
+          "Atención a inicio de operaciones en micro, pequeñas, medianas y grandes empresas.",
+          "Servicios de tramitología en Registro de Marcas, nombres comerciales y derechos de autor."
+        ]
+      },
+      {
+        title: "2. Servicios Internacionales",
+        category: "Empresarial / Transfronterizo",
+        icon: "fa-globe",
+        details: [
+          "Miembros de la Asociación Europea de Abogados, Justinian Lawyers, IBA y EAPIL.",
+          "Gestión de Asuntos Transfronterizos: representación ágil y segura en distintos países.",
+          "Asesoría Corporativa Internacional: constitución de sociedades en diversas jurisdicciones.",
+          "Arbitraje y Litigios Internacionales en cortes extranjeras.",
+          "Protección de Inversiones y Propiedad Intelectual en múltiples países.",
+          "Acompañamiento global directo donde sus proyectos lo requieran."
+        ]
+      },
+      {
+        title: "3. Cobros & Procesos Concursales",
+        category: "Litigios",
+        icon: "fa-scale-unbalanced",
+        details: [
+          "Procesos Monitorios de Cobro Judicial y Procesos Concursales.",
+          "Especialistas en Prescripciones de deudas e Interposición de Caducidades.",
+          "Incidentes de Nulidad de Notificación.",
+          "Ejecuciones Hipotecarias y Prendarias.",
+          "Prueba Anticipada y Reconocimiento de Documento.",
+          "Negociaciones con acreedores y acuerdos judiciales/extrajudiciales."
+        ]
+      },
+      {
+        title: "4. Derecho Penal",
+        category: "Litigios",
+        icon: "fa-gavel",
+        details: [
+          "Defensa y representación técnica del imputado.",
+          "Suspensión de procedimiento a prueba o Extinción de la acción penal.",
+          "Representación integral de los derechos de la víctima.",
+          "Denuncias o Querellas en delitos de acción pública y privada.",
+          "Acción civil resarcitoria y preparación de prueba.",
+          "Recursos de revocatoria, apelación, apelación de sentencia y casación."
+        ]
+      },
+      {
+        title: "5. Derecho Comercial y Civil",
+        category: "Litigios",
+        icon: "fa-handshake",
+        details: [
+          "Defensa en procedimientos civiles en sede Judicial y Extrajudicial.",
+          "Indemnizaciones por responsabilidad civil.",
+          "Redacción y revisión de todo tipo de contratos comerciales y civiles.",
+          "Arrendamientos urbanos y rústicos, desahucios y cobro de rentas.",
+          "Derechos de accionistas minoritarios y administración de sociedades.",
+          "Medidas cautelares y Procesos Sucesorios (Herencias)."
+        ]
+      },
+      {
+        title: "6. Derecho Laboral",
+        category: "Empresarial",
+        icon: "fa-users",
+        details: [
+          "Cumplimiento e implementación de estructuras laborales corporativas.",
+          "Procedimientos Administrativos y Auditoría de Políticas Laborales.",
+          "Litigio Laboral en estrados judiciales.",
+          "Consultoría y Planeamiento Laboral preventivo.",
+          "Abordaje de protocolos de Acoso Laboral.",
+          "Procesos de Régimen disciplinario interno."
+        ]
+      },
+      {
+        title: "7. Derecho Tributario y Fiscal",
+        category: "Empresarial",
+        icon: "fa-calculator",
+        details: [
+          "Asesoría Tributaria General y planeamiento fiscal legal.",
+          "Cumplimiento Tributario: Declaraciones de IVA, Renta y Retenciones.",
+          "Defensa y atención de auditorías/fiscalizaciones ante la DGT.",
+          "Recursos administrativos contra ajustes tributarios.",
+          "Contabilidad integral mensual y estados financieros.",
+          "Modelos contables ajustados para Emprendedores y PYMES."
+        ]
+      },
+      {
+        title: "8. Derecho Administrativo",
+        category: "Litigios",
+        icon: "fa-landmark",
+        details: [
+          "Procedimientos Disciplinarios Administrativos y Recursos en Sede Administrativa.",
+          "Derecho Municipal y Derechos del Consumidor.",
+          "Reclamos por Responsabilidad de la Administración y Expropiaciones.",
+          "Contratación Administrativa y tramitología en plataforma SICOP.",
+          "Demandas contenciosas contra el Estado para resarcimiento de daños.",
+          "Derecho Ambiental y recursos de casación o revisión."
+        ]
+      },
+      {
+        title: "9. Trámites Migratorios",
+        category: "Notarial / Migratorio",
+        icon: "fa-passport",
+        details: [
+          "Residencias temporales y permanentes en Costa Rica.",
+          "Residencia especial para Inversionistas, Pensionados y Rentistas.",
+          "Permisos de trabajo y solicitudes de reunificación familiar.",
+          "Naturalización y obtención de ciudadanía costarricense.",
+          "Renovaciones, cambio de categoría y contratación de personal extranjero."
+        ]
+      },
+      {
+        title: "10. Registro de Productos & Comercio",
+        category: "Empresarial",
+        icon: "fa-box-archive",
+        details: [
+          "Registro Sanitario de Productos Alimenticios y Bebidas.",
+          "Obtención y renovación de permisos sanitarios ante autoridades.",
+          "Gestión integral de procesos de Importación, Exportación y Reexportación.",
+          "Asesoría en transporte internacional y seguros de carga.",
+          "Cumplimiento regulatorio, revisión de etiquetado y ficha técnica."
+        ]
+      },
+      {
+        title: "11. Notariado Público",
+        category: "Notarial",
+        icon: "fa-file-signature",
+        details: [
+          "Escrituras de Compra-Venta de Bienes Muebles e Inmuebles.",
+          "Constitución de Sociedades e Hipotecas.",
+          "Matrimonios Civiles y Divorcios por mutuo consentimiento.",
+          "Donaciones, Certificaciones, Declaraciones Juradas y Actas Notariales.",
+          "Afectación a Patrimonio Familiar y Testamentos."
+        ]
+      }
+    ];
+
+    // MODAL HANDLERS
+    function openModal(index) {
+      const data = servicesData[index];
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalCategory').innerText = data.category;
+      document.getElementById('modalIcon').innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
+      
+      const listContainer = document.getElementById('modalList');
+      listContainer.innerHTML = data.details.map(detail => `
+        <li class="flex items-start gap-2.5">
+          <i class="fa-solid fa-circle-check text-gold text-xs mt-1"></i>
+          <span>${detail}</span>
+        </li>
+      `).join('');
+
+      const modal = document.getElementById('serviceModal');
+      const backdrop = document.getElementById('modalBackdrop');
+      const content = document.getElementById('modalContent');
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        content.classList.remove('opacity-0', 'scale-95');
+      }, 10);
+    }
+
+    function closeModal() {
+      const backdrop = document.getElementById('modalBackdrop');
+      const content = document.getElementById('modalContent');
+
+      backdrop.classList.add('opacity-0');
+      content.classList.add('opacity-0', 'scale-95');
+
+      setTimeout(() => {
+        document.getElementById('serviceModal').classList.add('hidden');
+      }, 300);
+    }
+
+    // CATEGORY FILTERING LOGIC
+    let currentCategory = 'all';
+
+    function filterCategory(category, btnEl) {
+      currentCategory = category;
+
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-gold', 'text-navy', 'shadow-sm');
+        btn.classList.add('text-bone');
+      });
+
+      const activeBtn = btnEl || (typeof event !== 'undefined' && event.currentTarget);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-gold', 'text-navy', 'shadow-sm');
+        activeBtn.classList.remove('text-bone');
+      }
+
+      applyFilters();
+    }
+
+    // SEARCH LOGIC
+    function handleSearch() {
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.service-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const keywords = card.getAttribute('data-keywords').toLowerCase();
+        const cardText = card.innerText.toLowerCase();
+
+        const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+        const matchesSearch = searchTerm === '' || keywords.includes(searchTerm) || cardText.includes(searchTerm);
+
+        if (matchesCategory && matchesSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      const noResults = document.getElementById('noResults');
+      if (noResults) {
+        if (visibleCount === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+    }
+  </script>
+
+  <!-- SCRIPT PARA CONTROLAR EL FORMULARIO INTERACTIVO -->
+  <script>
+    let horaSeleccionada = 8;
+    let minutoSeleccionado = 0;
+
+    function iniciarFormulario() {
+      document.getElementById('step-start').classList.add('hidden');
+      document.getElementById('interactive-form').classList.remove('hidden');
+      inicializarReloj();
+    }
+
+    function siguientePaso(paso) {
+      document.getElementById('form-step-1').classList.add('hidden');
+      document.getElementById('form-step-2').classList.add('hidden');
+      document.getElementById('form-step-3').classList.add('hidden');
+      document.getElementById('form-step-' + paso).classList.remove('hidden');
+    }
+
+    function inicializarReloj() {
+      const wheelHoras = document.getElementById('wheel-horas');
+      const wheelMinutos = document.getElementById('wheel-minutos');
+      if (!wheelHoras || !wheelMinutos) return;
+
+      wheelHoras.innerHTML = '';
+      wheelMinutos.innerHTML = '';
+
+      for (let h = 8; h <= 16; h++) {
+        let formatoHora = h > 12 ? h - 12 : h;
+        let ampm = h >= 12 ? 'PM' : 'AM';
+        let div = document.createElement('div');
+        div.className = `py-2 text-sm font-bold cursor-pointer rounded-lg snap-center transition-all ${h === horaSeleccionada ? 'bg-[#C5A059] text-[#0A1128]' : 'text-white hover:bg-white/10'}`;
+        div.dataset.value = h;
+        div.textContent = `${formatoHora < 10 ? '0' + formatoHora : formatoHora} ${ampm}`;
+        div.onclick = () => {
+          horaSeleccionada = h;
+          verificarValidezHora();
+          inicializarReloj();
+          mostrarAvisoSeleccion();
+        };
+        wheelHoras.appendChild(div);
+      }
+
+      const minutosValidos = [0, 15, 30, 45];
+      minutosValidos.forEach(m => {
+        let div = document.createElement('div');
+        div.className = `py-2 text-sm font-bold cursor-pointer rounded-lg snap-center transition-all ${m === minutoSeleccionado ? 'bg-[#C5A059] text-[#0A1128]' : 'text-white hover:bg-white/10'}`;
+        div.dataset.value = m;
+        div.textContent = m === 0 ? '00' : m;
+        div.onclick = () => {
+          minutoSeleccionado = m;
+          verificarValidezHora();
+          inicializarReloj();
+          mostrarAvisoSeleccion();
+        };
+        wheelMinutos.appendChild(div);
+      });
+
+      actualizarDisplayReloj();
+    }
+
+    function verificarValidezHora() {
+      const aviso = document.getElementById('almuerzo-aviso');
+
+      if (horaSeleccionada === 12 && minutoSeleccionado > 0) {
+        minutoSeleccionado = 0;
+        horaSeleccionada = 13;
+        aviso.classList.remove('hidden');
+        setTimeout(() => aviso.classList.add('hidden'), 3500);
+      } else if (horaSeleccionada === 17 && minutoSeleccionado > 0) {
+        minutoSeleccionado = 0;
+      } else {
+        aviso.classList.add('hidden');
+      }
+    }
+
+    function actualizarDisplayReloj() {
+      const display = document.getElementById('reloj-display');
+      let h = horaSeleccionada;
+      let m = minutoSeleccionado;
+
+      let formatoHora = h > 12 ? h - 12 : h;
+      let ampm = h >= 12 ? 'PM' : 'AM';
+      let formatoMinuto = m === 0 ? '00' : m;
+
+      display.textContent = `${formatoHora < 10 ? '0' + formatoHora : formatoHora}:${formatoMinuto} ${ampm}`;
+    }
+
+    function mostrarAvisoSeleccion() {
+      const fecha = document.getElementById('fecha_cita')?.value;
+      const aviso = document.getElementById('aviso-seleccion-cita');
+      if (fecha && aviso) {
+        aviso.classList.remove('hidden');
+      }
+    }
+
+    function enviarCita(event) {
+      event.preventDefault();
+
+      const areaSeleccionada = document.querySelector('input[name="area_legal"]:checked') ? document.querySelector('input[name="area_legal"]:checked').value : 'No especificada';
+      const fecha = document.getElementById('fecha_cita').value || 'Por definir';
+
+      let h = horaSeleccionada;
+      let m = minutoSeleccionado;
+      let formatoHora = h > 12 ? h - 12 : h;
+      let ampm = h >= 12 ? 'PM' : 'AM';
+      let horarioTexto = `${formatoHora < 10 ? '0' + formatoHora : formatoHora}:${m === 0 ? '00' : m} ${ampm}`;
+
+      const nombre = document.getElementById('nombre_cliente').value;
+      const telefono = document.getElementById('telefono_cliente').value;
+
+      const mensaje = `*SOLICITUD DE ASESORÍA LEGAL - CRLEXCORP*%0A%0A` +
+                      `*Área Legal:* ${areaSeleccionada}%0A` +
+                      `*Fecha Preferida:* ${fecha}%0A` +
+                      `*Hora:* ${horarioTexto}%0A` +
+                      `*Nombre:* ${nombre}%0A` +
+                      `*Teléfono:* ${telefono}`;
+
+      window.open(`https://wa.me/50685847286?text=${mensaje}`, '_blank');
+    }
+    // ABRIR MODAL AUTOMÁTICAMENTE SI VIENE CON ?servicio=N DESDE INDEX
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const servicioParam = params.get('servicio');
+      if (servicioParam !== null) {
+        const index = parseInt(servicioParam, 10);
+        if (!isNaN(index) && servicesData[index]) {
+          setTimeout(() => openModal(index), 250);
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
